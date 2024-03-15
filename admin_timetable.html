@@ -17,7 +17,7 @@
    <link rel="stylesheet" type="text/css" href="css/style_feedback.css">
 </head>
 <?
-$connect_bd = mysqli_connect("localhost", "Admin_Club", "Admin-Club411", "StoneBreaker"); $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti1'");
+$connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker"); $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti1'");
                   $resT = mysqli_fetch_assoc($t);
 ?>
 

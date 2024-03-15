@@ -16,7 +16,7 @@
    <link rel="stylesheet" type="text/css" href="css/style_feedback.css">
 </head>
 <?
-$connect_bd = mysqli_connect("localhost", "Admin_Club", "Admin-Club411", "StoneBreaker");
+$connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
 $vacancies_id = null;
 if (isset($_GET['id'])) {
    $vacancies_id = $_GET['id'];
