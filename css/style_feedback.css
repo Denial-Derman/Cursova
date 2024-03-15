@@ -1,0 +1,116 @@
+.feedback{
+   background: rgba(0, 0, 0, 0.25);
+   background-size: cover;
+   position: fixed;
+   height: 100vh;
+   width: 100vw;
+   top: 0;
+   left: 0;
+   z-index: 11;
+   color: #ffffff;
+   /* border: 1px solid black; */
+}
+.feedback__form{
+   background: rgba(88, 88, 88, 0.9);
+   position: fixed;
+   height: max-content;
+   width: max-content;
+   padding: 100px;
+   border-radius: 40px;
+   display: flex;
+   flex-direction: column;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+.feedback__form-close{
+   position: absolute;
+   top: 5%;
+   left: 90%;
+   cursor: pointer;
+}
+.feedback__form-close img{
+   width: 65%;
+}
+.feedback__form-title{
+   text-align: center;
+   margin-bottom: 20px;     
+}
+.feedback__form-title h2{
+   margin-bottom: 35px;
+}
+.feedback__form-content{   
+   width: 90%;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   font-size: 22px;
+}
+.feedback__form-content p{
+   margin-bottom: 5px;
+}
+.feedback__form-name{
+   /* border: 1px solid rgb(255, 0, 0);  */
+}
+.feedback__form-number{
+   /* border: 1px solid rgb(255, 0, 0);  */
+}
+.feedback__form-send{
+   /* border: 1px solid rgb(255, 0, 0);  */
+}
+.feedback__form-input{
+   background: rgb(217, 217, 217);
+   color: rgba(0, 0, 0, 0.5);
+   padding: 20px 30px 20px 30px;
+   border-radius: 20px;
+   width: 100%;
+   font-size: 20px;
+   box-sizing: border-box;
+}
+.feedback__form-btn{
+   margin-top: 40px;
+   width: 100%;
+   color: rgba(0, 0, 0, 0.6);
+   font-weight: bold;
+   padding: 30px 0px 30px 0px;
+   font-size: 24px;
+   box-sizing: border-box;
+   transition: all 0.3s ease-out 0s;
+}
+.feedback__form-btn:hover{
+   color: rgba(217, 217, 217, 0.6);
+   background: rgb(0, 0, 0, 0.5);
+}
+@media (max-width:900px){
+   .feedback{
+      background: rgba(88, 88, 88, 0.98);
+   }
+   .feedback__form{
+      padding: 50px;
+      background: rgba(88, 88, 88, 0);
+      /* background: rgb(255, 0, 0); */
+      height: max-content;
+      width: 95%;
+      border-radius: 0px;   
+   }
+   .feedback__form-close {
+      top: -18%;
+      left: auto; 
+      right: 10%;
+   }
+   .feedback__form-close img{
+      width: 65%;
+   }
+   .feedback__form-title p{
+      font-size: 18px;
+      font-weight: 200;
+   }
+}
+@media (max-width:380px){
+   .feedback__form-close {
+      top: -5%;
+      left: auto; 
+      right: 10%;
+   }
+}

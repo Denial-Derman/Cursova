@@ -1,0 +1,267 @@
+/* Абонементи */
+.subscription{
+   margin-top: 150px;
+   margin-bottom: 100px;
+}
+.subscription__flex{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+.subscription__row{
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+   /* border: 1px solid black; */
+}
+.subscription_body{
+   margin-top: 50px;
+   border: 1px solid black;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
+   border-radius: 10px;
+   min-height: 380px;
+   min-width: 250px;
+   height: max-content;
+   width: max-content;
+   padding: 30px 25px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between; 
+   align-items: center; 
+}
+.subscription_body-title{
+   text-align: center;
+   /* font-weight: bold; */
+   font-size: 24px;
+   margin-bottom: 30px;
+   /* border: 1px solid black; */
+}
+.subscription_body-list{
+   max-width: 245px;
+   /* overflow: hidden; */
+}
+.subscription_body-list li{
+   list-style:disc;
+   margin: 0px 0px 0px 30px;
+   text-wrap: wrap;
+}
+.subscription_body-price{
+   display: flex;
+   justify-content: space-evenly;
+   height: max-content;
+   width: 100%;
+   margin: 100px 0px 0px 0px;
+   font-size: 22px;
+}
+.subscription_body-price-row{
+   display: flex;
+   gap: 5px;
+}
+
+.subscription_body-formalize{
+   margin-top: 50px;      
+}
+.subscription_body-btn{   
+   background: #D0ADAD;
+   padding: 15px 30px;
+   border: 1px solid #000;
+   border-radius: 15px;
+   color: #FAFAFA;
+   font-weight: bold;
+   font-family: Nunito Sans;
+   font-size: 16px;
+   transition-timing-function: ease-out;
+   transition-duration: 300ms;
+   box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.subscription_body-btn:hover{
+   border: 1px solid #000;
+   background: #C85151;
+   box-shadow: -5px -5px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.subscription_body-admin{
+   /* border: 1px solid black; */
+   border-radius: 50%;
+   position: absolute;
+   left: 430px;
+}
+.Admin-red{
+   height: 30px;
+   border-radius: 50%;
+   align-items: center;
+}
+.subscription_body-time{
+   margin-top: -25px;
+   font-size: 14px;
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   /* border: 1px solid black; */
+}
+
+.subscription__body_admin{
+   margin-top: 0px;
+   border: 1px solid black;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
+   border-radius: 10px;
+   min-height: 280px;
+   min-width: 650px;
+   height: max-content;
+   width: max-content;
+   padding: 20px 25px;
+   display: flex;   
+}
+.subscription__body_admin form{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between; 
+   align-items: center; 
+}
+.subscription__body_admin-title{
+   text-align: center;
+   /* font-weight: bold; */
+   font-size: 24px;
+   margin-bottom: 20px;
+}
+.subscription_body_admin-name{
+   display: flex;
+   /* border: 1px solid #000; */
+   width: 100%;
+   /* justify-content: space-between;   */
+   align-items: center;
+   margin-bottom: 10px;
+}
+.name{
+   width: 40%;
+   /* border: 1px solid #000; */
+}
+.subscription__body_admin input{
+   border: 1px solid #000;
+   border-radius: 5px;
+   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.25) inset;
+   padding: 5px 5px 5px 10px;
+   align-self: center;
+   width: 200px;  
+   /* flex: 1 1 auto; */
+}
+.subscription__body_admin select{
+   border: 1px solid #000;
+   border-radius: 5px;
+   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.25) inset;
+   padding: 5px 5px 5px 10px;
+   align-self: center;   
+}
+.subscription_body_admin-price{
+   display: flex;
+   /* border: 1px solid #000; */
+   width: 100%;
+   /* justify-content: space-between; */
+   align-items: center;
+   margin-bottom: 10px;
+}
+.subscription_body_admin-price input{
+   width: 80px;  
+}
+.subscription_body_admin-time{
+   display: flex;
+   /* border: 1px solid #000; */
+   width: 100%;
+   /* justify-content: space-between; */
+   align-items: flex-start;
+   margin-bottom: 10px;
+}
+.choice{
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+}
+.subscription_body_admin-time input{
+   border: 0px solid #000;
+   border-radius: 5px;
+   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25) inset;
+   padding: 5px 5px 5px 10px;
+   align-self: center;
+   width: max-content; 
+}
+.choice-check{
+   font-size: 16px;
+   display: flex;
+   align-items: center;
+}
+.subscription_body_admin-list{
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   /* border: 1px solid #000;  */
+   flex: 1 1 auto;
+}
+.subscription_body_admin-list__header{
+   display: flex;
+   width: 100%;
+   /* border: 1px solid #000;  */
+   align-items: center;
+   margin-bottom: 10px;
+}
+.subscription_body_admin-list__title{
+   text-align: center;
+   /* border: 1px solid #000;  */
+   width: 100%;
+}
+.subscription_body_admin-list__btn{
+   /* border: 1px solid #000; */
+   cursor:pointer;
+   margin-left: 10px;
+}
+.subscription_body_admin-list__btn img{
+   height: 30px;
+}
+.subscription_body_admin-list__element{
+   display: flex;
+   width: 100%;
+   /* justify-content: space-between; */
+   align-items: center;
+   margin-bottom: 10px;
+}
+.text-el{
+   flex: 1 1 auto;
+}
+.subscription_body_admin-btn{
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+}
+.subscription_body_admin-btn button, .subscription_right_admin-btn button{
+   align-self: flex-end;
+   border-radius: 10px;
+   background: #6F6F6F;
+   color: white;
+   padding: 10px;
+   width: 180px;
+   border: 1px solid #000; 
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
+   transition-timing-function: ease-out;
+   transition-duration: 300ms;
+}
+.subscription_body_admin-btn button:hover, .subscription_right_admin-btn button:hover{
+   border: 1px solid #000;
+   background: #C85151;
+   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.25) inset;
+}
+.right{
+   display: flex;
+   flex-direction: column;
+
+}
+.right .subscription__body_admin-title{
+   margin-bottom: 0px;
+}
+.right .subscription_body{
+   margin: 10px 0px 0px 0px;
+}
+.subscription_right_admin-btn{
+   text-align: center;
+   margin: 20px auto;
+}
