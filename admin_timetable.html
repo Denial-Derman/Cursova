@@ -60,43 +60,59 @@ $connect_bd = mysqli_connect("localhost", "Admin_Club", "Admin-Club411", "StoneB
                <div class="div">
                   <form action="admin_timetable.php" method="post" class="admin-form" enctype="multipart/form-data">
                      <h2>Завантаження розкладу на сайт</h2>
-                     <label for="image">Оберіть зображення:</label>
-                     <p><input type="file" name="image" id="" accept="image/*" class="image-form"></p>
+                     <label for="image">Завантажити фон:</label>
+                     <label for="image" class="custom-file-upload">Выбрать файл</label><input type="file" name="image"
+                        id="" accept="image/*" class="image-form">
                      <p>Назва розкладу<input type="text" name="name" id="" placeholder="Назва"></p>
                      <div class="time-list">
-                        <div class="time-list-title">Час:</div>
-                        <select name="type" id="Var1">
-                           <option value="1">Пн-Вс</option>
-                           <option value="2">Пн-Сб</option>
-                           <option value="3">Пн-Пт</option>
-                        </select><button type="button" onclick="addFields()">+</button>
-                        <div id="dynamicFields">
-                           <p>
-                              <input type="time" name="times[]" id="">
-                              <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
-                           </p>
+                        <div class="time-list-title">День та час:</div>
+                        <div class="time-list-block">
+                           <select name="type" id="DayVar1" onchange="handleDayVar1Change()">
+                              <option value="1">Пн-Вс</option>
+                              <option value="2">Пн-Сб</option>
+                              <option value="3">Пн-Пт</option>
+                           </select>
+                           <div id="dynamicFields1" class="dynamicFields">
+                              <div class="time-input">
+                                 <input type="time" name="times[]" id="">
+                                 <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
+                                 <button type="button" onclick="addFields(this)">+</button>
+                                 <button type="button" onclick="removeField(this)">-</button>
+                              </div>
+                           </div>
                         </div>
-                        <select name="type" id="Var2">
-                           <option value="1">Сб-Вс</option>
-                           <option value="2">Сб</option>
-                        </select><button type="button" onclick="addFields()">+</button>
-                        <div id="dynamicFields">
-                           <p>
-                              <input type="time" name="times[]" id="">
-                              <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
-                           </p>
+                        <div class="time-list-block">
+                           <select name="type" id="DayVar2" onchange="handleDayVar2Change()">
+                              <option value="1">Сб-Вс</option>
+                              <option value="2">Сб</option>
+                           </select>
+                           <div id="dynamicFields2" class="dynamicFields">
+                              <div class="time-input">
+                                 <input type="time" name="times[]" id="">
+                                 <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
+                                 <button type="button" onclick="addFields(this)">+</button>
+                                 <button type="button" onclick="removeField(this)">-</button>
+                              </div>
+                           </div>
                         </div>
-                        <select name="type" id="Var3">
-                           <option value="1">Вс</option>
-                        </select><button type="button" onclick="addFields()">+</button>
-                        <div id="dynamicFields">
-                           <p>
-                              <input type="time" name="times[]" id="">
-                              <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
-                           </p>
+                        <div class="time-list-block">
+                           <select name="type" id="DayVar3" onchange="handleDayVar3Change()">
+                              <option value="1">Вс</option>
+                           </select>
+                           <div id="dynamicFields3" class="dynamicFields">
+                              <div class="time-input">
+                                 <input type="time" name="times[]" id="">
+                                 <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
+                                 <button type="button" onclick="addFields(this)">+</button>
+                                 <button type="button" onclick="removeField(this)">-</button>
+                              </div>
+                           </div>
                         </div>
                      </div>
-                     <button type="submit" name="dot">Додати</button>
+                     <div class="timetable__form-btn">
+                        <button type="submit" name="dot">Додати</button>
+                     </div>
+
                   </form>
                   <div class="timetable__block">
                      <div class="timetable__flex-block"
