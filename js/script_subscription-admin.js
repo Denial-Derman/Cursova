@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
    let btnClear = document.querySelector("#btnClear");//очищення всього
    let errorMessage = document.querySelector("#error-message");
-   // Додаємо обробники подій для елементів DOM
    nameSub.addEventListener("input", function () {
       // Отримуємо значення з input
       let inputValue = nameSub.value;

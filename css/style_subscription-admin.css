@@ -1,3 +1,16 @@
+.logo{
+   color: rgb(255, 255, 255);
+}
+.navigator__row{
+   justify-content: space-around;
+}
+.menu{
+   justify-content: center;
+}
+.menu .navigator__punct-menu li:nth-child(2){
+   text-decoration: underline;
+   color: #C85151;   
+}
 /* Абонементи */
 .subscription{
    margin-top: 150px;
@@ -128,15 +141,12 @@
 }
 .subscription_body_admin-name{
    display: flex;
-   /* border: 1px solid #000; */
    width: 100%;
-   /* justify-content: space-between;   */
    align-items: center;
    margin-bottom: 10px;
 }
 .name{
    width: 40%;
-   /* border: 1px solid #000; */
 }
 .subscription__body_admin input{
    border: 1px solid #000;
@@ -145,7 +155,6 @@
    padding: 5px 5px 5px 10px;
    align-self: center;
    width: 200px;  
-   /* flex: 1 1 auto; */
 }
 .subscription__body_admin select{
    border: 1px solid #000;
@@ -156,9 +165,7 @@
 }
 .subscription_body_admin-price{
    display: flex;
-   /* border: 1px solid #000; */
    width: 100%;
-   /* justify-content: space-between; */
    align-items: center;
    margin-bottom: 10px;
 }
@@ -167,9 +174,7 @@
 }
 .subscription_body_admin-time{
    display: flex;
-   /* border: 1px solid #000; */
    width: 100%;
-   /* justify-content: space-between; */
    align-items: flex-start;
    margin-bottom: 10px;
 }
@@ -195,23 +200,19 @@
    display: flex;
    width: 100%;
    flex-direction: column;
-   /* border: 1px solid #000;  */
    flex: 1 1 auto;
 }
 .subscription_body_admin-list__header{
    display: flex;
    width: 100%;
-   /* border: 1px solid #000;  */
    align-items: center;
    margin-bottom: 10px;
 }
 .subscription_body_admin-list__title{
    text-align: center;
-   /* border: 1px solid #000;  */
    width: 100%;
 }
 .subscription_body_admin-list__btn{
-   /* border: 1px solid #000; */
    cursor:pointer;
    margin-left: 10px;
 }
@@ -221,7 +222,6 @@
 .subscription_body_admin-list__element{
    display: flex;
    width: 100%;
-   /* justify-content: space-between; */
    align-items: center;
    margin-bottom: 10px;
 }

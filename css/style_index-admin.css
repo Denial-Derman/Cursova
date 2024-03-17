@@ -1,0 +1,81 @@
+.logo{
+   color: rgb(255, 255, 255);
+}
+.navigator__row{
+   justify-content: space-around;
+}
+.menu{
+   justify-content: center;
+}
+.menu .navigator__punct-menu li:nth-child(1){
+   text-decoration: underline;
+   color: #C85151;   
+}
+.content{
+   margin-top: 200px;
+}
+.conteiner{
+   flex-direction: column;
+   gap: 50px;
+}
+.admin__activ-list{
+   display: flex;
+   flex-direction: column;
+   gap: 25px;
+   margin: 30px 0px;
+}
+.admin__activ-list li{   
+   list-style: disc;
+   margin: 0px 0px 0px 50px;
+}
+.admin__activ-list a{
+   text-decoration: none;
+   color: rgb(0, 0, 0);
+}
+.deact{
+   display: none;
+}
+.login{
+   z-index: 15;
+   background: darkgrey;
+   background-size: cover;
+   height: 100vh;
+   width: 100vw;
+   position: fixed;
+   top: 0;
+   left: 0;
+   color: rgb(255, 255, 255);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.login form{
+   display: flex;
+   flex-direction: column;
+   gap: 25px; 
+   align-items: center;  
+}
+.login form input{
+   box-sizing: border-box;
+   padding: 15px 15px 15px 20px;
+   border-radius: 10px;
+   border: 4px solid #929292;
+   font-size: 18px;
+   width: 100%;
+}
+.login form button{
+   box-sizing: border-box;
+   padding: 15px 35px;
+   border-radius: 10px;
+   border: 4px solid rgb(146, 146, 146);
+   background: #929292;
+   color: rgb(255, 255, 255);
+   font-size: 24px;
+   width: 100%;
+}
+.login form button:hover{
+   background: rgb(200, 81, 81);
+}
+.login form p{
+   width: 100%;
+}

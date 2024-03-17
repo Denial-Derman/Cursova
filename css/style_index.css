@@ -1,3 +1,14 @@
+.go-admin{
+   display: block;
+   height: 50px;
+   width: 50px;
+   background: #C85151;
+   z-index: 11;
+   position: absolute;
+   top: 0;
+   left: 0;
+   cursor: default;
+}
 /*  header*/
 .hi{
    height: 900px;

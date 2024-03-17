@@ -1,3 +1,12 @@
+.logo{
+   color: rgb(255, 255, 255);
+}
+.navigator__row{
+   justify-content: space-around;
+}
+.menu{
+   justify-content: center;
+}
 .menu .navigator__punct-menu li:nth-child(3){
    text-decoration: underline;
    color: #C85151;   
@@ -19,15 +28,14 @@
    width: 100%;
    display: flex;
    justify-content: space-between;
-   border: 1px solid #000000;
 }
+
 /* #region ДемоРозклад */
 .timetable__block{
    margin: 50px 50px 100px 50px;
    font-size: 16px;
    height: 50%;
    width: 500px;  
-   border: 1px solid #000000; 
 }
 .timetable__flex-block{
    display: flex;
@@ -37,10 +45,11 @@
    height: 275px;
    margin: 25px auto;   
    border-radius: 10px;
-   border: 1px solid #000000;
    transition: all 0.3s ease-out 0s;
+   cursor: default;
 }
 .timetable__btn-block{
+   max-width: 200px;
    height: 100%;
    display: flex;
    flex-direction: column;
@@ -48,55 +57,51 @@
    font-size: 18px; 
    justify-content: flex-start;
    position: relative;
-   /* margin: 25px 25px 25px 25px; */
+   cursor: default;
+   padding: 0px 25px;
 }
 .timetable__btn{
    border-radius: 10px;
    padding: 0px 25px;
    display: flex;
-   width: max-content;
-   height: 40px;
-   /* border: 1px solid #000000; */
+   /* width: 100%; */
+   min-height: 40px;
+   max-height: 100px;
    background: #a6a6a6d4;   
    background: #3d3d3dd4;   
    color: #f1f1f1;
-   /* background: #ff1a1a;    */
    text-align: right;
    justify-content: center;
    align-items: center;
-   margin: 25px 25px 25px 25px;
-   cursor: pointer;
+   margin: 25px 0px;
+   cursor: default;
 }
 .timetable__time{
-   /* z-index: 1; */
    opacity: 1;
-   /* position: relative; */
    padding: 12.5px 5px 12.5px 22.5px;
    width: 225px;
-   /* height: 800px; */
    margin: 25px 10px;
    font-size: 16px;
-   /* left: -450px; */
-   /* border: 1px solid #000000; */
    background: #bebebec1;
    border-radius: 10px;
    transition: all 0.3s ease-out 0s;
+   cursor: default;
 }
 /* #endregion */
 
 /* #region Форма для розкладу */
 .admin-form{
    width: 50%;
-   border: 1px solid #000000;
    box-sizing: border-box;
    padding: 30px 25px;
    box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
-   /* background: #f2f2f2; */
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
 }
 .admin-form input, .admin-form textarea, .admin-form button, .admin-form select{
    border: 1px solid #000000;
    border-radius: 5px;
-   /* width: 100%; */
    box-sizing: border-box;
    font-size: 20px;
    padding: 10px 15px 10px 15px;   
@@ -134,6 +139,7 @@
    padding: 10px 15px 10px 15px;
    height: max-content;
    cursor: pointer;
+   width: max-content
 }
 .timetable__form-btn button{   
    align-self: flex-end;
@@ -182,7 +188,6 @@
    .timetable__img{
       border-radius: 10px;
       width: 100%;
-      background:url(../img/timetable/our_club_time.png) left no-repeat; 
       background-size: cover;
    }
    .timetable__btn-block{
