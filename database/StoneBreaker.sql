@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Час створення: Бер 15 2024 р., 13:24
+-- Час створення: Бер 17 2024 р., 18:10
 -- Версія сервера: 8.0.30
 -- Версія PHP: 7.2.34
 
@@ -50,6 +50,26 @@ INSERT INTO `club_train` (`id`, `name`, `image`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблиці `duration`
+--
+
+CREATE TABLE `duration` (
+  `id_duration` varchar(10) NOT NULL,
+  `duration_month` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп даних таблиці `duration`
+--
+
+INSERT INTO `duration` (`id_duration`, `duration_month`) VALUES
+('d1', '1 місяць'),
+('d2', '3 місяці'),
+('d3', '6 місяців');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблиці `home`
 --
 
@@ -77,12 +97,11 @@ INSERT INTO `home` (`id_home`, `id_sub`, `id_timetable`, `id_vac`, `id_trainers`
 CREATE TABLE `subscription` (
   `id` tinyint NOT NULL,
   `id_sub-home` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `name_sub` varchar(20) DEFAULT NULL,
-  `fee_for` varchar(20) DEFAULT NULL,
+  `name_sub` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `id_fee_for` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `shower` tinyint(1) DEFAULT NULL,
   `cloakroom` tinyint(1) DEFAULT NULL,
   `safe` tinyint(1) DEFAULT NULL,
-  `massage` tinyint(1) DEFAULT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `price` smallint DEFAULT NULL,
   `currency` varchar(10) DEFAULT NULL
@@ -92,10 +111,12 @@ CREATE TABLE `subscription` (
 -- Дамп даних таблиці `subscription`
 --
 
-INSERT INTO `subscription` (`id`, `id_sub-home`, `name_sub`, `fee_for`, `shower`, `cloakroom`, `safe`, `massage`, `description`, `price`, `currency`) VALUES
-(1, 'HS1', 'Стандартний', '20', 0, 1, 1, 0, NULL, 800, 'грн'),
-(2, 'HS1', 'Місячний', 'місяць', 1, 1, 1, 0, NULL, 1000, 'грн'),
-(3, 'HS1', 'Річний', '1 рік', 1, 1, 1, 1, NULL, 10500, 'грн');
+INSERT INTO `subscription` (`id`, `id_sub-home`, `name_sub`, `id_fee_for`, `shower`, `cloakroom`, `safe`, `description`, `price`, `currency`) VALUES
+(1, 'HS1', 'Стандартний (без тренера)', 'd1', 1, 1, 1, NULL, 1200, 'грн'),
+(2, 'HS1', 'Сезонний (без тренера)', 'd2', 1, 1, 1, NULL, 1800, 'грн'),
+(3, 'HS1', 'Стандартний (з тренером)', 'd1', 1, 1, 1, NULL, 4800, 'грн'),
+(4, 'HS1', 'Сезонний (з тренером)', 'd2', 1, 1, 1, NULL, 4800, 'грн'),
+(5, 'HS1', 'Стандартний диятчий (до 11 років)', 'd1', 1, 1, 1, NULL, 600, 'грн');
 
 -- --------------------------------------------------------
 
@@ -145,7 +166,7 @@ INSERT INTO `trainers` (`id`, `id_train_home`, `image`, `name`, `id_trainers_typ
 ('Tr1', 'HTr1', 'trainers1.png', 'Ольга Ковальчук', 'Vt4', 'Моя мотивація - мої діти. Вони є джерелом мого гарного настрою та енергії на тренуваннях.  \r\nСподіваюсь, що для вас стану такою ж мотивацією та партнером по фітнесу.', 1),
 ('Tr2', 'HTr1', 'trainers2.png', 'Олександр Шевченко', 'Vt3', 'Плавання - моє життя.\r\nЗдоров\'я - ваше життя.', 1),
 ('Tr3', 'HTr1', 'trainers3.png', 'Сергій Прокопенко', 'Vt1', 'Моя мотивація - гарний сніданок і пробіжечка, все що потрібно для гарного настрою на день.', 1),
-('Tr4', 'HTr1', 'trainers4.png', 'Михайло Гончаренко', 'Vt2', 'Моя сестра завжди казала, що малі діти мене люблять. А я люблю їх тренувати та розважати.', 1),
+('Tr4', 'HTr1', 'trainers4.png', 'Михайло Гончаренко', 'Vt2', 'Моя сестра завжди казала, що малі діти мене люблять. \r\nА я люблю їх тренувати та розважати.', 1),
 ('Tr5', 'HTr1', 'trainers5.png', 'Марія Коваленко', 'Vt4', 'Корисне харчування - це крок до здорового тіла.', 1),
 ('Tr6', 'HTr1', 'trainers6.png', 'Іван Бондаренко', 'Vt3', 'Моя мотивація - пропливи 10км, щоб з\'їсти смачний телячий стейк.\r\nДодаткове повітря в легенях не буває зайвим в житті.', 1),
 ('Tr7', 'HTr1', 'trainers7.png', 'Наталія Гриценко', 'Vt2', 'Моя мотивація - розминка після сну та перед, зберігає позитивну енергію в тілі. \r\nМузика - це рух.', 1),
@@ -235,6 +256,12 @@ ALTER TABLE `club_train`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Індекси таблиці `duration`
+--
+ALTER TABLE `duration`
+  ADD PRIMARY KEY (`id_duration`);
+
+--
 -- Індекси таблиці `home`
 --
 ALTER TABLE `home`
@@ -249,7 +276,8 @@ ALTER TABLE `home`
 --
 ALTER TABLE `subscription`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_sub-home` (`id_sub-home`);
+  ADD KEY `id_sub-home` (`id_sub-home`),
+  ADD KEY `id_fee_for` (`id_fee_for`);
 
 --
 -- Індекси таблиці `timetable`
@@ -296,7 +324,8 @@ ALTER TABLE `vacancies_resum`
 -- Обмеження зовнішнього ключа таблиці `subscription`
 --
 ALTER TABLE `subscription`
-  ADD CONSTRAINT `subscription_ibfk_1` FOREIGN KEY (`id_sub-home`) REFERENCES `home` (`id_sub`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `subscription_ibfk_1` FOREIGN KEY (`id_sub-home`) REFERENCES `home` (`id_sub`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `subscription_ibfk_2` FOREIGN KEY (`id_fee_for`) REFERENCES `duration` (`id_duration`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Обмеження зовнішнього ключа таблиці `timetable`
