@@ -141,8 +141,14 @@
    cursor: pointer;
    width: max-content
 }
+.timetable__form-btn{
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   gap: 10px;
+   /* border: 1px solid #000;  */
+}
 .timetable__form-btn button{   
-   align-self: flex-end;
    border-radius: 10px;
    background: #6F6F6F;
    color: white;

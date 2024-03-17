@@ -98,9 +98,9 @@ $resT = mysqli_fetch_assoc($t);
                         </div>
                      </div>
                      <div class="timetable__form-btn">
-                        <button type="submit" name="dot">Додати</button>
+                        <button id="timeText">Додати час та підпис</button>
+                        <button type="submit" name="dot">Додати розклад</button>
                      </div>
-
                   </form>
                   <div class="timetable__block">
                      <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
