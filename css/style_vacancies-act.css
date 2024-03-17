@@ -15,8 +15,7 @@
    width: 100%;
    margin: 150px 0px 100px 0px;
 }
-.vacancies__block{
-   margin: 10px 0px 100px 0px;
+.vacancies__block{   
    font-size: 24px;
    height: 100%;
    width: 100%;
@@ -30,29 +29,22 @@
 .vacancies__cart{   
    border-radius: 10px;
    width: 100%;
-   /* height: 590px; */
    position: relative;
-   display: flex;
+   /* display: flex;
    flex-direction: row;
-   justify-content: space-between;
+   justify-content: space-between; */
    transition: all 0.3s ease-out 0s;
    /* border: 1px solid #C85151; */
    background: #D9D9D9;
    border-radius: 25px;
    overflow: hidden;
 }
-/* .vacancies__cart.highlighted::after {
-   content: "";
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(0, 0, 0, 0.2); 
-   border-radius: 10px;
-   z-index: 1; 
+.vacancies__cart-block-el{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
    transition: all 0.3s ease-out 0s;
-} */
+}
 .vacancies__cart-image{
    position: absolute;
    border-radius: 25px;
@@ -62,7 +54,6 @@
    display: flex;
    justify-content: center;
    align-items: flex-end;
-   background: url(img/vacancies/coach-fons.png) center no-repeat; 
    transition: all 0.25s ease-out 0s;
 }
 .vacancies__cart-description{
@@ -144,7 +135,7 @@
 
 .vacancies__cart-btn{
    cursor: pointer;
-   background: rgba(187, 186, 186, 0.525);
+   background: rgba(187, 186, 186, 0.692);
    border-radius: 15px;
    height: 100px;
    width: 200px;
@@ -167,35 +158,134 @@
    box-sizing: border-box;
    transition: all 0.2s ease-out 0s;
 }
-@media (max-width:1000px){
-   .vacancies__cart{
-      /* height: 160px; */
+.vacancies__mob-title{
+   display: none;
+}
+@media (max-width:900px){
+   .vacancies__block{
+      font-size: 18px;
    }
-   .vacancies__cart-title{
-      font-size: 32px;
-      color: #FAFAFA;
-      filter: url(#outlineBlack);
-      display: flex;
-      height: 50%;
-      width: 100%;
+   .vacancies__cart{
+   }
+   .vacancies__cart-image{
       position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 2; 
+      border-radius: 25px;
+      left: 50%;
+      height: 100%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      transition: all 0.25s ease-out 0s;
+   }
+   .vacancies__cart-image{
+      display: flex;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 220px;
    }
    .vacancies__cart-btn{
+      display: none;
+   }   
+   .vacancies__mob-title{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+   }
+   .vacancies__mob-el{
+      background: rgba(255, 253, 253, 0.6);
+      color:rgba(0, 0, 0, 0.6);
+      border-radius: 20px 20px 0px 0px;
+      padding: 10px 25px;
+      text-align: center;
+      width: 50%;
+      box-sizing: border-box;
       cursor: pointer;
-      background: rgba(187, 186, 186, 0.4);
-      border: 1px solid #272727;
-      border-radius: 15px;
-      width: 180px;
-      height: 41px;
-      text-align: right;
-      padding-right: 10px;     
+   }   
+   .vacancies__cart-description, .vacancies__cart-form{
+      box-sizing: border-box;
+      background: rgb(201, 201, 201);
+      width: 100%; 
+      padding: 10px 15px;
+      margin: 0px 0px 20px 0px;
+      
+   }
+   .vacancies__cart-description{
+      display: none;
+      border-radius: 0px 40px 25px 25px;
+   }
+   .vacancies__cart-description ul{
+      margin: 10px 0px 20px 0px;
+   }
+   .vacancies__cart-description li{
+      list-style:disc;
+      margin: 5px 5px 5px 30px
+   }
+   .vacancies__cart-description h3{
+      font-weight: bolder;
+      font-size: 26px;
+      margin: 0px 0px 25px 0px;
+   }
+   .vacancies__cart-form{ 
+      font-size: 18px;
+      display: none;
+      border-radius: 40px 0px 25px 25px;
+      padding: 15px 10px 50px 10px;
+   }
+   .vacancies__cart-form input::placeholder, .form-element textarea::placeholder{
+      color:rgba(0, 0, 0, 0.5);
+   }
+   .form-element{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 98%;
+      transition: all 0.3s ease-out 0s;
+   }
+   .form-element input, .form-element textarea{
+      resize: none;
+      background: rgb(171, 171, 171);
+      border-radius: 20px;
+      padding: 15px 30px 15px 30px;   
+      box-sizing: border-box;
+      font-size: 18px;
+      text-align: left;
+      color: #ffffff;
+      transition: all 0.3s ease-out 0s;
+   }
+   .vacancies__cart-send{      
+      color: #000000;
+      font-weight: bold;
+      text-align: center;
+      align-items: center;
+      width: 85%;
+      transition: all 0.3s ease-out 0s;
+   }
+   .vacancies__cart-form button{
+      color: rgb(250, 250, 250);
+      text-align: center;
+      font-family: 'Roboto', sans-serif; 
+      background: rgb(171, 171, 171); 
+      height: 80px;
+      width: 98%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: 20px;
       font-size: 20px;
-      position: absolute;
-      z-index: 2; 
-      top: 65%;
-      left: 40%;
+      margin: 25px 0px 0px 0px;   
+      transition: all 0.3s ease-out 0s;
+   }
+   .act-title{
+      box-sizing: border-box;
+      background: rgb(201, 201, 201);
+      color:rgba(0, 0, 0, 1);
+   }
+   .act-block{
+      display: flex;
    }
 }

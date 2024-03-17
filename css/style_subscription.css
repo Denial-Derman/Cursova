@@ -16,11 +16,12 @@
 .subscription__row{
    display: flex;
    justify-content: space-evenly;
+   flex-wrap: wrap;
    width: 100%;
    /* border: 1px solid black; */
 }
 .subscription_body{
-   margin-top: 50px;
+   margin: 50px 20px 20px 20px;
    border: 1px solid black;
    box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
    border-radius: 10px;
@@ -36,7 +37,7 @@
 }
 .subscription_body-title{
    text-align: center;
-   /* font-weight: bold; */
+   width: 160px;
    font-size: 24px;
    margin-bottom: 20px;
 }

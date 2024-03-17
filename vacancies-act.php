@@ -111,48 +111,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                            <a href="#" class="vacancies__cart-btn-text">Подати заявку</a>
                         </div>
                      </div>
-                     <div class="vacancies__cart-description">
-                        <div class="vacancies__cart-requirements">
-                           <h3>Вимоги</h3>
-                           <?
-                           if (!empty($resV['requirements'])) {
-                              $listR = $resV['requirements'];
-                              $vacans = explode("\n", $listR);
-                              echo "<ul>";
-                              foreach ($vacans as $vacan) {
-                                 echo "<li>{$vacan}</li>";
-                              }
-                              echo "</ul>";
-                           } else {
-                              echo "<h2>Список пустий</h2> ";
-                           }
-                           ?>
-                        </div>
-                        <div class="vacancies__cart-duties">
-                           <h3>Обов'язки</h3>
-                           <?
-                           if (!empty($resV['duties'])) {
-                              $listD = $resV['duties'];
-                              $vacans = explode("\n", $listD);
-                              echo "<ul>";
-                              foreach ($vacans as $vacan) {
-                                 echo "<li>{$vacan}</li>";
-                              }
-                              echo "</ul>";
-                           } else {
-                              echo "<h2>Список пустий</h2> ";
-                           }
-                           ?>
-                        </div>
+                     <div class="vacancies__mob-title">
+                        <div class="vacancies__mob-conditions vacancies__mob-el act-title" id="tab1">Умови</div>
+                        <div class="vacancies__mob-application vacancies__mob-el" id="tab2">Заявки</div>
                      </div>
-                     <form action="vacancies-act.php?id=<?php echo $vacancies_id; ?>" method="post" class="vacancies__cart-form" onsubmit="return actForm()">
-                        <div class="vacancies__cart-name form-element">Прізвище ім’я:<input type=text name="name" placeholder="Прізвище ім’я" required pattern="^([А-Яа-яЁёІіЇїЄєҐґA-Za-z']+ [А-Яа-яЁёІіЇїЄєҐґA-Za-z']+)$"></div>
-                        <div class="vacancies__cart-tel form-element">Телефон:<input type="tel" name="tel" placeholder="+380(00)-000-00-00" required pattern="^\+380[0-9]{9}$"></div>
-                        <div class="vacancies__cart-email form-element">Пошта:<input type="email" name="email" placeholder="name@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"></div>
-                        <div class="vacancies__cart-notice form-element">Про себе:<textarea id="message" name="message" rows="2.5" cols="50"></textarea>
+                     <div class="vacancies__cart-block-el">
+                        <div class="vacancies__cart-description act-block">
+
+                           <div class="vacancies__cart-requirements">
+                              <h3>Вимоги</h3>
+                              <?
+                              if (!empty($resV['requirements'])) {
+                                 $listR = $resV['requirements'];
+                                 $vacans = explode("\n", $listR);
+                                 echo "<ul>";
+                                 foreach ($vacans as $vacan) {
+                                    echo "<li>{$vacan}</li>";
+                                 }
+                                 echo "</ul>";
+                              } else {
+                                 echo "<h2>Список пустий</h2> ";
+                              }
+                              ?>
+                           </div>
+                           <div class="vacancies__cart-duties">
+                              <h3>Обов'язки</h3>
+                              <?
+                              if (!empty($resV['duties'])) {
+                                 $listD = $resV['duties'];
+                                 $vacans = explode("\n", $listD);
+                                 echo "<ul>";
+                                 foreach ($vacans as $vacan) {
+                                    echo "<li>{$vacan}</li>";
+                                 }
+                                 echo "</ul>";
+                              } else {
+                                 echo "<h2>Список пустий</h2> ";
+                              }
+                              ?>
+                           </div>
                         </div>
-                        <button type=submit name="submit" class="vacancies__cart-send form-element">Надіслати</button>
-                     </form>
+                        <form action="vacancies-act.php?id=<?php echo $vacancies_id; ?>" method="post" class="vacancies__cart-form" onsubmit="return actForm()">
+                           <div class="vacancies__cart-name form-element">Прізвище ім’я:<input type=text name="name" placeholder="Прізвище ім’я" required pattern="^([А-Яа-яЁёІіЇїЄєҐґA-Za-z']+ [А-Яа-яЁёІіЇїЄєҐґA-Za-z']+)$"></div>
+                           <div class="vacancies__cart-tel form-element">Телефон:<input type="tel" name="tel" placeholder="+380(00)-000-00-00" required pattern="^\+380[0-9]{9}$"></div>
+                           <div class="vacancies__cart-email form-element">Пошта:<input type="email" name="email" placeholder="name@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"></div>
+                           <div class="vacancies__cart-notice form-element">Про себе:<textarea id="message" name="message" rows="2.5" cols="50"></textarea>
+                           </div>
+                           <button type=submit name="submit" class="vacancies__cart-send form-element">Надіслати</button>
+                        </form>
+                     </div>
                   </div>
                </div>
             </div>

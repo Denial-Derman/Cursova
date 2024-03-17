@@ -1,3 +1,28 @@
+function actForm() {
+   let telPattern = /^\+380\([0-9]{2}\)-[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+   let emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+   let nameInput = document.querySelector('input[name="name"]');
+   let telInput = document.querySelector('input[name="tel"]');
+   let emailInput = document.querySelector('input[name="email"]');
+
+   if (!nameInput.value.includes(' ')) {
+      alert('Прізвище та ім’я повинні писатися через пробіл');
+      return false;
+   }
+
+   if (!telPattern.test(telInput.value)) {
+      alert('Невірний формат номеру телефона');
+      return false;
+   }
+
+   if (!emailPattern.test(emailInput.value)) {
+      alert('Невірний формат адреси електронной пошти');
+      return false;
+   }
+
+   return true;
+}
 document.addEventListener('DOMContentLoaded', function () {
    const isSmallScreen = window.matchMedia('(max-width: 1000px)').matches;
    let vacanciesCart = document.querySelector('.vacancies__cart');
@@ -29,34 +54,28 @@ document.addEventListener('DOMContentLoaded', function () {
       vacanciesFormBtn.style.color = '24px';
    });
    vacanciesFormBtn.addEventListener('mouseleave', function (event) {
-      vacanciesFormBtn.style.background = 'rgb(192, 192, 192)';
+      vacanciesFormBtn.style.background = 'rgb(171, 171, 171)';
       vacanciesFormBtn.style.fontSize = '20px';
       vacanciesFormBtn.style.color = '24px';
    });
 
-   function actForm() {
-      let telPattern = /^\+380\([0-9]{2}\)-[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
-      let emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+   const vacanciesTabs = document.querySelectorAll('.vacancies__mob-el');
+   const descriptionBlock = document.querySelector('.vacancies__cart-description');
+   const formBlock = document.querySelector('.vacancies__cart-form');
 
-      let nameInput = document.querySelector('input[name="name"]');
-      let telInput = document.querySelector('input[name="tel"]');
-      let emailInput = document.querySelector('input[name="email"]');
-
-      if (!nameInput.value.includes(' ')) {
-         alert('Прізвище та ім’я повинні писатися через пробіл');
-         return false;
-      }
-
-      if (!telPattern.test(telInput.value)) {
-         alert('Невірний формат номеру телефона');
-         return false;
-      }
-
-      if (!emailPattern.test(emailInput.value)) {
-         alert('Невірний формат адреси електронной пошти');
-         return false;
-      }
-
-      return true;
-   }
+   vacanciesTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+         vacanciesTabs.forEach(function (otherTab) {
+            otherTab.classList.remove('act-title');
+         });
+         tab.classList.add('act-title');
+         if (tab.textContent === 'Умови') {
+            descriptionBlock.classList.add('act-block');
+            formBlock.classList.remove('act-block');
+         } else if (tab.textContent === 'Заявки') {
+            formBlock.classList.add('act-block');
+            descriptionBlock.classList.remove('act-block');
+         }
+      });
+   });
 });

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
          trainersBannerClose.style.pointerEvents = 'auto';
          trainersBannerOpen.style.height = '0px';
          trainersBannerClose.style.height = '30px';
-         trainersBannerOpen.style.width = '285px';
+         trainersBannerOpen.style.width = '720px';
          trainersBannerOpen.style.zIndex = '1';
          trainersBannerClose.style.zIndex = '2';
          trainersBannerOpen.style.top = '-10px';
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
          trainersBannerClose.style.opacity = '0';
          trainersBannerClose.style.pointerEvents = 'none';
          trainersBannerClose.style.height = '0px';
-         trainersBannerOpen.style.height = '285px';
+         trainersBannerOpen.style.height = '315px';
          trainersBannerOpen.style.width = '100%';
          trainersBannerOpen.style.zIndex = '2';
          trainersBannerClose.style.zIndex = '1';
