@@ -10,11 +10,22 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap"
-      rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="css/zero.css">
-   <link rel="stylesheet" type="text/css" href="css/style_subscription-admin.css">
+   <link rel="stylesheet" type="text/css" href="css/style_subscription-add-admin.css">
 </head>
+<?
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+   header('Location: admin_login.php');
+   exit;
+}
+$name = $_SESSION['username'];
+$password = $_SESSION['password'];
+$connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
+$sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`, `duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`");
+$resSub = mysqli_fetch_assoc($sub);
+?>
 
 <body>
    <div class="wrapper">
@@ -44,70 +55,61 @@
                   <div class="subscription__row">
                      <div class="subscription__body_admin">
                         <form action="#" method="post">
-                           <div class="subscription__body_admin-title">Відомості абонемента </div>
+                           <div class="subscription__body_admin-title">Додавання абонементу на сторінку</div>
                            <!-- Назва обонементу -->
                            <div class="subscription_body_admin-name">
-                              <div class="name">Назва абонементу</div><input type="text" name="НазваАбонемента"
-                                 id="namesubscription" placeholder="Введіть назву абонементу" value="" tabindex="1">
+                              <div class="name">Назва абонементу</div><input type="text" name="НазваАбонемента" id="namesubscription" placeholder="Введіть назву абонементу" value="" required>
+                           </div>
+                           <!-- Тривалість тренувань -->
+                           <div class="subscription_body_admin-quantity">
+                              <div class="name">Тривалість тренувань</div>
+                              <select name="month" id="" required>
+                                 <?
+                                 $dur = mysqli_query($connect_bd, "SELECT * FROM `duration`");
+                                 while ($resDur = mysqli_fetch_assoc($dur)) {
+                                    echo "<option value='{$resDur['id_duration']}'>{$resDur['duration_month']}</option>";
+                                 }
+                                 ?>
+                              </select>
                            </div>
                            <!-- Склад обонементу -->
-                           <div class="subscription_body_admin-list">
-                              <div class="subscription_body_admin-list__header">
-                                 <div class="subscription_body_admin-list__title">
-                                    Склад абонементу
-                                 </div>
-                              </div>
-                              <div class="subscription_body_admin-list__body">
-                                 <div class="subscription_body_admin-list__element">
-                                    <div class="name">Параметри стандарту (роздягальня, душ)</div>
-                                    <div class="choice-check"><input type="checkbox" name="" id=""></div>
-                                 </div>
-                                 <div class="subscription_body_admin-list__element">
-
-                                    <div class="name">Елемент списку</div>
-                                    <div class="text-el"><input type="text" name="SubscriptionName" id="nameelement"
-                                          placeholder="Введіть елмент списку" value="" required tabindex="10"></div>
-                                 </div>
-                              </div>
+                           <div class="subscription_body_admin-list__element">
+                              <div class="name">Параметри стандарту (роздягальня, душ)</div>
+                              <div class="choice-check"><input type="checkbox" name="" id=""></div>
+                           </div>
+                           <div class="subscription_body_admin-list__element">
+                              <div class="name">Елемент списку</div>
+                              <div class="text-el"><input type="text" name="SubscriptionName" id="nameelement" placeholder="Введіть елмент списку" value="" required tabindex="10"></div>
                            </div>
                            <!-- Термін дії обонементу -->
                            <div class="subscription_body_admin-time">
                               <div class="name">Час дії абонементу</div>
                               <div class="choice">
-                                 <div class="choice-check"><input type="radio" name="checkTime" id="checkTimeNot"
-                                       tabindex="4">Без
+                                 <div class="choice-check"><input type="radio" name="checkTime" id="checkTimeNot" tabindex="4">Без
                                     обмеження по
                                     часу</div>
-                                 <div class="choice-check"><input type="radio" name="checkTime" id="checkTimeYes"
-                                       tabindex="4">Вибір
+                                 <div class="choice-check"><input type="radio" name="checkTime" id="checkTimeYes" tabindex="4">Вибір
                                     обмеження по
                                     часу
                                  </div>
                                  <div class="check-time">
-                                    <div class="choice-check"><input type="checkbox" name="checkTime1"
-                                          id="checkTimeYesTimes" tabindex="5">За часом З: <input type="time"
-                                          name="checkTimeStart" id="checkTimeStart" tabindex="6">
+                                    <div class="choice-check"><input type="checkbox" name="checkTime1" id="checkTimeYesTimes" tabindex="5">За часом З: <input type="time" name="checkTimeStart" id="checkTimeStart" tabindex="6">
                                        До:<input type="time" name="checkTimeEnd" id="checkTimeEnd" tabindex="7"></div>
-                                    <div class="choice-check"><input type="checkbox" name="checkTime2"
-                                          id="checkTimeYesDates" tabindex="8">За датою З: <input type="date"
-                                          name="checkDateStart" id="checkDateStart" tabindex="9"> До:<input type="date"
-                                          name="checkDateEnd" id="checkDateEnd" tabindex="9">
+                                    <div class="choice-check"><input type="checkbox" name="checkTime2" id="checkTimeYesDates" tabindex="8">За датою З: <input type="date" name="checkDateStart" id="checkDateStart" tabindex="9"> До:<input type="date" name="checkDateEnd" id="checkDateEnd" tabindex="9">
                                     </div>
                                  </div>
                               </div>
                            </div>
                            <!-- Ціна обонементу -->
                            <div class="subscription_body_admin-price">
-                              <div class="name">Ціна абонементу</div><input type="number" name="price" id="price"
-                                 placeholder="Ціна" value="000" tabindex="2">
+                              <div class="name">Ціна абонементу</div><input type="number" name="price" id="price" placeholder="Ціна" value="000" tabindex="2">
                               <select name="currency" id="currency" tabindex="3">
                                  <option value="Грн">Грн</option>
                                  <option value="Євро">Євро</option>
                               </select>
                            </div>
                            <div class="subscription_body_admin-btn">
-                              <button>Відкласти в черновик</button>
-                              <button>Додати</button>
+                              <button type="submit">Додати</button>
                            </div>
                         </form>
                      </div>

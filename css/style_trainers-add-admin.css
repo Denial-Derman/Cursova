@@ -7,7 +7,7 @@
 .menu{
    justify-content: center;
 }
-.menu .navigator__punct-menu li:nth-child(2){
+.menu .navigator__punct-menu li:nth-child(5){
    text-decoration: underline;
    color: #C85151;   
 }

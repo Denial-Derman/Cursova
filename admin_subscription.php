@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$Vac = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
+$Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
 ?>
 
 
@@ -57,14 +57,14 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
                      <a href="admin_subscription-add.php">Додати вакансію</a>
                      <?
                      echo "<ul class='admin__activ-list'>";
-                     while ($resVac = mysqli_fetch_assoc($Vac)) {
-                        echo "<li>{$resVac['id']} {$resVac['name_sub']} 
+                     while ($resSub = mysqli_fetch_assoc($Sub)) {
+                        echo "<li>{$resSub['id']} {$resSub['name_sub']} 
                      <form action='admin_subscription.php' method='post'>
-                        <input type='hidden' name='subscription_id' value='{$resVac['id']}'>
+                        <input type='hidden' name='subscription_id' value='{$resSub['id']}'>
                         <button type='submit' name='del'>Видалити</button>
                      </form>
                      <form action='update_subscription.php' method='post'>
-                        <input type='hidden' name='subscription_id' value='{$resVac['id']}'>
+                        <input type='hidden' name='subscription_id' value='{$resSub['id']}'>
                         <button type='submit' name='up'>Оновити</button>
                      </form>
                      </li>";
