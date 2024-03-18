@@ -20,7 +20,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
 $vacancies_id = null;
 if (isset($_GET['id'])) {
    $vacancies_id = $_GET['id'];
-   $v = mysqli_query($connect_bd, "SELECT `vacancies`.*, `trainers_types`.* FROM `vacancies`, `trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`vacancies`.`id`='$vacancies_id';");
+   $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='$vacancies_id';");
    $resV = mysqli_fetch_assoc($v);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $tel = $_POST["tel"];
    $email = $_POST["email"];
    $message = $_POST["message"];
-   $type_vacans = mysqli_query($connect_bd, "SELECT `vacancies`.`id_trainers_type` FROM `vacancies`,`trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND `vacancies`.`id`='$vacancies_id';");
+   $type_vacans = mysqli_query($connect_bd, "SELECT `vacancies` FROM `vacancies` WHERE `id`='$vacancies_id';");
    $type_vacans_row = mysqli_fetch_assoc($type_vacans);
    $type_vacans_value = $type_vacans_row['id_trainers_type'];
    $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `vacancies_resum`");

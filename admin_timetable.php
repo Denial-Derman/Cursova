@@ -11,12 +11,18 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/style_timetable-admin.css">
    <link rel="stylesheet" type="text/css" href="css/zero.css">
    <link rel="stylesheet" type="text/css" href="css/style_timetable-admin.css">
 </head>
 <?
-$connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+   header('Location: admin_login.php');
+   exit;
+}
+$name = $_SESSION['username'];
+$password = $_SESSION['password'];
+$connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti1'");
 $resT = mysqli_fetch_assoc($t);
 ?>

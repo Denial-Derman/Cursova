@@ -72,10 +72,10 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
             <div class="vacancies__flex">
                <h2 class="vacancies__title title">Активні вакансії</h2>
                <div class="vacancies__block">
-                  <? $v = mysqli_query($connect_bd, "SELECT `vacancies`.*, `trainers_types`.* FROM `vacancies`, `trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`vacancies`.`id`='V1';");
+                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V1';");
                   $resV = mysqli_fetch_assoc($v);
                   ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['image']; ?>)  left no-repeat; ">
+                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
                      <div class="vacancies__cart-title">
                         <? echo  $resV['name_vacancies'];  ?>
                      </div>
@@ -85,10 +85,10 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                         </p>
                      </a>
                   </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT `vacancies`.*, `trainers_types`.* FROM `vacancies`, `trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`vacancies`.`id`='V2';");
+                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V2';");
                   $resV = mysqli_fetch_assoc($v);
                   ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['image']; ?>)  left no-repeat ; ">
+                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
                      <div class="vacancies__cart-title">
                         <? echo  $resV['name_vacancies'];  ?>
                      </div>
@@ -98,10 +98,10 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                         </p>
                      </a>
                   </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT `vacancies`.*, `trainers_types`.* FROM `vacancies`, `trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`vacancies`.`id`='V3';");
+                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V3';");
                   $resV = mysqli_fetch_assoc($v);
                   ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['image']; ?>)  left no-repeat ; ">
+                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
                      <div class="vacancies__cart-title">
                         <? echo  $resV['name_vacancies'];  ?>
                      </div>
@@ -111,10 +111,10 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                         </p>
                      </a>
                   </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT `vacancies`.*, `trainers_types`.* FROM `vacancies`, `trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`vacancies`.`id`='V4';");
+                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V4';");
                   $resV = mysqli_fetch_assoc($v);
                   ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['image']; ?>)  left no-repeat ; ">
+                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
                      <div class="vacancies__cart-title">
                         <? echo  $resV['name_vacancies'];  ?>
                      </div>
@@ -124,10 +124,10 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                         </p>
                      </a>
                   </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT `vacancies`.*, `trainers_types`.* FROM `vacancies`, `trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`vacancies`.`id`='V5';");
+                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V5';");
                   $resV = mysqli_fetch_assoc($v);
                   ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['image']; ?>)  left no-repeat ; ">
+                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
                      <div class="vacancies__cart-title">
                         <? echo  $resV['name_vacancies'];  ?>
                      </div>
@@ -137,10 +137,10 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                         </p>
                      </a>
                   </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT `vacancies`.*, `trainers_types`.* FROM `vacancies`, `trainers_types` WHERE `vacancies`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`vacancies`.`id`='V6';");
+                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V6';");
                   $resV = mysqli_fetch_assoc($v);
                   ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['image']; ?>)  left no-repeat ; ">
+                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
                      <div class="vacancies__cart-title">
                         <? echo  $resV['name_vacancies'];  ?>
                      </div>
