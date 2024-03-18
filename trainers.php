@@ -66,7 +66,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      </div>
                      <div class="trainers__text"> Професійні фахівці, які розуміються у своїй діяльності та допоможуть
                         досягти вашої мети</div>
-                     <img src="img/tainers/boy.png" alt="boy" class="trainers__img-bannner">
+                     <img src="img/trainers/boy.png" alt="boy" class="trainers__img-bannner">
                   </div>
 
                </div>
@@ -77,7 +77,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr1">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>
@@ -86,7 +86,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr2">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>
@@ -95,7 +95,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr3">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>
@@ -104,7 +104,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr4">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>
@@ -113,7 +113,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr5">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>
@@ -122,7 +122,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr6">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>
@@ -131,7 +131,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr7">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>
@@ -140,7 +140,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                      $resTr = mysqli_fetch_assoc($tr);
                      ?>
                      <a href="trainers-act.php?id=Tr9">
-                        <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                         <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
                      </a>
                   </div>

@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
                            ?>
                         </div>
                      </div>
-                     <img src="img/tainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                     <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
                   </div>
                <? } else { ?>
                   <h1 class="title" style="text-align: center;">Тренер не знайден</h1>

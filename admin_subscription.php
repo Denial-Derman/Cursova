@@ -13,7 +13,7 @@
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="css/zero.css">
    <link rel="stylesheet" type="text/css" href="css/style_admin.css">
-   <link rel="stylesheet" type="text/css" href="css/style_vacancies-admin.css">
+   <link rel="stylesheet" type="text/css" href="css/style_subscription-admin.css">
 </head>
 <?
 session_start();
@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
+$Vac = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
 ?>
 
 
@@ -54,25 +54,25 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
                <h2 class="timetable__title title">Активні вакансії</h2>
                <div class="div-block">
                   <div class="div">
-                     <a href="admin_vacancies-add.php">Додати вакансію</a>
+                     <a href="admin_subscription-add.php">Додати вакансію</a>
                      <?
                      echo "<ul class='admin__activ-list'>";
                      while ($resVac = mysqli_fetch_assoc($Vac)) {
-                        echo "<li>{$resVac['id']} {$resVac['name_vacancies']} 
-                  <form action='admin_vacancies.php' method='post'>
-                     <input type='hidden' name='vacancy_id' value='{$resVac['id']}'>
-                     <button type='submit' name='del'>Видалити</button>
-                  </form>
-                  <form action='update_vacancy.php' method='post'>
-                     <input type='hidden' name='vacancy_id' value='{$resVac['id']}'>
-                     <button type='submit' name='up'>Оновити</button>
-                  </form>
-                  </li>";
+                        echo "<li>{$resVac['id']} {$resVac['name_sub']} 
+                     <form action='admin_subscription.php' method='post'>
+                        <input type='hidden' name='subscription_id' value='{$resVac['id']}'>
+                        <button type='submit' name='del'>Видалити</button>
+                     </form>
+                     <form action='update_subscription.php' method='post'>
+                        <input type='hidden' name='subscription_id' value='{$resVac['id']}'>
+                        <button type='submit' name='up'>Оновити</button>
+                     </form>
+                     </li>";
                      }
                      echo "</ul>"; ?>
                   </div>
                   <?
-                  $table = mysqli_query($connect_bd, "SELECT `id`as'Номер',`name_vacancies`as'Назва вакансії',`fons`as'Фонове зображення',`requirements`as'Вимоги',`duties`as'Обов`язки' FROM `vacancies`");
+                  $table = mysqli_query($connect_bd, "SELECT `subscription`.`id`as'Номер',`subscription`.`name_sub`as'Назва абонементу',`duration`.`duration_month`as'Тривалість тренувань',`subscription`.`shower`as'Душ',`subscription`.`cloakroom`as'Роздягальня',`subscription`.`safe`as'Сейф',`subscription`.`description`as'Додатковий опис' ,`subscription`.`price`as'Ціна' ,`subscription`.`currency`as'Валюта'  FROM `subscription`, `duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`");
                   if ($table) {
                      echo "";
                   } else {
@@ -95,19 +95,19 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
                               $p = 2;
                            }
                            echo "<tr>";
-                           foreach ($myrow as $buf) {
+                           foreach ($myrow as $ind => $buf) {
+                              if ($ind == 'Душ' || $ind == 'Роздягальня' || $ind == 'Сейф' || $ind == 'Додатковий опис') {
+                                 if ($buf == 1) {
+                                    $buf = '+';
+                                 } elseif ($buf == 0 || $buf == null) {
+                                    $buf = '-';
+                                 }
+                              }
                               $path_info = pathinfo($buf);
                               if (isset($path_info['extension']) && in_array(strtolower($path_info['extension']), array('png', 'jpg'))) {
-                                 echo "<td class='content-table'><img src='img/vacancies/{$buf}' alt='фонове зображення'><br>назва файлу: $buf</td>";
+                                 echo "<td class='content-table'><img src='img/subscription/{$buf}' alt='фонове зображення'><br>назва файлу: $buf</td>";
                               } else {
-                                 // Розділити текст на абзаци
-                                 $paragraphs = explode("\n", $buf);
-                                 // Вивести кожен абзац як елемент списку
-                                 echo "<td class='content-table'><ul>";
-                                 foreach ($paragraphs as $paragraph) {
-                                    echo "<li>{$paragraph}</li>";
-                                 }
-                                 echo "</ul></td>";
+                                 echo "<td class='content-table'>$buf</td>";
                               }
                            }
                            echo "</tr>";
@@ -120,18 +120,18 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['del'])) {
                   if (isset($_POST['vacancy_id'])) {
                      $vacancy_id = $_POST['vacancy_id'];
-                     $delete_query = "DELETE FROM `vacancies` WHERE `id` = '$vacancy_id'";
+                     $delete_query = "DELETE FROM `subscription` WHERE `id` = '$vacancy_id'";
                      $result = mysqli_query($connect_bd, $delete_query);
                      if ($result) {
                         echo "Запись успішно видалено";
-                        echo "<script>window.location = 'admin_vacancies.php';</script>";
+                        echo "<script>window.location = 'admin_subscription.php';</script>";
                         exit;
                      } else {
                         echo "Ошибка при видалені запису: " . mysqli_error($connect_bd);
                      }
                   } else {
                      echo "ID вакансії не був передан для видалення.";
-                     echo "<script>window.location = 'admin_vacancies.php';</script>";
+                     echo "<script>window.location = 'admin_subscription.php';</script>";
                      exit;
                   }
                }

@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                            </div>
                         </div>
                         <form action="vacancies-act.php?id=<?php echo $vacancies_id; ?>" method="post" class="vacancies__cart-form" onsubmit="return actForm()">
-                           <div class="vacancies__cart-name form-element">Прізвище ім’я:<input type=text name="name" placeholder="Прізвище ім’я" required pattern="^([А-Яа-яЁёІіЇїЄєҐґA-Za-z']+ [А-Яа-яЁёІіЇїЄєҐґA-Za-z']+)$"></div>
+                           <div class="vacancies__cart-name form-element">Прізвище ім’я:<input type=text name="name" placeholder="Прізвище ім’я" required pattern="^([А-Яа-яЁёІіЇїЄєҐґA-Za-z'`]+ [А-Яа-яЁёІіЇїЄєҐґA-Za-z'`]+)$"></div>
                            <div class="vacancies__cart-tel form-element">Телефон:<input type="tel" name="tel" placeholder="+380(00)-000-00-00" required pattern="^\+380[0-9]{9}$"></div>
                            <div class="vacancies__cart-email form-element">Пошта:<input type="email" name="email" placeholder="name@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"></div>
                            <div class="vacancies__cart-notice form-element">Про себе:<textarea id="message" name="message" rows="2.5" cols="50"></textarea>
