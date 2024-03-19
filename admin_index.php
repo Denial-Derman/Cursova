@@ -49,17 +49,25 @@ $resAdmin = mysqli_fetch_assoc($admin);
       </header>
       <main class="content">
          <div class="conteiner">
-            <h2>Вітаємо на адмін сторінці!</h2>
-            <div class="admin__list">
-               Список активних адмін сторінок:
-               <?
-               echo "<ul class='admin__activ-list'>";
-               foreach ($resAdmin as $columnName => $columnValue) {
-                  echo "<li>$columnName</li>";
-               }
-               echo "</ul>";
-               ?>
-               Перехід здійснюється через навігацію
+            <div class="div">
+               <div class="left">
+                  <h2>Вітаємо на адмін сторінці!</h2>
+                  <div class="admin__list">
+                     Список активних адмін сторінок:
+                     <?
+                     echo "<ul class='admin__activ-list'>";
+                     foreach ($resAdmin as $columnName => $columnValue) {
+                        echo "<li>$columnName</li>";
+                     }
+                     echo "</ul>";
+                     ?>
+                     Перехід здійснюється через навігацію
+                  </div>
+               </div>
+               <div class="right">
+
+                  <img src="img/admin-image.avif" alt="">
+               </div>
             </div>
          </div>
       </main>

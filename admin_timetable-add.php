@@ -119,7 +119,8 @@ $resT = mysqli_fetch_assoc($t);
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>
-                  <div class="timetable__block">
+                  <div class="admin__right">
+                     <div class="admin__demo-title">Перед показ </div>
                      <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
                         <div class="timetable__btn-block">
                            <div class="timetable__btn" id="timeTableBtn">

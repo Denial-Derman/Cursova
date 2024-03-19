@@ -57,16 +57,16 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                <h2 class="trainers__title title">Наші тренери</h2>
                <div class="trainers__banner">
                   <div class="trainers__banner-close">
-                     <div class="down-arrow"><img src="img/tainers/down arrow.svg" alt="down-arrow">Відкрити інформацію
+                     <div class="down-arrow"><img src="img/trainers/down arrow.svg" alt="down-arrow">Відкрити інформацію
                         про
                         тренерів</div>
                   </div>
                   <div class="trainers__banner-open">
-                     <div class="cross"><img src="img/tainers/cross.svg" alt="cross">Закрити інформацію про тренерів
+                     <div class="cross"><img src="img/trainers/cross.svg" alt="cross">Закрити інформацію про тренерів
                      </div>
                      <div class="trainers__text"> Професійні фахівці, які розуміються у своїй діяльності та допоможуть
                         досягти вашої мети</div>
-                     <img src="img/trainers/boy.png" alt="boy" class="trainers__img-bannner">
+                     <img src="img/trainers/boy.png" alt="boy" class="trainers__img-banner">
                   </div>
 
                </div>

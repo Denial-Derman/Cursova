@@ -54,7 +54,7 @@ $Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
                <h2 class="timetable__title title">Активні вакансії</h2>
                <div class="div-block">
                   <div class="div">
-                     <a href="admin_subscription-add.php">Додати вакансію</a>
+                     <a href="admin_subscription-add.php">Додати абонемент</a>
                      <?
                      echo "<ul class='admin__activ-list'>";
                      while ($resSub = mysqli_fetch_assoc($Sub)) {

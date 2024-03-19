@@ -30,6 +30,22 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 
 <body>
    <div class="wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg">
+         <filter id="outlineBlack">
+            <feMorphology in="SourceAlpha" result="Dilated" operator="dilate" radius="1.5" />
+            <feMerge>
+               <feMergeNode in="Outline" />
+               <feMergeNode in="SourceGraphic" />
+            </feMerge>
+         </filter>
+         <filter id="outlineBlack1">
+            <feMorphology in="SourceAlpha" result="Dilated" operator="dilate" radius="1" />
+            <feMerge>
+               <feMergeNode in="Outline" />
+               <feMergeNode in="SourceGraphic" />
+            </feMerge>
+         </filter>
+      </svg>
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
@@ -63,15 +79,13 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                      <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="name" placeholder="Назва" class="form__input-text" required></div>
                      <div class="form__list">
                         <label for="textarea" class="form__text">Вимоги:</label>
-                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">
-Вимога1...
+                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">Вимога1...                  
 Вимога1...
                         </textarea>
                      </div>
                      <div class="form__list">
                         <label for="textarea" class="form__text">Обов'язоки:</label>
-                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">
-Обов'язок1...
+                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">Обов'язок1...
 Обов'язок1...
                         </textarea>
                      </div>
@@ -80,22 +94,56 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>
-                  <!-- <div class="timetable__block">
-                     <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
-                        <div class="timetable__btn-block">
-                           <div class="timetable__btn" id="timeTableBtn">
+                  <div class="admin__right">
+                     <div class="admin__demo-title">Перед показ </div>
+                     <div class="vacancies__cart1" style="background: url(img/vacancies/noimage.png)  left no-repeat; background-size: cover;">
+                        <div class="vacancies__cart1-title">
+                           Назва вакансії
+                        </div>
+                        <a href="vacancies-act.php?id=V1" class="vacancies__cart1-btn">
+                           <p class="vacancies__cart1-btn-text">
+                              Перейти
+                           </p>
+                        </a>
+                     </div>
+                     <div class="vacancies__cart">
+                        <div class="vacancies__cart-image" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(img/vacancies/noimage.png) center no-repeat; background-size: cover;">
+                           <div class="vacancies__cart-btn">
+                              <a href="#" class="vacancies__cart-btn-text">Подати заявку</a>
                            </div>
                         </div>
-                        <ul class='timetable__time' id="timetableList">
-
-                        </ul>
+                        <div class="vacancies__mob-title">
+                           <div class="vacancies__mob-conditions vacancies__mob-el act-title" id="tab1">Умови</div>
+                           <div class="vacancies__mob-application vacancies__mob-el" id="tab2">Заявки</div>
+                        </div>
+                        <div class="vacancies__cart-block-el">
+                           <div class="vacancies__cart-description act-block">
+                              <div class="vacancies__cart-requirements">
+                                 <h3>Вимоги</h3>
+                                 <ul>
+                                    <li>Вимога1</li>
+                                    <li>Вимога2</li>
+                                    <li>Вимога3</li>
+                                 </ul>
+                              </div>
+                              <div class="vacancies__cart-duties">
+                                 <h3>Обов'язки</h3>
+                                 <ul>
+                                    <li>Обов'язок1</li>
+                                    <li>Обов'язок2</li>
+                                    <li>Обов'язок3</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
                      </div>
-                  </div> -->
+                  </div>
                </div>
             </div>
          </div>
       </main>
    </div>
+   <script src="js/admin_form.js"></script>
    <script src="js/timetable-admin.js"></script>
 </body>
 

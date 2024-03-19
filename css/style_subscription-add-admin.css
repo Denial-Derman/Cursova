@@ -4,7 +4,7 @@
    color: #C85151;   
 }
 /*#region Абонементи */
-.subscription_body{
+.subscription__body{
    margin-top: 50px;
    border: 1px solid black;
    box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
@@ -19,20 +19,20 @@
    justify-content: space-between; 
    align-items: center; 
 }
-.subscription_body-title{
+.subscription__body-title{
    text-align: center;
    font-size: 24px;
    margin-bottom: 30px;
 }
-.subscription_body-list{
+.subscription__body-list{
    max-width: 245px;
 }
-.subscription_body-list li{
+.subscription__body-list li{
    list-style:disc;
    margin: 0px 0px 0px 30px;
    text-wrap: wrap;
 }
-.subscription_body-price{
+.subscription__body-price{
    display: flex;
    justify-content: space-evenly;
    height: max-content;
@@ -40,14 +40,14 @@
    margin: 100px 0px 0px 0px;
    font-size: 22px;
 }
-.subscription_body-price-row{
+.subscription__body-price-row{
    display: flex;
    gap: 5px;
 }
-.subscription_body-formalize{
+.subscription__body-formalize{
    margin-top: 50px;      
 }
-.subscription_body-btn{   
+.subscription__body-btn{   
    background: #D0ADAD;
    padding: 15px 30px;
    border: 1px solid #000;
@@ -60,12 +60,12 @@
    transition-duration: 300ms;
    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.subscription_body-btn:hover{
+.subscription__body-btn:hover{
    border: 1px solid #000;
    background: #C85151;
    box-shadow: -5px -5px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.subscription_body-admin{
+.subscription__body-admin{
    border-radius: 50%;
    position: absolute;
    left: 430px;
@@ -75,7 +75,7 @@
    border-radius: 50%;
    align-items: center;
 }
-.subscription_body-time{
+.subscription__body-time{
    margin-top: -25px;
    font-size: 14px;
    width: 100%;
@@ -102,12 +102,7 @@
    justify-content: space-between; 
    align-items: center; 
 }
-.subscription__body_admin-title{
-   text-align: center;
-   font-size: 24px;
-   margin-bottom: 20px;
-}
-.subscription_body_admin-name{
+.subscription__body_admin-name{
    display: flex;
    width: 100%;
    align-items: center;
@@ -124,7 +119,7 @@
    align-self: center;
    width: 200px;  
 }
-.subscription_body_admin-quantity{
+.subscription__body_admin-quantity{
    display: flex;
    width: 100%;
    align-items: center;
@@ -137,16 +132,16 @@
    padding: 5px 5px 5px 10px;
    align-self: center;   
 }
-.subscription_body_admin-price{
+.subscription__body_admin-price{
    display: flex;
    width: 100%;
    align-items: center;
    margin-bottom: 10px;
 }
-.subscription_body_admin-price input{
+.subscription__body_admin-price input{
    width: 80px;  
 }
-.subscription_body_admin-time{
+.subscription__body_admin-time{
    display: flex;
    width: 100%;
    align-items: flex-start;
@@ -157,7 +152,7 @@
    flex-direction: column;
    justify-content: flex-start;
 }
-.subscription_body_admin-time input{
+.subscription__body_admin-time input{
    border: 0px solid #000;
    border-radius: 5px;
    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25) inset;
@@ -169,7 +164,7 @@
    font-size: 16px;
    width: max-content;
 }
-.subscription_body_admin-list__element{
+.subscription__body_admin-list__element{
    display: flex;
    width: 100%;
    align-items: center;
@@ -177,43 +172,6 @@
 }
 .text-el{
    flex: 1 1 auto;
-}
-.subscription_body_admin-btn{
-   display: flex;
-   width: 100%;
-   justify-content: space-between;
-}
-.subscription_body_admin-btn button, .subscription_right_admin-btn button{
-   align-self: flex-end;
-   border-radius: 10px;
-   background: #6F6F6F;
-   color: white;
-   padding: 10px;
-   width: 180px;
-   border: 1px solid #000; 
-   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
-   transition-timing-function: ease-out;
-   transition-duration: 300ms;
-}
-.subscription_body_admin-btn button:hover, .subscription_right_admin-btn button:hover{
-   border: 1px solid #000;
-   background: #C85151;
-   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.25) inset;
-}
-.right{
-   display: flex;
-   flex-direction: column;
-
-}
-.right .subscription__body_admin-title{
-   margin-bottom: 0px;
-}
-.right .subscription_body{
-   margin: 10px 0px 0px 0px;
-}
-.subscription_right_admin-btn{
-   text-align: center;
-   margin: 20px auto;
 }
 /* #endregion */
 
@@ -226,6 +184,7 @@
    height: 25px;
    border-radius: 10px;
    overflow: hidden;
+   cursor: pointer;
 }
 .form__block-price{
    width: 100%;

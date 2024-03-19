@@ -22,14 +22,12 @@
    width: 100%;
    display: flex;
    flex-wrap: wrap;
-   /* flex-direction: column; */
    justify-content: center;
    gap: 23px;
    transition: all 0.3s ease-out 0s;
 }
 .vacancies__cart{   
    border-radius: 10px;
-   /* width: 100%; */
    width: 490px;
    height: 220px;
    position: relative;
@@ -38,7 +36,6 @@
    justify-content: space-between;
    position: relative;
    transition: all 0.3s ease-out 0s;
-   /* border: 1px solid #C85151; */
 }
 .vacancies__cart.highlighted::after {
    content: "";
@@ -54,7 +51,6 @@
 }
 .vacancies__cart-title{
    font-size: 38px;
-   /* font-weight: bold; */
    color: #FAFAFA;
    filter: url(#outlineBlack);
    display: flex;
@@ -66,7 +62,6 @@
    z-index: 2; 
 }
 svg{
-   /* border: 2px solid #5dc851; */
    position: absolute;
    opacity: 0;
    width: 0px;

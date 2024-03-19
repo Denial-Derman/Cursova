@@ -15,11 +15,6 @@
    width: 100%;
    margin: 150px 0px 100px 0px;
 }
-/* .trainers__block-flex{
-   width: 100%;
-   border: 1px solid #51c86f;  
-   margin: 0; 
-} */
 .trainers__block{   
    display: flex;
    flex-direction: column;
@@ -29,29 +24,24 @@
    margin: 0px 50px 0px 0px;
    gap: 50px;
    font-size: 24px;
-   /* border: 1px solid #C85151; */
    transition: all 0.3s ease-out 0s;
 }
 
 .trainers__carts {
-    height: 630px;
-    width: 100%;
-    background: #D9D9D9;
-    border-radius: 10px;
-    padding: 25px 25px 10px 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* align-items: center; */
-    gap: 10px;
-    /* font-size: 38px; */
-    transition: all 0.4s ease-out 0s;
-    /* margin: 0 auto; */
-    text-align: center;
+   height: 630px;
+   width: 100%;
+   background: #D9D9D9;
+   border-radius: 10px;
+   padding: 25px 25px 10px 25px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   gap: 10px;
+   transition: all 0.4s ease-out 0s;
+   text-align: center;
 }
 .trainers__carts-image{
    height: 610px;
-   /* width: 288px; */
    border-radius: 35px;
    background-color: #f1f1f1;
 }
@@ -65,7 +55,7 @@
    text-decoration: underline;
 }
 .trainers__carts-info{
- text-align: left;
+   text-align: left;
 }
 .trainers__carts-certif{
 

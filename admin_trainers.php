@@ -54,7 +54,7 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                <h2 class="timetable__title title">Активні вакансії</h2>
                <div class="div-block">
                   <div class="div">
-                     <a href="admin_trainers-add.php">Додати вакансію</a>
+                     <a href="admin_trainers-add.php">Додати тренера</a>
                      <?
                      echo "<ul class='admin__activ-list'>";
                      while ($resVac = mysqli_fetch_assoc($Vac)) {

@@ -19,6 +19,15 @@
    gap: 25px;
    border: 1px solid #000;
 }
+.admin__right{
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   gap: 10px;
+   width: 50%;
+}
 .admin__form{
    display: flex;
    flex-direction: column;
@@ -31,6 +40,10 @@
    box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
    width: 40%;
 }
+.admin__demo-title{
+   text-align: center;
+   font-size: 24px;
+}
 .form__title{
    font-size: 26px;
 }
@@ -41,7 +54,6 @@
    justify-content: space-between;
    box-sizing: border-box;
    gap: 10px;
-   /* border: 1px solid #000; */
    border-radius: 5px;
 }
 .form__list{
@@ -50,7 +62,6 @@
    flex-direction: column;   
    box-sizing: border-box;
    gap: 10px;
-   /* box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset; */
 }
 .form__block-grid{
    width: 100%;
@@ -70,11 +81,9 @@
    justify-content: flex-start;
    font-size: 18px;
    color: rgba(0, 0, 0, 1);
-   border-radius: 5px;   
-   /* border: 1px solid #000000; */   
+   border-radius: 5px;     
    text-align: left;
    box-sizing: border-box; 
-   /* box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset; */
 }
 .form__input-text{
    width: 100%;
@@ -111,6 +120,7 @@
    border-radius: 5px;
    text-align: left;
    box-sizing: border-box;
+   cursor: pointer;
 }
 .form__sel option{
    padding: 10px 15px;

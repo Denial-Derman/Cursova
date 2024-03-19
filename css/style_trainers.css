@@ -15,11 +15,6 @@
    width: 100%;
    margin: 150px 0px 100px 0px;
 }
-/* .trainers__block-flex{
-   width: 100%;
-   border: 1px solid #51c86f;  
-   margin: 0; 
-} */
 .trainers__block{   
    margin: 70px auto 100px auto;
    font-size: 24px;
@@ -27,7 +22,6 @@
    width: 100%;
    display: flex;
    flex-wrap: wrap;
-   /* flex-direction: column; */
    justify-content: center;
    gap: 45px;
    transition: all 0.3s ease-out 0s;
@@ -63,7 +57,6 @@
    font-size: 32px;
    display: flex;
    gap: 20px;  
-   /* border: 1px solid #ffff12;  */
    transition: all 0.3s ease-out 0s;
 }
 .trainers__banner-open{
@@ -76,12 +69,9 @@
    width: 100%;
    background: #131314;
    border-radius: 10px;
-   /* padding: 15px 30px 15px 30px; */
    position: relative;
    overflow: hidden;
-   /* display: block; */
    transition: all 0.3s ease-out 0s;
-   /* gap: 20px; */
 }
 .cross{
    cursor: pointer;
@@ -91,7 +81,6 @@
    display: flex;
    gap: 20px;
    margin: 15px 0px 0px 30px;
-   /* border: 1px solid #ff12ef; */
    transition: all 0.3s ease-out 0s;
 }
 .trainers__text{
@@ -101,8 +90,7 @@
    width: 40%;
    transition: all 0.3s ease-out 0s;
 }
-.trainers__img-bannner{
-   /* border: 1px solid #ff12ef; */
+.trainers__img-banner{
    position: absolute;
    left: 50%;
    top: 0;
@@ -111,21 +99,20 @@
 }
 
 .trainers__carts {
-    height: max-content;
-    width: 280px;
-    background: #D9D9D9;
-    border-radius: 10px;
-    padding: 25px 25px 10px 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    font-size: 38px;
-    transition: all 0.4s ease-out 0s;
-    /* margin: 0 auto; */
-    text-align: center;
-    cursor: pointer;
+   height: max-content;
+   width: 280px;
+   background: #D9D9D9;
+   border-radius: 10px;
+   padding: 25px 25px 10px 25px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   gap: 10px;
+   font-size: 38px;
+   transition: all 0.4s ease-out 0s;
+   text-align: center;
+   cursor: pointer;
 }
 .trainers__carts-image{
    height: 337px;
@@ -162,7 +149,6 @@
    .trainers__banner-open{
       height: 285px;
       width: 100%;
-      /* padding: 10px 25px 10px 15px; */
    }
    .cross{
       cursor: pointer;
@@ -186,12 +172,10 @@
       transition: all 0.3s ease-out 0s;
    }
    .trainers__img-bannner{
-      /* width: 100%; */
       height: 80%;
       position: absolute;
       left: 15%;
       top: 35%;
-      /* padding-top: 30px; */
       transition: all 0.3s ease-out 0s;
       clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%);
    }

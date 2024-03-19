@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
+$trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
 ?>
 
 
@@ -64,8 +64,15 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                      <div class="form__list">
                         <div class="form__block form__block-grid"><label for="list" class="form__text">Направлення:</label>
                            <select name="list" id="" class="form__sel">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
+                              <?
+                              if ($trains) {
+                                 while ($resTr = mysqli_fetch_assoc($trains)) {
+                                    echo "<option value='" . $resTr['name_vacancies'] . "'>" . $resTr['name_vacancies'] . "</option>";
+                                 }
+                              } else {
+                                 echo "Помилка в базі даних";
+                              }
+                              ?>
                            </select>
                         </div>
                      </div>
@@ -83,23 +90,37 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                      </div>
                   </form>
                   <div class="admin__right">
-                     <!-- <div class="timetable__block">
-                     <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
-                        <div class="timetable__btn-block">
-                           <div class="timetable__btn" id="timeTableBtn">
+                     <div class="admin__demo-title">Перед показ </div>
+                     <div class="trainers__carts1">
+                        <img src="img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts1-image">
+                        <div class="trainers__carts1-names">Ім'я Прізвище</div>
+                     </div>
+                     <div class="trainers__carts2">
+                        <div class="trainers__block">
+                           <div class="trainers__carts2-names">
+                              Ім'я Прізвище
+                           </div>
+                           <div class="trainers__carts2-type">
+                              Направлення тренера
+                           </div>
+                           <div class="trainers__carts2-info">
+                              Слова від тренера. Його ставлення до тренування. Мотивація.<br>
+                              Tекст текст текст текст текст текст текст текст текст текст текст текст текст
+                           </div>
+                           <div class="trainers__carts2-certif">
+                              Сертифікат
+                              наявний/на разі відсутній
                            </div>
                         </div>
-                        <ul class='timetable__time' id="timetableList">
-
-                        </ul>
+                        <img src="img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts2-image">
                      </div>
-                  </div> -->
                   </div>
                </div>
             </div>
          </div>
       </main>
    </div>
+   <script src="js/admin_form.js"></script>
    <script src="js/timetable-admin.js"></script>
 </body>
 

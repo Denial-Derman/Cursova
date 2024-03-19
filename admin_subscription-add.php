@@ -61,7 +61,7 @@ $resSub = mysqli_fetch_assoc($sub);
                      </div>
                      <div class="form__block form__block-grid">
                         <label for="stand" class="form__text">Стандартний пункт:</label>
-                        <input type="checkbox" name="stand" placeholder="Назва" class="form__input-text form__input-check" required>
+                        <input type="checkbox" name="stand" placeholder="Назва" class="form__input-text form__input-check" checked required>
                      </div>
                      <div class="form__list">
                         <label for="textarea" class="form__text">Опис:</label>
@@ -83,32 +83,36 @@ $resSub = mysqli_fetch_assoc($sub);
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>
-                  <div class="right">
-                     <div class="subscription__body_admin-title">Перед показ </div>
-                     <div class="subscription_body">
-                        <div class="subscription_body-title" id="prnameSub">Назва Абонемента</div>
-                        <div class="subscription_body-time" id="durationTimeSub">
+                  <div class="admin__right">
+                     <div class="admin__demo-title">Перед показ </div>
+                     <div class="subscription__body">
+                        <div class="subscription__body-title" id="prnameSub">Назва Абонемента</div>
+                        <div class="subscription__body-time" id="durationTimeSub">
                         </div>
-                        <ul class="subscription_body-list" id="elment">
+                        <ul class="subscription__body-list" id="elment">
+                           <li>Оплата за N місяців тренувань</li>
+                           <li>Душ</li>
+                           <li>Роздягальня</li>
+                           <li>Сейф</li>
                         </ul>
-                        <div class="subscription_body-price">
-                           <div class="subscription_body-caption">Ціна:</div>
-                           <div class="subscription_body-price-row">
-                              <div class="subscription_body-cost" id="prprice">000</div>
-                              <div class="subscription_body-currency" id="prcurrency">-</div>
+                        <div class="subscription__body-price">
+                           <div class="subscription__body-caption">Ціна:</div>
+                           <div class="subscription__body-price-row">
+                              <div class="subscription__body-cost" id="prprice">000</div>
+                              <div class="subscription__body-currency" id="prcurrency">Грн</div>
                            </div>
                         </div>
-                        <div class="subscription_body-formalize">
-                           <a href="#" class="subscription_body-btn">Оформити абонемент</a>
+                        <div class="subscription__body-formalize">
+                           <a href="#" class="subscription__body-btn">Оформити абонемент</a>
                         </div>
                      </div>
-                     <div class="subscription_right_admin-btn"><button id="btnClear">Очистити все</button></div>
                   </div>
                </div>
             </div>
          </div>
       </main>
    </div>
+   <script src="js/admin_form.js"></script>
    <script src="js/script_subscription-admin.js"></script>
 </body>
 
