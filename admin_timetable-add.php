@@ -13,6 +13,7 @@
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="css/zero.css">
    <link rel="stylesheet" type="text/css" href="css/style_timetable-add-admin.css">
+   <link rel="stylesheet" type="text/css" href="css/style_form-admin.css">
 </head>
 <?
 session_start();
@@ -23,10 +24,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti1'");
+$t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train`");
 $resT = mysqli_fetch_assoc($t);
 ?>
-
 
 <body>
    <div class="wrapper">
@@ -50,72 +50,87 @@ $resT = mysqli_fetch_assoc($t);
       </header>
       <main class="content">
          <div class="conteiner">
-            <div class="timetable__flex">
-               <h2 class="timetable__title title">Додати розклад</h2>
+            <div class="block__flex">
+               <h2 class="admin__title title">Додати розклад</h2>
                <div class="div">
-                  <form action="admin_timetable.php" method="post" class="admin-form" enctype="multipart/form-data">
-                     <h2>Завантаження розкладу на сайт</h2>
-                     <label for="image">Завантажити фон:</label>
-                     <label for="image" class="custom-file-upload">Выбрать файл</label><input type="file" name="image" id="" accept="image/*" class="image-form" required>
-                     <p>Назва розкладу: <input type="text" name="name" id="nameTimeTable" placeholder="Назва" required></p>
-                     <div class="time-list">
-                        <div class="time-list-title">День та час:</div>
-                        <div class="time-list-block">
-                           <select name="type[]" id="DayVar1" onchange="handleDayVar1Change()" required>
+                  <form action="admin_.php" method="post" class="admin__form" enctype="multipart/form-data">
+                     <h2 class="form__title">Розклад</h2>
+                     <div class="form__block form__block-grid">
+                        <label for="image" class="form__text">Фонове зображення:</label>
+                        <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
+                     </div>
+                     <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="name" placeholder="Назва" class="form__input-text" required></div>
+                     <div class="form__list">
+                        <label for="" class="form__text">Час та опис:</label>
+                        <div class="form__list list" id="listTime1">
+                           <select name="type[]" id="DayVar1" class="form__sel" onchange="handleDayVar1Change()" required>
                               <option value="1">Пн-Вс</option>
                               <option value="2">Пн-Сб</option>
                               <option value="3">Пн-Пт</option>
                            </select>
-                           <div id="dynamicFields1" class="dynamicFields">
-                              <div class="time-input">
-                                 <input type="time" name="times[]" id="" required>
-                                 <input type="text" name="times_text[]" id="" placeholder="текст до пункту" required>
-                                 <button type="button" onclick="addFields(this)">+</button>
-                                 <button type="button" onclick="removeField(this)">-</button>
+                           <div class="form__list-block form__list" id="dynamicFields1">
+                              <div class="form__block">
+                                 <button type="button" class="form__btn-time" onclick="addFields(this)">+</button><label for="" class="form__text">Додати пункт</label>
+                                 <button type="button" class="form__btn-time" onclick="removeField(this)">-</button><label for="" class="form__text">Видалити останній пункт</label>
+                              </div>
+                              <div class="form__block form__block-grid">
+                                 <input type="time" name="times[]" id="" class="form__input-text form__input-time">
+                                 <input type="text" name="times_text[]" id="" class="form__input-text" placeholder="Примітка">
                               </div>
                            </div>
                         </div>
-                        <div class="time-list-block">
-                           <select name="type" id="DayVar2" onchange="handleDayVar2Change()">
-                              <option value="1">Сб-Вс</option>
-                              <option value="2">Сб</option>
+                        <hr>
+                        <div class="form__list list" id="listTime2">
+                           <select name="type[]" id="DayVar2" class="form__sel" onchange="handleDayVar2Change()">
+                              <option value="1">Вс-Cб</option>
+                              <option value="2">Вс</option>
                            </select>
-                           <div id="dynamicFields2" class="dynamicFields">
-                              <div class="time-input">
-                                 <input type="time" name="times[]" id="">
-                                 <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
-                                 <button type="button" onclick="addFields(this)">+</button>
-                                 <button type="button" onclick="removeField(this)">-</button>
+                           <div class="form__list-block form__list" id="dynamicFields2">
+                              <div class="form__block">
+                                 <button type="button" class="form__btn-time" onclick="addFields(this)">+</button><label for="" class="form__text">Додати пункт</label>
+                                 <button type="button" class="form__btn-time" onclick="removeField(this)">-</button><label for="" class="form__text">Видалити останній пункт</label>
+                              </div>
+                              <div class="form__block form__block-grid">
+                                 <input type="time" name="times[]" id="" class="form__input-text form__input-time">
+                                 <input type="text" name="times_text[]" id="" class="form__input-text" placeholder="Примітка">
                               </div>
                            </div>
                         </div>
-                        <div class="time-list-block">
-                           <select name="type" id="DayVar3" onchange="handleDayVar3Change()">
+                        <hr>
+                        <div class="form__list list" id="listTime3">
+                           <select name="type[]" id="DayVar3" class="form__sel" onchange="handleDayVar3Change()">
                               <option value="1">Вс</option>
                            </select>
-                           <div id="dynamicFields3" class="dynamicFields">
-                              <div class="time-input">
-                                 <input type="time" name="times[]" id="">
-                                 <input type="text" name="times_text[]" id="" placeholder="текст до пункту">
-                                 <button type="button" onclick="addFields(this)">+</button>
-                                 <button type="button" onclick="removeField(this)">-</button>
+                           <div class="form__list-block form__list" id="dynamicFields3">
+                              <div class="form__block">
+                                 <button type="button" class="form__btn-time" onclick="addFields(this)">+</button><label for="" class="form__text">Додати пункт</label>
+                                 <button type="button" class="form__btn-time" onclick="removeField(this)">-</button><label for="" class="form__text">Видалити останній пункт</label>
+                              </div>
+                              <div class="form__block form__block-grid">
+                                 <input type="time" name="times[]" id="" class="form__input-text form__input-time">
+                                 <input type="text" name="times_text[]" id="" class="form__input-text" placeholder="Примітка">
                               </div>
                            </div>
                         </div>
                      </div>
-                     <div class="timetable__form-btn">
-                        <button id="timeText">Додати час та підпис</button>
-                        <button type="submit" name="dot">Додати розклад</button>
+                     <div class="form__block">
+                        <button id="timeText" class="form__btn">Попередній перегляд</button>
+                        <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>
                   <div class="timetable__block">
                      <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
                         <div class="timetable__btn-block">
                            <div class="timetable__btn" id="timeTableBtn">
+                              Назва розкладу
                            </div>
                         </div>
                         <ul class='timetable__time' id="timetableList">
-
+                           <li>Пн-Сб</li>
+                           <li>09:30 - Початок</li>
+                           <li>12:30 - Перерва</li>
+                           <li>09:30 - Закриття</li>
                         </ul>
                      </div>
                   </div>
@@ -124,6 +139,7 @@ $resT = mysqli_fetch_assoc($t);
          </div>
       </main>
    </div>
+   <script src="js/admin_form.js"></script>
    <script src="js/timetable-admin.js"></script>
 </body>
 

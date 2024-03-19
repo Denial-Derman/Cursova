@@ -1,0 +1,160 @@
+.logo{
+   color: rgb(255, 255, 255);
+}
+.navigator__row{
+   justify-content: space-around;
+}
+.menu{
+   justify-content: center;
+}
+.block__flex{
+   margin: 150px 0px 150px 0px;
+   width: 100%;
+}
+.div{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 100%;
+   gap: 25px;
+   border: 1px solid #000;
+}
+.admin__form{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   gap: 20px;
+   border: 1px solid #000;
+   box-sizing: border-box;
+   padding: 10px;
+   border-radius: 10px;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
+   width: 40%;
+}
+.form__title{
+   font-size: 26px;
+}
+.form__block{
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   box-sizing: border-box;
+   gap: 10px;
+   /* border: 1px solid #000; */
+   border-radius: 5px;
+}
+.form__list{
+   width: 100%;
+   display: flex;
+   flex-direction: column;   
+   box-sizing: border-box;
+   gap: 10px;
+   /* box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset; */
+}
+.form__block-grid{
+   width: 100%;
+   display: grid;
+   box-sizing: border-box;
+   grid-template-columns: 25% 70%;
+   grid-template-rows: 1fr;
+   grid-column-gap: 0px;
+   grid-row-gap: 0px;
+   gap: 5px;
+}
+.form__text{
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: flex-start;
+   font-size: 18px;
+   color: rgba(0, 0, 0, 1);
+   border-radius: 5px;   
+   /* border: 1px solid #000000; */   
+   text-align: left;
+   box-sizing: border-box; 
+   /* box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset; */
+}
+.form__input-text{
+   width: 100%;
+   font-size: 16px;
+   color: rgba(0, 0, 0, 1);
+   border: 1px solid #000000;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;      
+   border-radius: 5px;
+   padding: 10px 15px;
+   text-align: left;
+   box-sizing: border-box;
+}
+.form__input-time{
+   text-align: center;
+}
+.form__textarea{
+   width: 100%;
+   font-size: 16px;
+   color: rgba(0, 0, 0, 1);
+   resize: none;
+   border: 1px solid #000000;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;   
+   border-radius: 5px;
+   padding: 10px 15px;
+   text-align: left;
+   box-sizing: border-box;
+}
+.form__sel{
+   width: 100%;
+   border: 1px solid #000000;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
+   font-size: 16px;
+   padding: 10px 15px;
+   border-radius: 5px;
+   text-align: left;
+   box-sizing: border-box;
+}
+.form__sel option{
+   padding: 10px 15px;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset; 
+   border: 1px solid #000000;
+}
+.form__file{
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
+   display: none;
+   width: 100%;
+   height: 100%;
+   box-sizing: border-box;
+}
+.form__file-block{
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
+   font-size: 18px;
+   display: inline-block;
+   background: rgb(212, 212, 212);
+   border: 1px solid #000000;
+   border-radius: 5px;   
+   padding: 10px 5px 10px 5px;
+   cursor: pointer;
+   width: 100%;
+   text-align: center;
+   box-sizing: border-box;
+   transition: all 0.1s ease-out 0s;
+}
+.form__btn{
+   width: 100%;
+   font-size: 18px;
+   background: rgb(212, 212, 212);
+   border: 1px solid #000;
+   border-radius: 10px;
+   box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;   
+   padding: 15px 5px 15px 5px;
+   text-align: center;
+   box-sizing: border-box;  
+   transition: all 0.1s ease-out 0s; 
+}
+.form__file-block:hover{
+   color: rgb(255, 255, 255);
+   background: rgb(143, 143, 143);
+}
+.form__btn:hover{
+   color: rgb(255, 255, 255);
+   background: rgb(200, 81, 81);
+}

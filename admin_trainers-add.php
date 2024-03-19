@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ukr">
 
 <head>
    <meta charset="UTF-8">
@@ -13,7 +13,7 @@
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="css/zero.css">
    <link rel="stylesheet" type="text/css" href="css/style_form-admin.css">
-   <link rel="stylesheet" type="text/css" href="css/style_subscription-add-admin.css">
+   <link rel="stylesheet" type="text/css" href="css/style_trainers-add-admin.css">
 </head>
 <?
 session_start();
@@ -24,9 +24,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`, `duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`");
-$resSub = mysqli_fetch_assoc($sub);
+$Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
 ?>
+
 
 <body>
    <div class="wrapper">
@@ -51,65 +51,56 @@ $resSub = mysqli_fetch_assoc($sub);
       <main class="content">
          <div class="conteiner">
             <div class="block__flex">
-               <h2 class="admin__title title">Додавання Абонементу</h2>
+               <h2 class="admin__title title">Додати Тренера</h2>
                <div class="div">
                   <form action="admin_.php" method="post" class="admin__form" enctype="multipart/form-data">
-                     <h2 class="form__title">Абонемент</h2>
+                     <h2 class="form__title">Тренер</h2>
                      <div class="form__block form__block-grid">
-                        <label for="name" class="form__text">Назва:</label>
-                        <input type="text" name="name" placeholder="Назва" class="form__input-text" required>
+                        <label for="image" class="form__text">Фото:</label>
+                        <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
                      </div>
-                     <div class="form__block form__block-grid">
-                        <label for="stand" class="form__text">Стандартний пункт:</label>
-                        <input type="checkbox" name="stand" placeholder="Назва" class="form__input-text form__input-check" required>
+                     <div class="form__block form__block-grid"><label for="name" class="form__text">Ім'я та прізвище:</label><input type="text" name="name" placeholder="Назва" class="form__input-text" required></div>
+                     <div class="form__list">
+                        <div class="form__block form__block-grid"><label for="list" class="form__text">Направлення:</label>
+                           <select name="list" id="" class="form__sel">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                           </select>
+                        </div>
                      </div>
                      <div class="form__list">
                         <label for="textarea" class="form__text">Опис:</label>
                         <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">Додатковий текст...</textarea>
                      </div>
-                     <div class="form__list">
-                        <div class="form__block form__block-grid"><label for="list" class="form__text">Ціна:</label>
-                           <div class="form__block form__block-price">
-                              <input type="number" name="name" placeholder="000" class="form__input-text" required>
-                              <select name="list" id="" class="form__sel">
-                                 <option value="Грн">Грн</option>
-                                 <option value="Євро">Євро</option>
-                              </select>
-                           </div>
-                        </div>
+                     <div class="form__block form__block-grid">
+                        <label for="stand" class="form__text">Стандартний пункт:</label>
+                        <input type="checkbox" name="stand" placeholder="Назва" class="form__input-text form__input-check" required>
                      </div>
                      <div class="form__block">
                         <button id="timeText" class="form__btn">Попередній перегляд</button>
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>
-                  <div class="right">
-                     <div class="subscription__body_admin-title">Перед показ </div>
-                     <div class="subscription_body">
-                        <div class="subscription_body-title" id="prnameSub">Назва Абонемента</div>
-                        <div class="subscription_body-time" id="durationTimeSub">
-                        </div>
-                        <ul class="subscription_body-list" id="elment">
-                        </ul>
-                        <div class="subscription_body-price">
-                           <div class="subscription_body-caption">Ціна:</div>
-                           <div class="subscription_body-price-row">
-                              <div class="subscription_body-cost" id="prprice">000</div>
-                              <div class="subscription_body-currency" id="prcurrency">-</div>
+                  <div class="admin__right">
+                     <!-- <div class="timetable__block">
+                     <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
+                        <div class="timetable__btn-block">
+                           <div class="timetable__btn" id="timeTableBtn">
                            </div>
                         </div>
-                        <div class="subscription_body-formalize">
-                           <a href="#" class="subscription_body-btn">Оформити абонемент</a>
-                        </div>
+                        <ul class='timetable__time' id="timetableList">
+
+                        </ul>
                      </div>
-                     <div class="subscription_right_admin-btn"><button id="btnClear">Очистити все</button></div>
+                  </div> -->
                   </div>
                </div>
             </div>
          </div>
       </main>
    </div>
-   <script src="js/script_subscription-admin.js"></script>
+   <script src="js/timetable-admin.js"></script>
 </body>
 
 </html>

@@ -1,34 +1,9 @@
-.logo{
-   color: rgb(255, 255, 255);
-}
-.navigator__row{
-   justify-content: space-around;
-}
-.menu{
-   justify-content: center;
-}
+
 .menu .navigator__punct-menu li:nth-child(2){
    text-decoration: underline;
    color: #C85151;   
 }
-/* Абонементи */
-.subscription{
-   margin-top: 150px;
-   margin-bottom: 100px;
-}
-.subscription__flex{
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-}
-.subscription__row{
-   display: flex;
-   justify-content: space-evenly;
-   align-items: center;
-   height: 100%;
-   width: 100%;
-   /* border: 1px solid black; */
-}
+/*#region Абонементи */
 .subscription_body{
    margin-top: 50px;
    border: 1px solid black;
@@ -69,7 +44,6 @@
    display: flex;
    gap: 5px;
 }
-
 .subscription_body-formalize{
    margin-top: 50px;      
 }
@@ -241,3 +215,24 @@
    text-align: center;
    margin: 20px auto;
 }
+/* #endregion */
+
+/*#region Forma */
+.form__block{
+   align-items: center;
+}
+.form__input-check{
+   width: 25px;
+   height: 25px;
+   border-radius: 10px;
+   overflow: hidden;
+}
+.form__block-price{
+   width: 100%;
+   display: grid;
+   box-sizing: border-box;
+   grid-template-columns: 70% 25%;
+   grid-template-rows: 1fr;
+   gap: 5px;
+}
+/* #endregion */

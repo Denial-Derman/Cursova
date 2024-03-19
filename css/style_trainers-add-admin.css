@@ -1,13 +1,17 @@
-.logo{
-   color: rgb(255, 255, 255);
-}
-.navigator__row{
-   justify-content: space-around;
-}
-.menu{
-   justify-content: center;
-}
+
 .menu .navigator__punct-menu li:nth-child(5){
    text-decoration: underline;
    color: #C85151;   
 }
+
+/*#region Forma */
+.form__block{
+   align-items: center;
+}
+.form__input-check{
+   width: 25px;
+   height: 25px;
+   border-radius: 10px;
+   overflow: hidden;
+}
+/* #endregion */
