@@ -26,6 +26,7 @@ $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 $sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`, `duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`");
 $resSub = mysqli_fetch_assoc($sub);
+
 ?>
 
 <body>
@@ -54,11 +55,21 @@ $resSub = mysqli_fetch_assoc($sub);
             <div class="block__flex">
                <h2 class="admin__title title">Додавання Абонементу</h2>
                <div class="div">
-                  <form action="admin_.php" method="post" class="admin__form" enctype="multipart/form-data">
+                  <form action="admin_subscription-add.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Абонемент</h2>
                      <div class="form__block form__block-grid">
-                        <label for="name" class="form__text">Назва:</label>
-                        <input type="text" name="name" placeholder="Назва" class="form__input-text" required>
+                        <label for="title" class="form__text">Назва:</label>
+                        <input type="text" name="title" placeholder="Назва" class="form__input-text" required>
+                     </div>
+                     <div class="form__block form__block-grid">
+                        <label for="month" class="form__text">Кількість місяців:</label>
+                        <select name="month" id="" class="form__sel">
+                           <? $bd_month = mysqli_query($connect_bd, "SELECT * FROM `duration`");
+                           while ($resMonth = mysqli_fetch_assoc($bd_month)) {
+                              echo "<option value='{$resMonth['id_duration']}'>{$resMonth['duration_month']}</option>";
+                           }
+                           ?>
+                        </select>
                      </div>
                      <div class="form__block form__block-grid">
                         <label for="stand" class="form__text">Стандартний пункт:</label>
@@ -69,10 +80,10 @@ $resSub = mysqli_fetch_assoc($sub);
                         <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea" placeholder="Додатковий текст..."></textarea>
                      </div>
                      <div class="form__list">
-                        <div class="form__block form__block-grid"><label for="list" class="form__text">Ціна:</label>
+                        <div class="form__block form__block-grid"><label for="price" class="form__text">Ціна:</label>
                            <div class="form__block form__block-price">
-                              <input type="number" name="name" placeholder="000" class="form__input-text" required>
-                              <select name="list" id="" class="form__sel">
+                              <input type="number" name="price" placeholder="000" class="form__input-text" required>
+                              <select name="currency" id="" class="form__sel">
                                  <option value="Грн">Грн</option>
                                  <option value="Євро">Євро</option>
                               </select>
@@ -83,10 +94,6 @@ $resSub = mysqli_fetch_assoc($sub);
                         <button id="timeText" class="form__btn">Попередній перегляд</button>
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
-                     <?
-                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                     }
-                     ?>
                   </form>
                   <div class="admin__right">
                      <div class="admin__demo-title">Зразок результату</div>
@@ -116,9 +123,45 @@ $resSub = mysqli_fetch_assoc($sub);
             </div>
          </div>
       </main>
+      <?
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         // $sub_id = $_GET['id'];
+         $title = $_POST["title"]; //text
+         $month = $_POST["month"]; //value
+         $check = isset($_POST["stand"]) ? 1 : 0; //checkbox
+         $desc = isset($_POST["textarea"]) ? $_POST["textarea"] : NULL; //textarea
+         $price = $_POST["price"]; //number
+         $currency = $_POST["currency"]; //value
+         function incrementId($id)
+         {
+            // Збільшити порядкове число на 1
+            $new_id = $id + 1;
+            return $new_id;
+         }
+         $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `subscription`");
+         $max_id_row = mysqli_fetch_assoc($result_max_id);
+         $max_id = $max_id_row['MAX(id)'];
+         $new_id = incrementId($max_id);
+
+         $sql = "SELECT * FROM `subscription` WHERE `name_sub` = '$title' AND `id_fee_for` = '$month' AND `shower`='$check'AND `cloakroom`='$check'AND `safe`='$check'AND`description`='$desc'";
+         $verification = mysqli_query($connect_bd, $sql);
+         if (mysqli_num_rows($verification) > 0) {
+            echo "Даний абонемент вже існує";
+         } else {
+            $query = "INSERT INTO `subscription` (`id`, `id_sub-home`, `name_sub`, `id_fee_for`, `shower`, `cloakroom`, `safe`, `description`, `price`, `currency`) VALUES ('$new_id','1', '$title','$month',' $check','$check','$check', '$desc','$price','$currency')";
+            $result = mysqli_query($connect_bd, $query);
+            if ($result) {
+               echo "Дані успішно додано в базу даних.";
+            } else {
+               echo "Дані не додано в базу даних.";
+            }
+         }
+      }
+      ?>
    </div>
    <script src="js/admin_form.js"></script>
-   <script src="js/script_subscription-admin.js"></script>
+   <!-- <script src="js/script_subscription-add-admin.js"></script> -->
 </body>
+
 
 </html>

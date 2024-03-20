@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`");
+$t = mysqli_query($connect_bd, "SELECT * FROM `timetable`");
 ?>
 
 <body>
@@ -72,7 +72,7 @@ $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `
                      echo "</ul>"; ?>
                   </div>
                   <?
-                  $table = mysqli_query($connect_bd, "SELECT `timetable`.`id`as'Номер',`timetable`.`name_time`as'Підпис розкладу',`club_train`.`image`as'Фонове зображення',`timetable`.`time_list`as'Розклад' FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`");
+                  $table = mysqli_query($connect_bd, "SELECT `id`as'Номер',`name_time`as'Підпис розкладу',`image`as'Фонове зображення',`time_list`as'Розклад' FROM `timetable`");
                   if ($table) {
                      echo "";
                   } else {

@@ -54,7 +54,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
          <div class="conteiner">
             <div class="timetable__flex">
                <h2 class="timetable__title title">Активний розклад</h2>
-               <? $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`");
+               <? $t = mysqli_query($connect_bd, "SELECT * FROM `timetable`");
                while ($resT = mysqli_fetch_assoc($t)) {
                ?>
                   <div class="timetable__block">

@@ -55,7 +55,7 @@
    filter: url(#outlineBlack);
    display: flex;
    height: 50%;
-   width: 100%;
+   max-width: 80%;
    position: absolute;
    top: 40px;
    left: 42px;

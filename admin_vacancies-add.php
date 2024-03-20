@@ -70,24 +70,22 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
             <div class="block__flex">
                <h2 class="admin__title title">Додати вакансію</h2>
                <div class="div">
-                  <form action="admin_.php" method="post" class="admin__form" enctype="multipart/form-data">
+                  <form action="admin_vacancies-add.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Вакансія</h2>
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фонове зображення:</label>
                         <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
                         <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
                      </div>
-                     <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="name" placeholder="Назва" class="form__input-text" required></div>
+                     <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="title" placeholder="Назва" class="form__input-text" required></div>
                      <div class="form__list">
-                        <label for="textarea" class="form__text">Вимоги:</label>
-                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">Вимога1...                  
-Вимога1...
+                        <label for="req" class="form__text">Вимоги:</label>
+                        <textarea name="req" id="" cols="20" rows="5" class="form__textarea" placeholder="Вимоги...">
                         </textarea>
                      </div>
                      <div class="form__list">
-                        <label for="textarea" class="form__text">Обов'язоки:</label>
-                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">Обов'язок1...
-Обов'язок1...
+                        <label for="duties" class="form__text">Обов'язоки:</label>
+                        <textarea name="duties" id="" cols="20" rows="5" class="form__textarea" placeholder="Обов'язки...">
                         </textarea>
                      </div>
                      <div class="form__block">
@@ -147,5 +145,38 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
    <script src="js/admin_form.js"></script>
    <script src="js/timetable-admin.js"></script>
 </body>
+<?
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   // $vac_id = $_GET['id'];
+   $image = $_FILES['image']['name'];
+   $title = $_POST["title"];
+   $req = isset($_POST["req"]) ? $_POST["req"] : NULL;
+   $duties = isset($_POST["duties"]) ? $_POST["duties"] : NULL;
+   function incrementId($id)
+   {
+      // Збільшити порядкове число на 1
+      $new_id = $id + 1;
+      return $new_id;
+   }
+   $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `vacancies`");
+   $max_id_row = mysqli_fetch_assoc($result_max_id);
+   $max_id = $max_id_row['MAX(id)'];
+   $new_id = incrementId($max_id);
+
+   $sql = "SELECT * FROM `vacancies` WHERE `name_vacancies`='$title'";
+   $verification = mysqli_query($connect_bd, $sql);
+   if (mysqli_num_rows($verification) > 0) {
+      echo "Даний абонемент вже існує";
+   } else {
+      $query = "INSERT INTO `vacancies` (`id`, `id_vac_home`, `name_vacancies`, `fons`, `requirements`, `duties`) VALUES ('$new_id','1','$title','$image','$req','$duties')";
+      $result = mysqli_query($connect_bd, $query);
+      if ($result) {
+         echo "Дані успішно додано в базу даних.";
+      } else {
+         echo "Дані не додано в базу даних.";
+      }
+   }
+}
+?>
 
 </html>

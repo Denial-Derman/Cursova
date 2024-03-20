@@ -28,13 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    echo "";
    function incrementId($id)
    {
-      preg_match('/([A-Za-z]+)(\d+)/', $id, $matches);
-      $prefix = $matches[1];
-      $number = $matches[2];
       // Збільшити порядкове число на 1
-      $new_number = $number + 1;
-      // Сформувати нове id
-      $new_id = $prefix . $new_number;
+      $new_id = $id + 1;
       return $new_id;
    }
    $name = $_POST["name"];
@@ -47,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `vacancies_resum`");
    $max_id_row = mysqli_fetch_assoc($result_max_id);
    $max_id = $max_id_row['MAX(id)'];
-   // Збільшити id на 1
    $new_id = incrementId($max_id);
    $query = "INSERT INTO `vacancies_resum` (`id`,`name`, `tel`, `email`, `message`,`id_vacancies`) VALUES ('$new_id','$name', '$tel', '$email', '$message','$type_vacans_value')";
    $result = mysqli_query($connect_bd, $query);
@@ -168,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      </div>
                   </div>
                <? } else { ?>
-                  <h1 class="title" style="text-align: center;"><a href="vacancies.php"><img src="img/icon/Exit.svg" alt="Назад до вакансій"></a> Тренер не знайден</h1>
+                  <h1 class="title" style="text-align: center;"><a href="vacancies.php"><img src="img/icon/Exit.svg" alt="Назад до вакансій"></a>Вакансія відсутня</h1>
                <? } ?>
             </div>
          </div>

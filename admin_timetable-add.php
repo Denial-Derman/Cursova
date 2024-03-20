@@ -54,21 +54,21 @@ $resT = mysqli_fetch_assoc($t);
             <div class="block__flex">
                <h2 class="admin__title title">Додати розклад</h2>
                <div class="div">
-                  <form action="admin_.php" method="post" class="admin__form" enctype="multipart/form-data">
+                  <form action="admin_timetable-add.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Розклад</h2>
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фонове зображення:</label>
                         <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
                         <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
                      </div>
-                     <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="name" placeholder="Назва" class="form__input-text" required></div>
+                     <div class="form__block form__block-grid"><label for="title" class="form__text">Назва:</label><input type="text" name="title" placeholder="Назва" class="form__input-text" required></div>
                      <div class="form__list">
-                        <label for="" class="form__text">Час та опис:</label>
+                        <label for="type" class="form__text">Час та опис:</label>
                         <div class="form__list list" id="listTime1">
-                           <select name="type[]" id="DayVar1" class="form__sel" onchange="handleDayVar1Change()" required>
-                              <option value="1">Пн-Вс</option>
-                              <option value="2">Пн-Сб</option>
-                              <option value="3">Пн-Пт</option>
+                           <select name="type[0]" id="DayVar1" class="form__sel" onchange="handleDayVar1Change()" required>
+                              <option value="Пн-Вс">Пн-Вс</option>
+                              <option value="Пн-Сб">Пн-Сб</option>
+                              <option value="Пн-Пт">Пн-Пт</option>
                            </select>
                            <div class="form__list-block form__list" id="dynamicFields1">
                               <div class="form__block">
@@ -76,16 +76,16 @@ $resT = mysqli_fetch_assoc($t);
                                  <button type="button" class="form__btn-time" onclick="removeField(this)">-</button><label for="" class="form__text">Видалити останній пункт</label>
                               </div>
                               <div class="form__block form__block-grid">
-                                 <input type="time" name="times[]" id="" class="form__input-text form__input-time">
-                                 <input type="text" name="times_text[]" id="" class="form__input-text" placeholder="Примітка">
+                                 <input type="time" name="times[0][]" id="" class="form__input-text form__input-time">
+                                 <input type="text" name="times_text[0][]" id="" class="form__input-text" placeholder="Примітка">
                               </div>
                            </div>
                         </div>
                         <hr>
                         <div class="form__list list" id="listTime2">
-                           <select name="type[]" id="DayVar2" class="form__sel" onchange="handleDayVar2Change()">
-                              <option value="1">Вс-Cб</option>
-                              <option value="2">Вс</option>
+                           <select name="type[1]" id="DayVar2" class="form__sel" onchange="handleDayVar2Change()">
+                              <option value="Вс-Cб">Вс-Cб</option>
+                              <option value="Сб">Сб</option>
                            </select>
                            <div class="form__list-block form__list" id="dynamicFields2">
                               <div class="form__block">
@@ -93,15 +93,15 @@ $resT = mysqli_fetch_assoc($t);
                                  <button type="button" class="form__btn-time" onclick="removeField(this)">-</button><label for="" class="form__text">Видалити останній пункт</label>
                               </div>
                               <div class="form__block form__block-grid">
-                                 <input type="time" name="times[]" id="" class="form__input-text form__input-time">
-                                 <input type="text" name="times_text[]" id="" class="form__input-text" placeholder="Примітка">
+                                 <input type="time" name="times[1][]" id="" class="form__input-text form__input-time">
+                                 <input type="text" name="times_text[1][]" id="" class="form__input-text" placeholder="Примітка">
                               </div>
                            </div>
                         </div>
                         <hr>
                         <div class="form__list list" id="listTime3">
-                           <select name="type[]" id="DayVar3" class="form__sel" onchange="handleDayVar3Change()">
-                              <option value="1">Вс</option>
+                           <select name="type[2]" id="DayVar3" class="form__sel" onchange="handleDayVar3Change()">
+                              <option value="Вс">Вс</option>
                            </select>
                            <div class="form__list-block form__list" id="dynamicFields3">
                               <div class="form__block">
@@ -109,8 +109,8 @@ $resT = mysqli_fetch_assoc($t);
                                  <button type="button" class="form__btn-time" onclick="removeField(this)">-</button><label for="" class="form__text">Видалити останній пункт</label>
                               </div>
                               <div class="form__block form__block-grid">
-                                 <input type="time" name="times[]" id="" class="form__input-text form__input-time">
-                                 <input type="text" name="times_text[]" id="" class="form__input-text" placeholder="Примітка">
+                                 <input type="time" name="times[2][]" id="" class="form__input-text form__input-time">
+                                 <input type="text" name="times_text[2][]" id="" class="form__input-text" placeholder="Примітка">
                               </div>
                            </div>
                         </div>
@@ -144,5 +144,49 @@ $resT = mysqli_fetch_assoc($t);
    <script src="js/admin_form.js"></script>
    <script src="js/timetable-admin.js"></script>
 </body>
+<?
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   // $sub_id = $_GET['id'];
+   $image = $_FILES['image']['name'];
+   $title = $_POST["title"];
+   $times = $_POST['times'];
+   $type = $_POST['type'];
+   $times_text = $_POST['times_text'];
+
+   $dataArray = array();
+   for ($i = 0; $i <= count($type); $i++) {
+      $dataArray[] = $type[$i];
+      foreach ($times_text[$i] as $index => $text) {
+         $dataArray[] = $times[$i][$index] . ' - ' . $text;
+      }
+   }
+   $time = implode("\n", $dataArray);
+
+   function incrementId($id)
+   {
+      // Збільшити порядкове число на 1
+      $new_id = $id + 1;
+      return $new_id;
+   }
+   $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `timetable`");
+   $max_id_row = mysqli_fetch_assoc($result_max_id);
+   $max_id = $max_id_row['MAX(id)'];
+   $new_id = incrementId($max_id);
+
+   $sql = "SELECT * FROM `timetable` WHERE `name_time` = '$title' AND`time_list`= '$time'";
+   $verification = mysqli_query($connect_bd, $sql);
+   if (mysqli_num_rows($verification) > 0) {
+      echo "Даний абонемент вже існує";
+   } else {
+      $query = "INSERT INTO `timetable` (`id`, `id_time_home`, `name_time`, `time_list`, `image`) VALUES ('$new_id','1', '$title','$time','$image')";
+      $result = mysqli_query($connect_bd, $query);
+      if ($result) {
+         echo "Дані успішно додано в базу даних.";
+      } else {
+         echo "Дані не додано в базу даних.";
+      }
+   }
+}
+?>
 
 </html>

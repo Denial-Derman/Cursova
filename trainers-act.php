@@ -71,8 +71,13 @@ if (isset($_GET['id'])) {
                            <? echo $resTr['name_vacancies']; ?>
                         </div>
                         <div class="trainers__carts-info">
-                           <? echo $resTr['information']; ?>
-
+                           <?
+                           $buf = $resTr['information'];
+                           $paragraphs = explode("\n", $buf);
+                           foreach ($paragraphs as $paragraph) {
+                              echo "<p>$paragraph</p>";
+                           }
+                           ?>
                         </div>
                         <div class="trainers__carts-certif">
                            Сертифікат

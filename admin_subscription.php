@@ -119,9 +119,9 @@ $Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
                </div>
                <?
                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['del'])) {
-                  if (isset($_POST['vacancy_id'])) {
-                     $vacancy_id = $_POST['vacancy_id'];
-                     $delete_query = "DELETE FROM `subscription` WHERE `id` = '$vacancy_id'";
+                  if (isset($_POST['subscription_id'])) {
+                     $subscription_id = $_POST['subscription_id'];
+                     $delete_query = "DELETE FROM `subscription` WHERE `id` = '$subscription_id'";
                      $result = mysqli_query($connect_bd, $delete_query);
                      if ($result) {
                         echo "Запись успішно видалено";

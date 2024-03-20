@@ -78,7 +78,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                         <div class="vacancies__cart-title">
                            <? echo  $resV['name_vacancies'];  ?>
                         </div>
-                        <a href="vacancies-act.php?id =<? echo $resV['id'] ?>" class="vacancies__cart-btn">
+                        <a href="vacancies-act.php?id=<? echo $resV['id'] ?>" class="vacancies__cart-btn">
                            <p class="vacancies__cart-btn-text">
                               Перейти
                            </p>
