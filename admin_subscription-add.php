@@ -33,7 +33,8 @@ $resSub = mysqli_fetch_assoc($sub);
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+                  </a>
                   <p>Адмін сторінка</p>
                </div>
                <div class="navigator__menu menu">
@@ -65,7 +66,7 @@ $resSub = mysqli_fetch_assoc($sub);
                      </div>
                      <div class="form__list">
                         <label for="textarea" class="form__text">Опис:</label>
-                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea">Додатковий текст...</textarea>
+                        <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea" placeholder="Додатковий текст..."></textarea>
                      </div>
                      <div class="form__list">
                         <div class="form__block form__block-grid"><label for="list" class="form__text">Ціна:</label>
@@ -82,9 +83,13 @@ $resSub = mysqli_fetch_assoc($sub);
                         <button id="timeText" class="form__btn">Попередній перегляд</button>
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
+                     <?
+                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                     }
+                     ?>
                   </form>
                   <div class="admin__right">
-                     <div class="admin__demo-title">Перед показ </div>
+                     <div class="admin__demo-title">Зразок результату</div>
                      <div class="subscription__body">
                         <div class="subscription__body-title" id="prnameSub">Назва Абонемента</div>
                         <div class="subscription__body-time" id="durationTimeSub">

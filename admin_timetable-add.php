@@ -33,7 +33,8 @@ $resT = mysqli_fetch_assoc($t);
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+                  </a>
                   <p>Адмін сторінка</p>
                </div>
                <div class="navigator__menu menu">
@@ -120,7 +121,7 @@ $resT = mysqli_fetch_assoc($t);
                      </div>
                   </form>
                   <div class="admin__right">
-                     <div class="admin__demo-title">Перед показ </div>
+                     <div class="admin__demo-title">Зразок результату</div>
                      <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
                         <div class="timetable__btn-block">
                            <div class="timetable__btn" id="timeTableBtn">

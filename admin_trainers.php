@@ -33,7 +33,8 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+                  </a>
                   <p>Адмін сторінка</p>
                </div>
                <div class="navigator__menu menu">
@@ -59,7 +60,7 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                      echo "<ul class='admin__activ-list'>";
                      while ($resVac = mysqli_fetch_assoc($Vac)) {
                         echo "<li>{$resVac['id']} {$resVac['name']} 
-                  <form action='admin_trainerss.php' method='post'>
+                  <form action='admin_trainers.php' method='post'>
                      <input type='hidden' name='trainers_id' value='{$resVac['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
@@ -124,11 +125,11 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                <?
                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['del'])) {
                   if (isset($_POST['trainers_id'])) {
-                     $vacancy_id = $_POST['trainers_id'];
-                     $delete_query = "DELETE FROM `trainers` WHERE `id` = '$vacancy_id'";
+                     $trainers_id = $_POST['trainers_id'];
+                     $delete_query = "DELETE FROM `trainers` WHERE `id` = '$trainers_id'";
                      $result = mysqli_query($connect_bd, $delete_query);
                      if ($result) {
-                        echo "Запись успішно видалено";
+                        echo "Запис успішно видалено";
                         echo "<script>window.location = 'admin_trainers.php';</script>";
                         exit;
                      } else {

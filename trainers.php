@@ -71,79 +71,18 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
 
                </div>
                <div class="trainers__block">
-
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr1';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr1">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr2';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr2">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr3';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr3">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr4';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr4">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr5';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr5">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr6';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr6">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr7';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr7">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
-                  <div class="trainers__carts">
-                     <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type` AND`trainers`.`id`='Tr8';");
-                     $resTr = mysqli_fetch_assoc($tr);
-                     ?>
-                     <a href="trainers-act.php?id=Tr9">
-                        <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
-                        <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
-                     </a>
-                  </div>
+                  <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type`");
+                  while ($resTr = mysqli_fetch_assoc($tr)) {
+                  ?>
+                     <div class="trainers__carts">
+                        <a href="trainers-act.php?id=<? echo $resTr['id'] ?>">
+                           <img src="img/trainers/<? echo $resTr['image']; ?>" alt="photo-trainers" class="trainers__carts-image">
+                           <div class="trainers__carts-names"><? echo $resTr['name']; ?></div>
+                        </a>
+                     </div>
+                  <?
+                  }
+                  ?>
                </div>
             </div>
          </div>

@@ -18,9 +18,8 @@
    justify-content: space-evenly;
    flex-wrap: wrap;
    width: 100%;
-   /* border: 1px solid black; */
 }
-.subscription_body{
+.subscription__body{
    margin: 50px 20px 20px 20px;
    border: 1px solid black;
    box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
@@ -35,20 +34,20 @@
    justify-content: space-between; 
    align-items: center; 
 }
-.subscription_body-title{
+.subscription__body-title{
    text-align: center;
    width: 160px;
    font-size: 24px;
    margin-bottom: 20px;
 }
-.subscription_body-list{
+.subscription__body-list{
    max-width: 245px;
 }
-.subscription_body-list li{
+.subscription__body-list li{
    list-style:disc;
    margin: 0px 0px 5px 30px;
 }
-.subscription_body-price{
+.subscription__body-price{
    display: flex;
    justify-content: space-evenly;
    height: max-content;
@@ -56,25 +55,20 @@
    margin: 100px 0px 0px 0px;
    font-size: 22px;
 }
-.subscription_body-price-row{
+.subscription__body-price-row{
    display: flex;
    gap: 5px;
 }
 
-.subscription_body-formalize{
+.subscription__body-formalize{
    margin-top: 50px;      
 }
-.subscription_body-btn{   
+.subscription__body-btn{   
    background: #D0ADAD;
    padding: 15px 30px;
    border: 1px solid #000;
    border-radius: 15px;
    color: #FAFAFA;
-   /* text-shadow:
-   1px 1px 0 #000000,
-   -1px -1px 0 #000000,
-   1px -1px 0 #000000,
-   -1px 1px 0 #000000; */
    font-weight: bold;
    font-family: Nunito Sans;
    font-size: 16px;
@@ -82,13 +76,12 @@
    transition-duration: 300ms;
    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.subscription_body-btn:hover{
+.subscription__body-btn:hover{
    border: 2px solid #000;
    background: #C85151;
    box-shadow: -5px -5px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.subscription_body-admin{
-   /* border: 1px solid black; */
+.subscription__body-admin{
    border-radius: 50%;
    position: absolute;
    top: 160px;
@@ -105,9 +98,8 @@
 .subscription__row{
    flex-direction: column;
    align-items: center;
-   /* border: 1px solid black; */
 }
-.subscription_body{
+.subscription__body{
    margin-top: 50px;
    border: 1px solid black;
    box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 0.25) inset;
@@ -115,26 +107,25 @@
    min-height: 380px;
    width: 250px;
    height: max-content;
-   /* width: max-content; */
    padding: 30px 15px;
    display: flex;
    flex-direction: column;
    justify-content: space-evenly; 
 }
-.subscription_body-title{
+.subscription__body-title{
    text-align: center;
    font-size: 26px;
    margin-bottom: 22px;
 }
-.subscription_body-list{
+.subscription__body-list{
    max-width: 100%;
    font-size: 20px;
 }
-.subscription_body-list li{
+.subscription__body-list li{
    list-style:disc;
    margin: 0px 0px 0px 30px;
 }
-.subscription_body-price{
+.subscription__body-price{
    display: flex;
    justify-content: space-evenly;
    height: max-content;
@@ -142,15 +133,15 @@
    margin: 50px 0px 0px 0px;
    font-size: 22px;
 }
-.subscription_body-price-row{
+.subscription__body-price-row{
    display: flex;
    gap: 5px;
 }
 
-.subscription_body-formalize{
+.subscription__body-formalize{
    margin-top: 50px;      
 }
-.subscription_body-btn{   
+.subscription__body-btn{   
    background: #D0ADAD;
    padding: 15px 30px;
    border: 1px solid #000;
@@ -163,13 +154,12 @@
    transition-duration: 300ms;
    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.subscription_body-btn:hover{
+.subscription__body-btn:hover{
    border: 2px solid #000;
    background: #C85151;
    box-shadow: -5px -5px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.subscription_body-admin{
-   /* border: 1px solid black; */
+.subscription__body-admin{
    border-radius: 50%;
    position: absolute;
    top: 160px;

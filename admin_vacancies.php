@@ -33,7 +33,8 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+                  </a>
                   <p>Адмін сторінка</p>
                </div>
                <div class="navigator__menu menu">

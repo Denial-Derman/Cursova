@@ -72,84 +72,22 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
             <div class="vacancies__flex">
                <h2 class="vacancies__title title">Активні вакансії</h2>
                <div class="vacancies__block">
-                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V1';");
-                  $resV = mysqli_fetch_assoc($v);
-                  ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
-                     <div class="vacancies__cart-title">
-                        <? echo  $resV['name_vacancies'];  ?>
+                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
+                  while ($resV = mysqli_fetch_assoc($v)) { ?>
+                     <div class="vacancies__cart" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
+                        <div class="vacancies__cart-title">
+                           <? echo  $resV['name_vacancies'];  ?>
+                        </div>
+                        <a href="vacancies-act.php?id =<? echo $resV['id'] ?>" class="vacancies__cart-btn">
+                           <p class="vacancies__cart-btn-text">
+                              Перейти
+                           </p>
+                        </a>
                      </div>
-                     <a href="vacancies-act.php?id=V1" class="vacancies__cart-btn">
-                        <p class="vacancies__cart-btn-text">
-                           Перейти
-                        </p>
-                     </a>
-                  </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V2';");
-                  $resV = mysqli_fetch_assoc($v);
+                  <?
+                  }
                   ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
-                     <div class="vacancies__cart-title">
-                        <? echo  $resV['name_vacancies'];  ?>
-                     </div>
-                     <a href="vacancies-act.php?id=V2" class="vacancies__cart-btn">
-                        <p class="vacancies__cart-btn-text">
-                           Перейти
-                        </p>
-                     </a>
-                  </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V3';");
-                  $resV = mysqli_fetch_assoc($v);
-                  ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
-                     <div class="vacancies__cart-title">
-                        <? echo  $resV['name_vacancies'];  ?>
-                     </div>
-                     <a href="vacancies-act.php?id=V3" class="vacancies__cart-btn">
-                        <p class="vacancies__cart-btn-text">
-                           Перейти
-                        </p>
-                     </a>
-                  </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V4';");
-                  $resV = mysqli_fetch_assoc($v);
-                  ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
-                     <div class="vacancies__cart-title">
-                        <? echo  $resV['name_vacancies'];  ?>
-                     </div>
-                     <a href="vacancies-act.php?id=V4" class="vacancies__cart-btn">
-                        <p class="vacancies__cart-btn-text">
-                           Перейти
-                        </p>
-                     </a>
-                  </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V5';");
-                  $resV = mysqli_fetch_assoc($v);
-                  ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
-                     <div class="vacancies__cart-title">
-                        <? echo  $resV['name_vacancies'];  ?>
-                     </div>
-                     <a href="vacancies-act.php?id=V5" class="vacancies__cart-btn">
-                        <p class="vacancies__cart-btn-text">
-                           Перейти
-                        </p>
-                     </a>
-                  </div>
-                  <? $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='V6';");
-                  $resV = mysqli_fetch_assoc($v);
-                  ?>
-                  <div class="vacancies__cart vacancies__cart1" style="background: url(img/vacancies/<? echo  $resV['fons']; ?>)  left no-repeat; background-size: cover;">
-                     <div class="vacancies__cart-title">
-                        <? echo  $resV['name_vacancies'];  ?>
-                     </div>
-                     <a href="vacancies-act.php?id=V6" class="vacancies__cart-btn">
-                        <p class="vacancies__cart-btn-text">
-                           Перейти
-                        </p>
-                     </a>
-                  </div>
+
                </div>
             </div>
          </div>

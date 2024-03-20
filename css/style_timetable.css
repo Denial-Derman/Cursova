@@ -20,10 +20,8 @@
    font-size: 24px;
    height: 100%;
    width: 1000px;
-   /* display: flex;
+   display: flex;
    flex-direction: column;
-   justify-content: space-between;
-   gap: 100px; */
 }
 .timetable__flex-block{
    display: flex;
@@ -32,32 +30,16 @@
    overflow: hidden;
    height: 550px;    
    border-radius: 10px;
-   /* border: 1px solid #000000; */
    transition: all 0.3s ease-out 0s;
 }
-/* .timetable__img{
-   border-radius: 10px;
-   width: 100%;
-   
-} */
-/* .timetable__img-block{
-   overflow: hidden;
-   border-radius: 10px;
-   height: 100%;
-   width: 75%;   
-} */
 .timetable__btn-block{
    height: 100%;
    display: flex;
    flex-direction: column;
-   /* align-items: flex-end; */
    width: max-content;
    font-size: 32px; 
    justify-content: flex-start;
    position: relative;
-   /* left: 20%; */
-   /* border: 1px solid #000000; */
-   /* z-index: 3; */
 }
 .timetable__btn{
    border-radius: 10px;
@@ -65,11 +47,9 @@
    display: flex;
    width: max-content;
    height: 80px;
-   /* border: 1px solid #000000; */
    background: #a6a6a6d4;   
    background: #3d3d3dd4;   
    color: #f1f1f1;
-   /* background: #ff1a1a;    */
    text-align: right;
    justify-content: center;
    align-items: center;
@@ -77,16 +57,11 @@
    cursor: pointer;
 }
 .timetable__time{
-   /* z-index: 1; */
    opacity: 1;
-   /* position: relative; */
    padding: 25px 10px 25px 45px;
    width: 450px;
-   /* height: 800px; */
    margin: 50px 20px 50px 20px;
    font-size: 26px;
-   /* left: -450px; */
-   /* border: 1px solid #000000; */
    background: #bebebec1;
    border-radius: 10px;
    transition: all 0.3s ease-out 0s;
@@ -120,12 +95,10 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      /* align-items: flex-end; */
       font-size: 32px; 
       justify-content: start;
       position: relative;
       left: 0%;
-      /* border: 1px solid #000000; */
       z-index: 3;
    }
    .timetable__btn{
@@ -144,7 +117,6 @@
       padding: 10px 0px 0px 25px;
       left: 0px;
       top: -50px;
-      /* border: 1px solid #000000; */
       transition: all 0.3s ease-out 0s;
    }
 }

@@ -33,7 +33,8 @@ $trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+                  </a>
                   <p>Адмін сторінка</p>
                </div>
                <div class="navigator__menu menu">
@@ -90,7 +91,7 @@ $trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
                      </div>
                   </form>
                   <div class="admin__right">
-                     <div class="admin__demo-title">Перед показ </div>
+                     <div class="admin__demo-title">Зразок результату</div>
                      <div class="trainers__carts1">
                         <img src="img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts1-image">
                         <div class="trainers__carts1-names">Ім'я Прізвище</div>

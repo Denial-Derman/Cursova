@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
    let nameElement = document.querySelector("#nameelement");
    let vudalutu = document.querySelector("#vudalutu");
    let dodatu = document.querySelector("#dodatu");
-   let vudalElem = document.querySelector(".subscription_body_admin-list__body");
+   let vudalElem = document.querySelector(".subscription__body_admin-list__body");
 
    let nameSubPr = document.querySelector("#prnameSub");
    let nameElementPr = document.querySelector("#elment");
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Додаємо новий елемент в кінець блоку
       let newElement = document.createElement("div");
-      newElement.classList.add("subscription_body_admin-list__element");
+      newElement.classList.add("subscription__body_admin-list__element");
       newElement.innerHTML = `Діє з:  ${newDateStart} ${newTimeStart}   до:  ${newDateEnd} ${newTimeEnd}`;
       divTimeCheck.appendChild(newElement);
    }
@@ -185,11 +185,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       // Створюємо новий елемент
       let newElement = document.createElement("div");
-      newElement.classList.add("subscription_body_admin-list__element");
+      newElement.classList.add("subscription__body_admin-list__element");
       newElement.innerHTML = `
       <div class="name">Пункт</div>
       <div class="text-el"><input type="text" name="SubscriptionName" placeholder="Введіть елмент списку" value="${newElementText}"></div>
-      <div class="subscription_body_admin-list__btn"><img src="img/icon/vudalutu.svg" alt="Видалити елемент" class="vudalutu"></div>`;
+      <div class="subscription__body_admin-list__btn"><img src="img/icon/vudalutu.svg" alt="Видалити елемент" class="vudalutu"></div>`;
       // Додаємо новий елемент в кінець блоку
       vudalElem.appendChild(newElement);
 
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Перевіряємо, чи була натискана кнопка "Видалити елемент"
       if (event.target.classList.contains("vudalutu")) {
          // Отримуємо батьківський елемент і видаляємо його
-         let elementToRemove = event.target.closest(".subscription_body_admin-list__element");
+         let elementToRemove = event.target.closest(".subscription__body_admin-list__element");
          if (elementToRemove) {
             // Отримуємо текст з відповідного input
             let correspondingInput = elementToRemove.querySelector('input[name="SubscriptionName"]');
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Видаляємо лише ті елементи з блоку vudalElem, які відповідають заданій структурі
-      let addedElements = vudalElem.querySelectorAll(".subscription_body_admin-list__element");
+      let addedElements = vudalElem.querySelectorAll(".subscription__body_admin-list__element");
       for (let addedElement of addedElements) {
          let nameElement = addedElement.querySelector(".name");
          let textInput = addedElement.querySelector('input[name="SubscriptionName"]');

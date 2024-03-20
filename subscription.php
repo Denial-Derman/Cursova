@@ -58,176 +58,47 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                   <h2 class="subscription__title title">Абонементи
                   </h2>
                   <div class="subscription__row">
-                     <div class="subscription_body">
-                        <? $s = mysqli_query($connect_bd, "SELECT `subscription`.`id`,`subscription`.`name_sub`,`duration`.`duration_month`,`subscription`.`shower`,`subscription`.`cloakroom`,`subscription`.`safe`,`subscription`.`description`,`subscription`.`price`,`subscription`.`currency` FROM `subscription`,`duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`AND `subscription`.`id`=1;");
-                        $resS = mysqli_fetch_assoc($s);
-                        ?>
-                        <div class="subscription_body-title"><?= $resS['name_sub']; ?></div>
-                        <ul class="subscription_body-list">
-                           <li>Оплата за <?= $resS['duration_month']; ?> тренувань</li>
-                           <?php
-                           $features = array(
-                              'shower' => 'Душ',
-                              'cloakroom' => 'Роздягальня',
-                              'safe' => 'Сейф',
-                              'massage' => 'Масаж після тренування',
-                              'description' => $resS['description']
-                           );
-
-                           foreach ($features as $key => $value) {
-                              if ($resS[$key] == 1) {
-                                 echo "<li>$value</li>";
+                     <? $s = mysqli_query($connect_bd, "SELECT `subscription`.`id`,`subscription`.`name_sub`,`duration`.`duration_month`,`subscription`.`shower`,`subscription`.`cloakroom`,`subscription`.`safe`,`subscription`.`description`,`subscription`.`price`,`subscription`.`currency` FROM `subscription`,`duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`");
+                     while ($resS = mysqli_fetch_assoc($s)) { ?>
+                        <div class="subscription__body">
+                           <div class="subscription__body-title"><?= $resS['name_sub']; ?></div>
+                           <ul class="subscription__body-list">
+                              <li>Оплата за <?= $resS['duration_month']; ?> тренувань</li>
+                              <?
+                              $features = array(
+                                 'shower' => 'Душ',
+                                 'cloakroom' => 'Роздягальня',
+                                 'safe' => 'Сейф'
+                              );
+                              foreach ($features as $key => $value) {
+                                 if ($resS[$key] == 1) {
+                                    echo "<li>$value</li>";
+                                 }
                               }
-                           }
-                           ?>
-                        </ul>
-                        <div class="subscription_body-price">
-                           <div class="subscription_body-caption">Ціна:</div>
-                           <div class="subscription_body-price-row">
-                              <div class="subscription_body-cost"><? echo (!$resS['price'] == NULL) ? $resS['price'] : "000"; ?></div>
-                              <div class="subscription_body-currency"><? echo $resS['currency']; ?></div>
+                              $des = $resS['description'];
+                              $desc = explode("\n", $des);
+                              foreach ($desc as $descr) {
+                                 if (!$des == NULL or !$des == "") {
+                                    echo "<li>{$descr}</li>";
+                                 }
+                              }
+                              ?>
+                           </ul>
+                           <div class="subscription__body-price">
+                              <div class="subscription__body-caption">Ціна:</div>
+                              <div class="subscription__body-price-row">
+                                 <div class="subscription__body-cost"><? echo (!$resS['price'] == NULL) ? $resS['price'] : "000"; ?></div>
+                                 <div class="subscription__body-currency"><? echo $resS['currency']; ?></div>
+                              </div>
+                           </div>
+                           <div class="subscription__body-formalize">
+                              <a href="#" class="subscription__body-btn feedbackOpen">Замовити</a>
                            </div>
                         </div>
-                        <div class="subscription_body-formalize">
-                           <a href="#" class="subscription_body-btn feedbackOpen">Замовити</a>
-                        </div>
-                     </div>
-                     <div class="subscription_body">
-                        <? $s = mysqli_query($connect_bd, "SELECT `subscription`.`id`,`subscription`.`name_sub`,`duration`.`duration_month`,`subscription`.`shower`,`subscription`.`cloakroom`,`subscription`.`safe`,`subscription`.`description`,`subscription`.`price`,`subscription`.`currency` FROM `subscription`,`duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`AND `subscription`.`id`=2;");
-                        $resS = mysqli_fetch_assoc($s);
-                        ?>
-                        <div class="subscription_body-title"><?= $resS['name_sub']; ?></div>
-                        <ul class="subscription_body-list">
-                           <li>Оплата за <?= $resS['duration_month']; ?> тренувань</li>
-                           <?php
-                           $features = array(
-                              'shower' => 'Душ',
-                              'cloakroom' => 'Роздягальня',
-                              'safe' => 'Сейф',
-                              'massage' => 'Масаж після тренування',
-                              'description' => $resS['description']
-                           );
+                     <?
+                     }
+                     ?>
 
-                           foreach ($features as $key => $value) {
-                              if ($resS[$key] == 1) {
-                                 echo "<li>$value</li>";
-                              }
-                           }
-                           ?>
-                        </ul>
-                        <div class="subscription_body-price">
-                           <div class="subscription_body-caption">Ціна:</div>
-                           <div class="subscription_body-price-row">
-                              <div class="subscription_body-cost"><? echo (!$resS['price'] == NULL) ? $resS['price'] : "000"; ?></div>
-                              <div class="subscription_body-currency"><? echo $resS['currency']; ?></div>
-                           </div>
-                        </div>
-                        <div class="subscription_body-formalize">
-                           <a href="#" class="subscription_body-btn feedbackOpen">Замовити</a>
-                        </div>
-                     </div>
-                     <div class="subscription_body">
-                        <? $s = mysqli_query($connect_bd, "SELECT `subscription`.`id`,`subscription`.`name_sub`,`duration`.`duration_month`,`subscription`.`shower`,`subscription`.`cloakroom`,`subscription`.`safe`,`subscription`.`description`,`subscription`.`price`,`subscription`.`currency` FROM `subscription`,`duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`AND `subscription`.`id`=3;");
-                        $resS = mysqli_fetch_assoc($s);
-                        ?>
-                        <div class="subscription_body-title"><?= $resS['name_sub']; ?></div>
-                        <ul class="subscription_body-list">
-                           <li>Оплата за <?= $resS['duration_month']; ?> тренувань</li>
-                           <?php
-                           $features = array(
-                              'shower' => 'Душ',
-                              'cloakroom' => 'Роздягальня',
-                              'safe' => 'Сейф',
-                              'massage' => 'Масаж після тренування',
-                              'description' => $resS['description']
-                           );
-
-                           foreach ($features as $key => $value) {
-                              if ($resS[$key] == 1) {
-                                 echo "<li>$value</li>";
-                              }
-                           }
-                           ?>
-                        </ul>
-                        <div class="subscription_body-price">
-                           <div class="subscription_body-caption">Ціна:</div>
-                           <div class="subscription_body-price-row">
-                              <div class="subscription_body-cost"><? echo (!$resS['price'] == NULL) ? $resS['price'] : "000"; ?></div>
-                              <div class="subscription_body-currency"><? echo $resS['currency']; ?></div>
-                           </div>
-                        </div>
-                        <div class="subscription_body-formalize">
-                           <a href="#" class="subscription_body-btn feedbackOpen">Замовити</a>
-                        </div>
-                     </div>
-                     <div class="subscription_body">
-                        <? $s = mysqli_query($connect_bd, "SELECT `subscription`.`id`,`subscription`.`name_sub`,`duration`.`duration_month`,`subscription`.`shower`,`subscription`.`cloakroom`,`subscription`.`safe`,`subscription`.`description`,`subscription`.`price`,`subscription`.`currency` FROM `subscription`,`duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`AND `subscription`.`id`=4;");
-                        $resS = mysqli_fetch_assoc($s);
-                        ?>
-                        <div class="subscription_body-title"><?= $resS['name_sub']; ?></div>
-                        <ul class="subscription_body-list">
-                           <li>Оплата за <?= $resS['duration_month']; ?> тренувань</li>
-                           <?php
-                           $features = array(
-                              'shower' => 'Душ',
-                              'cloakroom' => 'Роздягальня',
-                              'safe' => 'Сейф',
-                              'massage' => 'Масаж після тренування',
-                              'description' => $resS['description']
-                           );
-
-                           foreach ($features as $key => $value) {
-                              if ($resS[$key] == 1) {
-                                 echo "<li>$value</li>";
-                              }
-                           }
-                           ?>
-                        </ul>
-                        <div class="subscription_body-price">
-                           <div class="subscription_body-caption">Ціна:</div>
-                           <div class="subscription_body-price-row">
-                              <div class="subscription_body-cost"><? echo (!$resS['price'] == NULL) ? $resS['price'] : "000"; ?></div>
-                              <div class="subscription_body-currency"><? echo $resS['currency']; ?></div>
-                           </div>
-                        </div>
-                        <div class="subscription_body-formalize">
-                           <a href="#" class="subscription_body-btn feedbackOpen">Замовити</a>
-                        </div>
-                     </div>
-                     <div class="subscription_body">
-                        <? $s = mysqli_query($connect_bd, "SELECT `subscription`.`id`,`subscription`.`name_sub`,`duration`.`duration_month`,`subscription`.`shower`,`subscription`.`cloakroom`,`subscription`.`safe`,`subscription`.`description`,`subscription`.`price`,`subscription`.`currency` FROM `subscription`,`duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration`AND `subscription`.`id`=5;");
-                        $resS = mysqli_fetch_assoc($s);
-                        ?>
-                        <div class="subscription_body-title"><?= $resS['name_sub']; ?></div>
-                        <ul class="subscription_body-list">
-                           <li>Оплата за <?= $resS['duration_month']; ?> тренувань</li>
-                           <?php
-                           $features = array(
-                              'shower' => 'Душ',
-                              'cloakroom' => 'Роздягальня',
-                              'safe' => 'Сейф',
-                              'massage' => 'Масаж після тренування',
-                              'description' => $resS['description']
-                           );
-
-                           foreach ($features as $key => $value) {
-                              if ($resS[$key] == 1) {
-                                 echo "<li>$value</li>";
-                              }
-                           }
-                           ?>
-                        </ul>
-                        <div class="subscription_body-price">
-                           <div class="subscription_body-caption">Ціна:</div>
-                           <div class="subscription_body-price-row">
-                              <div class="subscription_body-cost"><? echo (!$resS['price'] == NULL) ? $resS['price'] : "000"; ?></div>
-                              <div class="subscription_body-currency"><? echo $resS['currency']; ?></div>
-                           </div>
-                        </div>
-                        <div class="subscription_body-formalize">
-                           <a href="#" class="subscription_body-btn feedbackOpen">Замовити</a>
-                        </div>
-                     </div>
                   </div>
                </div>
             </div>

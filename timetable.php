@@ -54,94 +54,26 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
          <div class="conteiner">
             <div class="timetable__flex">
                <h2 class="timetable__title title">Активний розклад</h2>
-               <div class="timetable__block">
-                  <? $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti1'");
-                  $resT = mysqli_fetch_assoc($t);
-                  ?>
-                  <div class="timetable__flex-block timetable__flex-block1" style="background:url(img/timetable/<? echo $resT['image']; ?>) center no-repeat; background-size:cover;">
-                     <div class="timetable__btn-block">
-                        <div class="timetable__btn"><? echo $resT['name_time'] ?></div>
+               <? $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`");
+               while ($resT = mysqli_fetch_assoc($t)) {
+               ?>
+                  <div class="timetable__block">
+                     <div class="timetable__flex-block" style="background:url(img/timetable/<? echo $resT['image']; ?>) center no-repeat; background-size:cover;">
+                        <div class="timetable__btn-block">
+                           <div class="timetable__btn"><? echo $resT['name_time'] ?></div>
+                        </div>
+                        <ul class='timetable__time'>
+                           <?
+                           $list = $resT['time_list'];
+                           $times = explode("\n", $list);
+                           foreach ($times as $time) {
+                              echo "<li>{$time}</li>";
+                           }
+                           ?>
+                        </ul>
                      </div>
-                     <?
-                     while ($resT) {
-                        $list = $resT['time_list'];
-                        $times = explode("\n", $list);
-                        echo "<ul class='timetable__time'>";
-                        foreach ($times as $time) {
-                           echo "<li>{$time}</li>";
-                        }
-                        echo "</ul>";
-                        $resT = mysqli_fetch_assoc($t);
-                     }
-                     ?>
                   </div>
-               </div>
-               <div class="timetable__block">
-                  <? $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti2'");
-                  $resT = mysqli_fetch_assoc($t);
-                  ?>
-                  <div class="timetable__flex-block timetable__flex-block1" style="background:url(img/timetable/<? echo $resT['image']; ?>) center no-repeat; background-size:cover;">
-                     <div class="timetable__btn-block">
-                        <div class="timetable__btn"><? echo $resT['name_time'] ?></div>
-                     </div>
-                     <?
-                     while ($resT) {
-                        $list = $resT['time_list'];
-                        $times = explode("\n", $list);
-                        echo "<ul class='timetable__time'>";
-                        foreach ($times as $time) {
-                           echo "<li>{$time}</li>";
-                        }
-                        echo "</ul>";
-                        $resT = mysqli_fetch_assoc($t);
-                     }
-                     ?>
-                  </div>
-               </div>
-               <div class="timetable__block">
-                  <? $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti3'");
-                  $resT = mysqli_fetch_assoc($t);
-                  ?>
-                  <div class="timetable__flex-block timetable__flex-block1" style="background:url(img/timetable/<? echo $resT['image']; ?>) center no-repeat; background-size:cover;">
-                     <div class="timetable__btn-block">
-                        <div class="timetable__btn"><? echo $resT['name_time'] ?></div>
-                     </div>
-                     <?
-                     while ($resT) {
-                        $list = $resT['time_list'];
-                        $times = explode("\n", $list);
-                        echo "<ul class='timetable__time'>";
-                        foreach ($times as $time) {
-                           echo "<li>{$time}</li>";
-                        }
-                        echo "</ul>";
-                        $resT = mysqli_fetch_assoc($t);
-                     }
-                     ?>
-                  </div>
-               </div>
-               <div class="timetable__block">
-                  <? $t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train` WHERE `timetable`.`id_club_train`=`club_train`.`id`AND`timetable`.`id`='Ti4'");
-                  $resT = mysqli_fetch_assoc($t);
-                  ?>
-                  <div class="timetable__flex-block timetable__flex-block1" style="background:url(img/timetable/<? echo $resT['image']; ?>) center no-repeat; background-size:cover;">
-                     <div class="timetable__btn-block">
-                        <div class="timetable__btn"><? echo $resT['name_time'] ?></div>
-                     </div>
-                     <?
-                     while ($resT) {
-                        $list = $resT['time_list'];
-                        $times = explode("\n", $list);
-                        echo "<ul class='timetable__time'>";
-                        foreach ($times as $time) {
-                           echo "<li>{$time}</li>";
-                        }
-                        echo "</ul>";
-                        $resT = mysqli_fetch_assoc($t);
-                     }
-                     ?>
-                  </div>
-               </div>
+               <? } ?>
             </div>
          </div>
       </main>
