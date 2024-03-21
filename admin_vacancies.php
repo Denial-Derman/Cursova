@@ -64,7 +64,7 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
                      <input type='hidden' name='vacancy_id' value='{$resVac['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
-                  <form action='update_vacancy.php' method='post'>
+                  <form action='admin_vacancies-up.php' method='post'>
                      <input type='hidden' name='vacancy_id' value='{$resVac['id']}'>
                      <button type='submit' name='up'>Оновити</button>
                   </form>

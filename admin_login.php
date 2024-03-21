@@ -14,10 +14,10 @@
    <link rel="stylesheet" type="text/css" href="css/zero.css">
    <link rel="stylesheet" type="text/css" href="css/style_index-admin.css">
 </head>
-<?php
+<?
 session_start();
 $log_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
-$logRes = mysqli_query($log_bd, "SELECT `name`, `password` FROM `login_admin` WHERE `id`='Log1'");
+$logRes = mysqli_query($log_bd, "SELECT `name`, `password` FROM `login_admin` WHERE `id`='1'");
 $log = mysqli_fetch_assoc($logRes);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $name = $_POST['name'];

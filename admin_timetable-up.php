@@ -116,7 +116,6 @@ $resT = mysqli_fetch_assoc($t);
                         </div>
                      </div>
                      <div class="form__block">
-                        <button id="timeText" class="form__btn">Попередній перегляд</button>
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>
@@ -146,7 +145,7 @@ $resT = mysqli_fetch_assoc($t);
 </body>
 <?
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   // $sub_id = $_GET['id'];
+   $timetable_id = $_GET['id'];
    $image = $_FILES['image']['name'];
    $title = $_POST["title"];
    $times = $_POST['times'];

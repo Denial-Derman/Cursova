@@ -89,7 +89,6 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                         </textarea>
                      </div>
                      <div class="form__block">
-                        <button id="timeText" class="form__btn">Попередній перегляд</button>
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>
@@ -147,7 +146,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 </body>
 <?
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   // $vac_id = $_GET['id'];
+   $vac_id = $_GET['id'];
    $image = $_FILES['image']['name'];
    $title = $_POST["title"];
    $req = isset($_POST["req"]) ? $_POST["req"] : NULL;

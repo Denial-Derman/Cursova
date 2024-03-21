@@ -86,7 +86,6 @@ $trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
                         <input type="checkbox" name="sert" placeholder="Назва" class="form__input-text form__input-check" required>
                      </div>
                      <div class="form__block">
-                        <button id="timeText" class="form__btn">Попередній перегляд</button>
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>

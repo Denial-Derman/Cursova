@@ -64,7 +64,7 @@ $Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
                         <input type='hidden' name='subscription_id' value='{$resSub['id']}'>
                         <button type='submit' name='del'>Видалити</button>
                      </form>
-                     <form action='update_subscription.php' method='post'>
+                     <form action='admin_subscription-up.php' method='post'>
                         <input type='hidden' name='subscription_id' value='{$resSub['id']}'>
                         <button type='submit' name='up'>Оновити</button>
                      </form>
@@ -131,7 +131,7 @@ $Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
                         echo "Ошибка при видалені запису: " . mysqli_error($connect_bd);
                      }
                   } else {
-                     echo "ID вакансії не був передан для видалення.";
+                     echo "ID абонементу не був переданий для видалення.";
                      echo "<script>window.location = 'admin_subscription.php';</script>";
                      exit;
                   }

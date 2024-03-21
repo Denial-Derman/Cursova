@@ -64,7 +64,7 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                      <input type='hidden' name='trainers_id' value='{$resVac['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
-                  <form action='update_trainers.php' method='post'>
+                  <form action='admin_trainers-up.php' method='post'>
                      <input type='hidden' name='trainers_id' value='{$resVac['id']}'>
                      <button type='submit' name='up'>Оновити</button>
                   </form>

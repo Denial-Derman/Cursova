@@ -116,7 +116,6 @@ $resT = mysqli_fetch_assoc($t);
                         </div>
                      </div>
                      <div class="form__block">
-                        <button id="timeText" class="form__btn">Попередній перегляд</button>
                         <button type="submit" name="dot" class="form__btn">Додати</button>
                      </div>
                   </form>

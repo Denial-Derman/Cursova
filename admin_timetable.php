@@ -63,7 +63,7 @@ $t = mysqli_query($connect_bd, "SELECT * FROM `timetable`");
                      <input type='hidden' name='timetable_id' value='{$resT['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
-                  <form action='update_timetable.php' method='post'>
+                  <form action='admin_timetable-up.php' method='post'>
                      <input type='hidden' name='timetable_id' value='{$resT['id']}'>
                      <button type='submit' name='up'>Оновити</button>
                   </form>

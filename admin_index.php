@@ -20,9 +20,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
    header('Location: admin_login.php');
    exit;
 }
-$name = $_SESSION['username'];
+$username = $_SESSION['username'];
 $password = $_SESSION['password'];
-$connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
+$connect_bd = mysqli_connect("localhost", "$username", "$password", "StoneBreaker");
 $admin = mysqli_query($connect_bd, "SELECT `id_sub`AS'Абонементи',`id_timetable`AS'Розклади',`id_vac`AS'Вакансії',`id_trainers`AS'Тренери' FROM `home`");
 $resAdmin = mysqli_fetch_assoc($admin);
 ?>
