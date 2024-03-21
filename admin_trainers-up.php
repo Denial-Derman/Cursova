@@ -58,19 +58,19 @@ $resTr = mysqli_fetch_assoc($trains);
                <?
                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                  // if (!empty($_FILES['image']['name'])) {
-                  $image = $_FILES['image']['name'];
-                  $uploaddir = 'img/trainers/';
-                  $uploadfile = $uploaddir . basename($image);
-                  if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
-                     echo "<p>Файл завантажений на сервер</p>";
+                  if (!empty($_FILES['image']['name'])) {
+                     $image = $_FILES['image']['name'];
+                     $uploaddir = 'img/trainers/';
+                     $uploadfile = $uploaddir . basename($image);
+                     if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
+                        echo "<p>Файл завантажений на сервер</p>";
+                     } else {
+                        echo "<p>Помилка при завантаженні файлу!</p>";
+                        exit;
+                     }
                   } else {
-                     echo "<p>Помилка при завантаженні файлу!</p>";
-                     exit;
+                     $image = $_POST['imgName1'];
                   }
-                  // } else {
-                  //    $image = $_POST['imgName1'];
-                  // }
                   $name = $_POST["name"];
                   $direct = $_POST["direction"];
                   $narr = isset($_POST["narr"]) ? $_POST["narr"] : NULL;
@@ -85,14 +85,13 @@ $resTr = mysqli_fetch_assoc($trains);
                      $result = mysqli_query($connect_bd, $query);
                      if ($result) {
                         echo "Додано зміни";
-                        // echo "<script>window.location = 'admin_trainers-up.php';</script>";
+                        echo "<script>window.location = 'admin_trainers-up.php';</script>";
                      } else {
+                        echo  mysqli_error($connect_bd);
                         echo "Зміни відсутні";
-                        // echo "<script>window.location = 'admin_trainers-up.php';</script>";
+                        echo "<script>window.location = 'admin_trainers-up.php';</script>";
                      }
                   }
-               } else {
-                  echo "Дані не додано в базу даних.";
                }
                ?>
                <div class="div">

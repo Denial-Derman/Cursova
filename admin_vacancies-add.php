@@ -75,7 +75,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фонове зображення:</label>
                         <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
-                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)" required>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)">
                      </div>
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Назва зображення:</label>
@@ -148,14 +148,18 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 </body>
 <?
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $image = $_FILES['image']['name'];
-   $uploaddir = 'img/vacancies/';
-   $uploadfile = $uploaddir . basename($image);
-   if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
-      echo "<p>Файл завантажений на сервер</p>";
+   if (!empty($image = $_FILES['image']['name'])) {
+      $image = $_FILES['image']['name'];
+      $uploaddir = 'img/trainers/';
+      $uploadfile = $uploaddir . basename($image);
+      if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
+         echo "<p>Файл завантажений на сервер</p>";
+      } else {
+         echo "<p>Помилка!</p>";
+         exit;
+      }
    } else {
-      echo "<p>Помилка!</p>";
-      exit;
+      $image = 'noimage.png';
    }
    $title = $_POST["title"];
    $req = isset($_POST["req"]) ? $_POST["req"] : NULL;

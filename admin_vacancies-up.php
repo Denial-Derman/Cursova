@@ -74,13 +74,17 @@ $resT = mysqli_fetch_assoc($t);
                   <form action="admin_vacancies-up.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Вакансія</h2>
                      <div class="form__block form__block-grid">
+                        <label for="imgName1" class="form__text">Назва активного зображення:</label>
+                        <input type="text" name="imgName1" class="form__input-text" value="<?php echo $resT['fons']; ?>" readonly>
+                     </div>
+                     <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фонове зображення:</label>
                         <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
-                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)" required>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)">
                      </div>
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Назва зображення:</label>
-                        <input type="text" name="imageName" id="imageName" class="form__input-text" value="<?php echo $resT['fons']; ?>" readonly>
+                        <input type="text" name="imageName" id="imageName" class="form__input-text" readonly>
                      </div>
                      <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="title" placeholder="Назва" class="form__input-text" value="<? echo $resT['name_vacancies']; ?>" required>
                      </div>
@@ -146,38 +150,40 @@ $resT = mysqli_fetch_assoc($t);
       </main>
       <?
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-         $imageName = $_POST['imageName'];
-         $image = $_FILES['image']['name'];
          $title = $_POST["title"];
          $req = isset($_POST["req"]) ? $_POST["req"] : NULL;
          $duties = isset($_POST["duties"]) ? $_POST["duties"] : NULL;
-         if ($imageName == $image) {
-            $uploaddir = 'img/vacancies/';
-            $uploadfile = $uploaddir . basename($image);
-            if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
-               echo "<p>Файл завантажений на сервер</p>";
-            } else {
-               echo "<p>Помилка!</p>";
-               exit;
+         if (!empty($_FILES['image']['name'])) {
+            $image = $_FILES['image']['name'];
+            if ($imageName == $image) {
+               $uploaddir = 'img/vacancies/';
+               $uploadfile = $uploaddir . basename($image);
+               if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
+                  echo "<p>Файл завантажений на сервер</p>";
+               } else {
+                  echo "<p>Помилка!</p>";
+                  exit;
+               }
             }
+         } else {
+            $image = $_POST['imgName1'];
          }
-         $sql = "SELECT * FROM `vacancies` WHERE `id`='$vacUpId' AND`name_vacancies`='$title'AND `fons`='$imageName'AND `requirements`='$req'AND`duties`='$duties'";
+         $sql = "SELECT * FROM `vacancies` WHERE `id`='$vacUpId' AND`name_vacancies`='$title'AND `fons`='$image'AND `requirements`='$req'AND`duties`='$duties'";
          $verification = mysqli_query($connect_bd, $sql);
          if (mysqli_num_rows($verification) > 0) {
             echo "Відсутні зміни в вакансії ";
          } else {
-            $query = "UPDATE `vacancies` SET  `name_vacancies`='$title', `fons`='$imageName', `requirements`='$req', `duties`='$duties' WHERE `id`='$vacUpId'";
+            $query = "UPDATE `vacancies` SET  `name_vacancies`='$title', `fons`='$image', `requirements`='$req', `duties`='$duties' WHERE `id`='$vacUpId'";
             $result = mysqli_query($connect_bd, $query);
             if ($result) {
                echo "Додано зміни";
                echo "<script>window.location = 'admin_vacancies-up.php';</script>";
             } else {
                echo "Зміни відсутні";
+               echo  mysqli_error($connect_bd);
                echo "<script>window.location = 'admin_vacancies-up.php';</script>";
             }
          }
-      } else {
-         echo "Дані не додано в базу даних. Зміни відсутні";
       }
       ?>
    </div>

@@ -154,8 +154,6 @@
                   echo "<script>window.location = 'admin_subscription-up.php';</script>";
                }
             }
-         } else {
-            echo "Дані не додано в базу даних. Зміни відсутні";
          }
          ?>
       </div>
