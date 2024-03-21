@@ -24,7 +24,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
 ?>
 
 
@@ -53,22 +52,68 @@ $trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
          <div class="conteiner">
             <div class="block__flex">
                <h2 class="admin__title title">Додати Тренера</h2>
+               <?
+               if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                  $image = $_FILES['image']['name'];
+                  $name_tr = $_POST["name"];
+                  $direct_tr = $_POST["direction"];
+                  $narr = isset($_POST["narr"]) ? $_POST["narr"] : NULL;
+                  $check = isset($_POST["sert"]) ? 1 : 0;
+                  // $uploaddir = 'img/trainers/';
+                  // $uploadfile = $uploaddir . basename($image);
+                  // if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
+                  //    echo "<p>Файл завантажений на сервер</p>";
+                  // } else {
+                  //    echo "<p>Помилка!</p>";
+                  //    exit;
+                  // }
+                  function incrementId($id)
+                  {
+                     // Збільшити порядкове число на 1
+                     $new_id = $id + 1;
+                     return $new_id;
+                  }
+                  $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `trainers`");
+                  $max_id_row = mysqli_fetch_assoc($result_max_id);
+                  $max_id = $max_id_row['MAX(id)'];
+                  $new_id = incrementId($max_id);
+
+                  $sql = "SELECT * FROM `trainers` WHERE `name`='$name_tr' AND `trainers_type`='$direct_tr'";
+                  $verification = mysqli_query($connect_bd, $sql);
+                  if (mysqli_num_rows($verification) > 0) {
+                     echo "Даний абонемент вже існує";
+                  } else {
+                     $query = "INSERT INTO `trainers` (`id`, `id_train_home`, `image`, `name`, `trainers_type`, `information`, `certificate`) VALUES ('$new_id','1','$image','$name_tr','$direct_tr','$narr','$check')";
+                     $result = mysqli_query($connect_bd, $query);
+                     if ($result) {
+                        echo "Дані успішно додано в базу даних.";
+                     } else {
+                        echo "Дані не додано в базу даних.";
+                     }
+                  }
+               }
+               ?>
                <div class="div">
                   <form action="admin_trainers-add.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Тренер</h2>
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фото:</label>
-                        <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
-                        <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
+                        <label for="image" class="form__file-block" id="fileBtn" required>Вибрати файл</label>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)">
+                     </div>
+                     <div class="form__block form__block-grid">
+                        <label for="image" class="form__text">Назва зображення:</label>
+                        <input type="text" name="imageName" id="imageName" class="form__input-text" readonly>
                      </div>
                      <div class="form__block form__block-grid"><label for="name" class="form__text">Ім'я та прізвище:</label><input type="text" name="name" placeholder="Назва" class="form__input-text" required></div>
                      <div class="form__list">
                         <div class="form__block form__block-grid"><label for="list" class="form__text">Направлення:</label>
                            <select name="direction" id="" class="form__sel">
                               <?
+                              $trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
                               if ($trains) {
                                  while ($resTr = mysqli_fetch_assoc($trains)) {
-                                    echo "<option value='" . $resTr['id_trainers_type'] . "'>" . $resTr['name_vacancies'] . "</option>";
+                                    echo "<option value='" . $resTr['trainers_type'] . "'>" . $resTr['name_vacancies'] . "</option>";
                                  }
                               } else {
                                  echo "Помилка в базі даних";
@@ -83,7 +128,7 @@ $trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
                      </div>
                      <div class="form__block form__block-grid">
                         <label for="sert" class="form__text">Сертифікат:</label>
-                        <input type="checkbox" name="sert" placeholder="Назва" class="form__input-text form__input-check" required>
+                        <input type="checkbox" name="sert" placeholder="Назва" class="form__input-text form__input-check">
                      </div>
                      <div class="form__block">
                         <button type="submit" name="dot" class="form__btn">Додати</button>
@@ -121,41 +166,7 @@ $trains = mysqli_query($connect_bd, "SELECT * FROM `trainers_types`");
       </main>
    </div>
    <script src="js/admin_form.js"></script>
-   <script src="js/timetable-admin.js"></script>
 </body>
-<?
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   // $vac_id = $_GET['id'];
-   $image = $_FILES['image']['name'];
-   $name = $_POST["name"];
-   $direct = $_POST["direction"];
-   $narr = isset($_POST["narr"]) ? $_POST["narr"] : NULL;
-   $check = isset($_POST["sert"]) ? 1 : 0;
-   function incrementId($id)
-   {
-      // Збільшити порядкове число на 1
-      $new_id = $id + 1;
-      return $new_id;
-   }
-   $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `trainers`");
-   $max_id_row = mysqli_fetch_assoc($result_max_id);
-   $max_id = $max_id_row['MAX(id)'];
-   $new_id = incrementId($max_id);
 
-   $sql = "SELECT * FROM `trainers` WHERE `name`='$name' and `id_trainers_type`='$direct'";
-   $verification = mysqli_query($connect_bd, $sql);
-   if (mysqli_num_rows($verification) > 0) {
-      echo "Даний абонемент вже існує";
-   } else {
-      $query = "INSERT INTO `trainers` (`id`, `id_train_home`, `image`, `name`, `id_trainers_type`, `information`, `certificate`) VALUES ('$new_id','1','$image','$name','$direct','$narr','$check')";
-      $result = mysqli_query($connect_bd, $query);
-      if ($result) {
-         echo "Дані успішно додано в базу даних.";
-      } else {
-         echo "Дані не додано в базу даних.";
-      }
-   }
-}
-?>
 
 </html>

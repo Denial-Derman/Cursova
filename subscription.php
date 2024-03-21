@@ -78,7 +78,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
                               $des = $resS['description'];
                               $desc = explode("\n", $des);
                               foreach ($desc as $descr) {
-                                 if (!$des == NULL or !$des == "") {
+                                 if (!empty(trim($des))) {
                                     echo "<li>{$descr}</li>";
                                  }
                               }

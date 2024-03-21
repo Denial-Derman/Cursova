@@ -24,8 +24,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-// $t = mysqli_query($connect_bd, "SELECT `vacancies`.*,`club_train`.`image` FROM `vacancies`, `club_train` WHERE `vacancies`.`id_club_train`=`club_train`.`id`AND`vacancies`.`id`='Ti1'");
-// $resT = mysqli_fetch_assoc($t);
+$vacUpId = $_SESSION['vacId'];
+$t = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='$vacUpId'");
+$resT = mysqli_fetch_assoc($t);
 ?>
 
 <body>
@@ -70,26 +71,29 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
             <div class="block__flex">
                <h2 class="admin__title title">Додати вакансію</h2>
                <div class="div">
-                  <form action="admin_vacancies-add.php" method="post" class="admin__form" enctype="multipart/form-data">
+                  <form action="admin_vacancies-up.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Вакансія</h2>
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фонове зображення:</label>
                         <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
-                        <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)" required>
                      </div>
-                     <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="title" placeholder="Назва" class="form__input-text" required></div>
+                     <div class="form__block form__block-grid">
+                        <label for="image" class="form__text">Назва зображення:</label>
+                        <input type="text" name="imageName" id="imageName" class="form__input-text" value="<?php echo $resT['fons']; ?>" readonly>
+                     </div>
+                     <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="title" placeholder="Назва" class="form__input-text" value="<? echo $resT['name_vacancies']; ?>" required>
+                     </div>
                      <div class="form__list">
                         <label for="req" class="form__text">Вимоги:</label>
-                        <textarea name="req" id="" cols="20" rows="5" class="form__textarea" placeholder="Вимоги...">
-                        </textarea>
+                        <textarea name="req" id="" cols="20" rows="5" class="form__textarea" placeholder="Вимоги..."><? echo $resT['requirements']; ?></textarea>
                      </div>
                      <div class="form__list">
                         <label for="duties" class="form__text">Обов'язоки:</label>
-                        <textarea name="duties" id="" cols="20" rows="5" class="form__textarea" placeholder="Обов'язки...">
-                        </textarea>
+                        <textarea name="duties" id="" cols="20" rows="5" class="form__textarea" placeholder="Обов'язки..."><? echo $resT['duties']; ?></textarea>
                      </div>
                      <div class="form__block">
-                        <button type="submit" name="dot" class="form__btn">Додати</button>
+                        <button type="submit" name="dot" class="form__btn">Оновити</button>
                      </div>
                   </form>
                   <div class="admin__right">
@@ -107,7 +111,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                      <div class="vacancies__cart">
                         <div class="vacancies__cart-image" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(img/vacancies/noimage.png) center no-repeat; background-size: cover;">
                            <div class="vacancies__cart-btn">
-                              <a href="#" class="vacancies__cart-btn-text">Подати заявку</a>
+                              <p class="vacancies__cart-btn-text">Подати заявку</p>
                            </div>
                         </div>
                         <div class="vacancies__mob-title">
@@ -140,42 +144,45 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
             </div>
          </div>
       </main>
+      <?
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+         $imageName = $_POST['imageName'];
+         $image = $_FILES['image']['name'];
+         $title = $_POST["title"];
+         $req = isset($_POST["req"]) ? $_POST["req"] : NULL;
+         $duties = isset($_POST["duties"]) ? $_POST["duties"] : NULL;
+         if ($imageName == $image) {
+            $uploaddir = 'img/vacancies/';
+            $uploadfile = $uploaddir . basename($image);
+            if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
+               echo "<p>Файл завантажений на сервер</p>";
+            } else {
+               echo "<p>Помилка!</p>";
+               exit;
+            }
+         }
+         $sql = "SELECT * FROM `vacancies` WHERE `id`='$vacUpId' AND`name_vacancies`='$title'AND `fons`='$imageName'AND `requirements`='$req'AND`duties`='$duties'";
+         $verification = mysqli_query($connect_bd, $sql);
+         if (mysqli_num_rows($verification) > 0) {
+            echo "Відсутні зміни в вакансії ";
+         } else {
+            $query = "UPDATE `vacancies` SET  `name_vacancies`='$title', `fons`='$imageName', `requirements`='$req', `duties`='$duties' WHERE `id`='$vacUpId'";
+            $result = mysqli_query($connect_bd, $query);
+            if ($result) {
+               echo "Додано зміни";
+               echo "<script>window.location = 'admin_vacancies-up.php';</script>";
+            } else {
+               echo "Зміни відсутні";
+               echo "<script>window.location = 'admin_vacancies-up.php';</script>";
+            }
+         }
+      } else {
+         echo "Дані не додано в базу даних. Зміни відсутні";
+      }
+      ?>
    </div>
    <script src="js/admin_form.js"></script>
-   <script src="js/timetable-admin.js"></script>
 </body>
-<?
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $vac_id = $_GET['id'];
-   $image = $_FILES['image']['name'];
-   $title = $_POST["title"];
-   $req = isset($_POST["req"]) ? $_POST["req"] : NULL;
-   $duties = isset($_POST["duties"]) ? $_POST["duties"] : NULL;
-   function incrementId($id)
-   {
-      // Збільшити порядкове число на 1
-      $new_id = $id + 1;
-      return $new_id;
-   }
-   $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `vacancies`");
-   $max_id_row = mysqli_fetch_assoc($result_max_id);
-   $max_id = $max_id_row['MAX(id)'];
-   $new_id = incrementId($max_id);
 
-   $sql = "SELECT * FROM `vacancies` WHERE `name_vacancies`='$title'";
-   $verification = mysqli_query($connect_bd, $sql);
-   if (mysqli_num_rows($verification) > 0) {
-      echo "Даний абонемент вже існує";
-   } else {
-      $query = "INSERT INTO `vacancies` (`id`, `id_vac_home`, `name_vacancies`, `fons`, `requirements`, `duties`) VALUES ('$new_id','1','$title','$image','$req','$duties')";
-      $result = mysqli_query($connect_bd, $query);
-      if ($result) {
-         echo "Дані успішно додано в базу даних.";
-      } else {
-         echo "Дані не додано в базу даних.";
-      }
-   }
-}
-?>
 
 </html>

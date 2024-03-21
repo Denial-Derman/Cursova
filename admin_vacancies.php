@@ -25,6 +25,18 @@ $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 $Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
+   if (isset($_POST['vacancy_id'])) {
+      $vacUpId = $_POST['vacancy_id'];
+      $_SESSION['vacId'] = $vacUpId;
+      header('Location: admin_vacancies-up.php');
+      exit;
+   } else {
+      echo "ID вакансії не був переданий для оновлення.";
+      echo "<script>window.location = 'admin_vacancies.php';</script>";
+      exit;
+   }
+}
 ?>
 
 
@@ -64,7 +76,7 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `vacancies`");
                      <input type='hidden' name='vacancy_id' value='{$resVac['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
-                  <form action='admin_vacancies-up.php' method='post'>
+                  <form action='admin_vacancies.php' method='post'>
                      <input type='hidden' name='vacancy_id' value='{$resVac['id']}'>
                      <button type='submit' name='up'>Оновити</button>
                   </form>

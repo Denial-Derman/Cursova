@@ -71,7 +71,7 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
 
                </div>
                <div class="trainers__block">
-                  <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type`");
+                  <? $tr = mysqli_query($connect_bd, "SELECT `trainers`.*, `trainers_types`.`name_vacancies` FROM `trainers`, `trainers_types` WHERE `trainers`.`trainers_type`=`trainers_types`.`id_trainers_type`");
                   while ($resTr = mysqli_fetch_assoc($tr)) {
                   ?>
                      <div class="trainers__carts">

@@ -25,6 +25,18 @@ $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 $Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
+   if (isset($_POST['subscription_id'])) {
+      $subUpId = $_POST['subscription_id'];
+      $_SESSION['subId'] = $subUpId;
+      header('Location: admin_subscription-up.php');
+      exit;
+   } else {
+      echo "ID абонементу не був переданий для оновлення.";
+      echo "<script>window.location = 'admin_subscription.php';</script>";
+      exit;
+   }
+}
 ?>
 
 
@@ -64,7 +76,7 @@ $Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
                         <input type='hidden' name='subscription_id' value='{$resSub['id']}'>
                         <button type='submit' name='del'>Видалити</button>
                      </form>
-                     <form action='admin_subscription-up.php' method='post'>
+                     <form action='admin_subscription.php' method='post'>
                         <input type='hidden' name='subscription_id' value='{$resSub['id']}'>
                         <button type='submit' name='up'>Оновити</button>
                      </form>
@@ -136,6 +148,7 @@ $Sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`");
                      exit;
                   }
                }
+
                ?>
             </div>
          </div>

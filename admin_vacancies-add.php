@@ -75,18 +75,20 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фонове зображення:</label>
                         <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
-                        <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)" required>
+                     </div>
+                     <div class="form__block form__block-grid">
+                        <label for="image" class="form__text">Назва зображення:</label>
+                        <input type="text" name="imageName" id="imageName" class="form__input-text" readonly>
                      </div>
                      <div class="form__block form__block-grid"><label for="name" class="form__text">Назва:</label><input type="text" name="title" placeholder="Назва" class="form__input-text" required></div>
                      <div class="form__list">
                         <label for="req" class="form__text">Вимоги:</label>
-                        <textarea name="req" id="" cols="20" rows="5" class="form__textarea" placeholder="Вимоги...">
-                        </textarea>
+                        <textarea name="req" id="" cols="20" rows="5" class="form__textarea" placeholder="Вимоги..."></textarea>
                      </div>
                      <div class="form__list">
                         <label for="duties" class="form__text">Обов'язоки:</label>
-                        <textarea name="duties" id="" cols="20" rows="5" class="form__textarea" placeholder="Обов'язки...">
-                        </textarea>
+                        <textarea name="duties" id="" cols="20" rows="5" class="form__textarea" placeholder="Обов'язки..."></textarea>
                      </div>
                      <div class="form__block">
                         <button type="submit" name="dot" class="form__btn">Додати</button>
@@ -107,7 +109,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                      <div class="vacancies__cart">
                         <div class="vacancies__cart-image" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(img/vacancies/noimage.png) center no-repeat; background-size: cover;">
                            <div class="vacancies__cart-btn">
-                              <a href="#" class="vacancies__cart-btn-text">Подати заявку</a>
+                              <p class="vacancies__cart-btn-text">Подати заявку</p>
                            </div>
                         </div>
                         <div class="vacancies__mob-title">
@@ -146,8 +148,15 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 </body>
 <?
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   // $vac_id = $_GET['id'];
    $image = $_FILES['image']['name'];
+   $uploaddir = 'img/vacancies/';
+   $uploadfile = $uploaddir . basename($image);
+   if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
+      echo "<p>Файл завантажений на сервер</p>";
+   } else {
+      echo "<p>Помилка!</p>";
+      exit;
+   }
    $title = $_POST["title"];
    $req = isset($_POST["req"]) ? $_POST["req"] : NULL;
    $duties = isset($_POST["duties"]) ? $_POST["duties"] : NULL;

@@ -24,7 +24,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
+$train = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
+   if (isset($_POST['trainers_id'])) {
+      $trUpId = $_POST['trainers_id'];
+      $_SESSION['trainId'] = $trUpId;
+      header('Location: admin_trainers-up.php');
+      exit;
+   } else {
+      echo "ID абонементу не був переданий для оновлення.";
+      echo "<script>window.location = 'admin_trainers.php';</script>";
+      exit;
+   }
+}
 ?>
 
 
@@ -58,14 +70,14 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                      <a href="admin_trainers-add.php">Додати тренера</a>
                      <?
                      echo "<ul class='admin__activ-list'>";
-                     while ($resVac = mysqli_fetch_assoc($Vac)) {
-                        echo "<li>{$resVac['id']} {$resVac['name']} 
+                     while ($restrain = mysqli_fetch_assoc($train)) {
+                        echo "<li>{$restrain['id']} {$restrain['name']} 
                   <form action='admin_trainers.php' method='post'>
-                     <input type='hidden' name='trainers_id' value='{$resVac['id']}'>
+                     <input type='hidden' name='trainers_id' value='{$restrain['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
-                  <form action='admin_trainers-up.php' method='post'>
-                     <input type='hidden' name='trainers_id' value='{$resVac['id']}'>
+                  <form action='admin_trainers.php' method='post'>
+                     <input type='hidden' name='trainers_id' value='{$restrain['id']}'>
                      <button type='submit' name='up'>Оновити</button>
                   </form>
                   </li>";
@@ -73,7 +85,7 @@ $Vac = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
                      echo "</ul>"; ?>
                   </div>
                   <?
-                  $table = mysqli_query($connect_bd, "SELECT `trainers`.`id`as'Номер',`trainers`.`image`as'Фото',`trainers`.`name`as'ІП',`trainers_types`.`name_vacancies`as'Направлення',`trainers`.`information`as'Інформація',`trainers`.`certificate`as'Сертифікат' FROM `trainers`,`trainers_types` WHERE `trainers`.`id_trainers_type`=`trainers_types`.`id_trainers_type`");
+                  $table = mysqli_query($connect_bd, "SELECT `trainers`.`id`as'Номер',`trainers`.`image`as'Фото',`trainers`.`name`as'ІП',`trainers_types`.`name_vacancies`as'Направлення',`trainers`.`information`as'Інформація',`trainers`.`certificate`as'Сертифікат' FROM `trainers`,`trainers_types` WHERE `trainers`.`trainers_type`=`trainers_types`.`id_trainers_type`");
                   if ($table) {
                      echo "";
                   } else {

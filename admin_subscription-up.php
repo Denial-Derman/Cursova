@@ -24,7 +24,7 @@
    $name = $_SESSION['username'];
    $password = $_SESSION['password'];
    $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-   $subUpId = $_POST['subscription_id'];
+   $subUpId = $_SESSION['subId'];
    $sub = mysqli_query($connect_bd, "SELECT * FROM `subscription`, `duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration` AND `subscription`.`id`='$subUpId'");
    $resSub = mysqli_fetch_assoc($sub);
    ?>
@@ -78,20 +78,15 @@
                            <label for="stand" class="form__text">Стандартний пункт:</label>
                            <?
                            $check_stand = mysqli_query($connect_bd, "SELECT * FROM `subscription`, `duration` WHERE `subscription`.`id_fee_for`=`duration`.`id_duration` AND `subscription`.`shower`='1' and`subscription`.`cloakroom`='1' and`subscription`.`safe`='1' ");
-                           $stanCheck = 1;
-                           if (!$resCheck = mysqli_fetch_assoc($check_stand)) {
-                              $stanCheck = 0;
-                           }
+                           $stanCheck = (mysqli_fetch_assoc($check_stand))  ? 'checked' : '';
                            ?>
-                           <input type="checkbox" name="stand" placeholder="Назва" class="form__input-text form__input-check" checked value="$stanCheck" required>
+                           <input type="checkbox" name="stand" placeholder="Назва" class="form__input-text form__input-check" <? echo $stanCheck ?> required>
                         </div>
                         <div class="form__list">
                            <label for="textarea" class="form__text">Опис:</label>
-                           <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea" placeholder="Додатковий текст...">
-                                    <?
-                                    echo $resSub['description'];
-                                    ?>
-                                 </textarea>
+                           <textarea name="textarea" id="" cols="20" rows="5" class="form__textarea" placeholder="Додатковий текст..."><?
+                                                                                                                                       echo $resSub['description'];
+                                                                                                                                       ?></textarea>
                         </div>
                         <div class="form__list">
                            <div class="form__block form__block-grid"><label for="price" class="form__text">Ціна:</label>
@@ -141,16 +136,23 @@
             $title = $_POST["title"]; //text
             $month = $_POST["month"]; //value
             $check = isset($_POST["stand"]) ? 1 : 0; //checkbox
-            $desc = isset($_POST["textarea"]) ? $_POST["textarea"] : NULL; //textarea
+            $desc = !empty(trim($_POST["textarea"])) ? $_POST["textarea"] : ""; //textarea
             $price = $_POST["price"]; //number
             $currency = $_POST["currency"]; //value
-
-            $query = "UPDATE `subscription` SET `name_sub`='$title',`id_fee_for`='$month',`shower`='$check',`cloakroom`='$check',`safe`='$check',`description`='$desc',`price`='$price',`currency`='$currency' WHERE `id`='$subUpId'";
-            $result = mysqli_query($connect_bd, $query);
-            if ($result) {
-               echo "Дані успішно додано в базу даних. Додано зміни";
+            $sql = "SELECT * FROM `subscription` WHERE `name_sub` = '$title' AND `id_fee_for` = '$month' AND `shower`='$check'AND `cloakroom`='$check'AND `safe`='$check'AND`description`='$desc'AND `price`='$price'AND`currency`='$currency'";
+            $verification = mysqli_query($connect_bd, $sql);
+            if (mysqli_num_rows($verification) > 0) {
+               echo "Відсутні зміни в абонементі ";
             } else {
-               echo "Дані не додано в базу даних. Зміни відсутні";
+               $query = "UPDATE `subscription` SET `name_sub`='$title',`id_fee_for`='$month',`shower`='$check',`cloakroom`='$check',`safe`='$check',`description`='$desc',`price`='$price',`currency`='$currency' WHERE `id`='$subUpId'";
+               $result = mysqli_query($connect_bd, $query);
+               if ($result) {
+                  echo "Додано зміни";
+                  echo "<script>window.location = 'admin_subscription-up.php';</script>";
+               } else {
+                  echo "Зміни відсутні";
+                  echo "<script>window.location = 'admin_subscription-up.php';</script>";
+               }
             }
          } else {
             echo "Дані не додано в базу даних. Зміни відсутні";
