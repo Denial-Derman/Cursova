@@ -9,6 +9,7 @@
 }
 .timetable__flex{
    margin: 150px auto;
+   width: 100%;
 }
 .timetable__flex a, .timetable__flex button{
    text-decoration: none;
@@ -25,6 +26,12 @@
    width: 50%;
    display: flex;
    flex-direction: column;
+}
+.div-block{
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
 }
 .admin__activ-list{
    display: flex;

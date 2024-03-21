@@ -25,6 +25,18 @@ $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
 $t = mysqli_query($connect_bd, "SELECT * FROM `timetable`");
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
+   if (isset($_POST['timetable_id'])) {
+      $timeUpId = $_POST['timetable_id'];
+      $_SESSION['timeId'] = $timeUpId;
+      header('Location: admin_timetable-up.php');
+      exit;
+   } else {
+      echo "ID абонементу не був переданий для оновлення.";
+      echo "<script>window.location = 'admin_timetable.php';</script>";
+      exit;
+   }
+}
 ?>
 
 <body>
@@ -63,7 +75,7 @@ $t = mysqli_query($connect_bd, "SELECT * FROM `timetable`");
                      <input type='hidden' name='timetable_id' value='{$resT['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
-                  <form action='admin_timetable-up.php' method='post'>
+                  <form action='admin_timetable.php' method='post'>
                      <input type='hidden' name='timetable_id' value='{$resT['id']}'>
                      <button type='submit' name='up'>Оновити</button>
                   </form>

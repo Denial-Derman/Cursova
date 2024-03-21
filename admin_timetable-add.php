@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$t = mysqli_query($connect_bd, "SELECT `timetable`.*,`club_train`.`image` FROM `timetable`, `club_train`");
+$t = mysqli_query($connect_bd, "SELECT* FROM `timetable`");
 $resT = mysqli_fetch_assoc($t);
 ?>
 
@@ -57,9 +57,13 @@ $resT = mysqli_fetch_assoc($t);
                   <form action="admin_timetable-add.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Розклад</h2>
                      <div class="form__block form__block-grid">
-                        <label for="image" class="form__text">Фонове зображення:</label>
-                        <label for="image" class="form__file-block" id="fileBtn">Вибрати файл</label>
-                        <input type="file" name="image" id="image" accept="image/*" class="form__file" required>
+                        <label for="image" class="form__text">Фото:</label>
+                        <label for="image" class="form__file-block" id="fileBtn" required>Вибрати файл</label>
+                        <input type="file" name="image" id="image" accept="image/*" class="form__file" onchange="updateFileName(this)">
+                     </div>
+                     <div class="form__block form__block-grid">
+                        <label for="image" class="form__text">Назва зображення:</label>
+                        <input type="text" name="imageName" id="imageName" class="form__input-text" readonly>
                      </div>
                      <div class="form__block form__block-grid"><label for="title" class="form__text">Назва:</label><input type="text" name="title" placeholder="Назва" class="form__input-text" required></div>
                      <div class="form__list">
@@ -145,8 +149,20 @@ $resT = mysqli_fetch_assoc($t);
 </body>
 <?
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   // $sub_id = $_GET['id'];
    $image = $_FILES['image']['name'];
+   if (!empty($image = $_FILES['image']['name'])) {
+      $image = $_FILES['image']['name'];
+      $uploaddir = 'img/timetable/';
+      $uploadfile = $uploaddir . basename($image);
+      if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
+         echo "<p>Файл завантажений на сервер</p>";
+      } else {
+         echo "<p>Помилка!</p>";
+         exit;
+      }
+   } else {
+      $image = 'noimage.png';
+   }
    $title = $_POST["title"];
    $times = $_POST['times'];
    $type = $_POST['type'];
@@ -161,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          }
       }
    }
-   $time = implode("\n", $dataArray);
+   $time = implode("\r\n", $dataArray);
 
    function incrementId($id)
    {

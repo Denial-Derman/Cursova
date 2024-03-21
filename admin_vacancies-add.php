@@ -24,8 +24,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-// $t = mysqli_query($connect_bd, "SELECT `vacancies`.*,`club_train`.`image` FROM `vacancies`, `club_train` WHERE `vacancies`.`id_club_train`=`club_train`.`id`AND`vacancies`.`id`='Ti1'");
-// $resT = mysqli_fetch_assoc($t);
 ?>
 
 <body>

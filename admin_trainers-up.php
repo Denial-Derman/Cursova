@@ -97,11 +97,9 @@ $resTr = mysqli_fetch_assoc($trains);
                <div class="div">
                   <form action="admin_trainers-up.php" method="post" class="admin__form" enctype="multipart/form-data">
                      <h2 class="form__title">Тренер</h2>
-                     <div class="admin__list">
-                        <div class="form__block form__block-grid">
-                           <label for="imgName1" class="form__text">Назва активного зображення:</label>
-                           <input type="text" name="imgName1" class="form__input-text" value="<? echo $resTr['image']; ?>" readonly>
-                        </div>
+                     <div class="form__block form__block-grid">
+                        <label for="imgName1" class="form__text">Назва активного зображення:</label>
+                        <input type="text" name="imgName1" class="form__input-text" value="<? echo $resTr['image']; ?>" readonly>
                      </div>
                      <div class="form__block form__block-grid">
                         <label for="image" class="form__text">Фонове зображення:</label>

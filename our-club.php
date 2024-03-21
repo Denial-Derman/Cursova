@@ -177,6 +177,7 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="js/scriptourclub.js"></script>
    <script src="js/burger.js"></script>
+   <script src="js/vacancies-act.js"></script>
    <script src="js/feedback.js"></script>
 </body>
 

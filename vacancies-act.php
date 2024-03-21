@@ -17,10 +17,12 @@
 </head>
 <?
 $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
+$v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='$vacancies_id'");
+$resV = mysqli_fetch_assoc($v);
 $vacancies_id = null;
 if (isset($_GET['id'])) {
    $vacancies_id = $_GET['id'];
-   $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='$vacancies_id';");
+   $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='$vacancies_id'");
    $resV = mysqli_fetch_assoc($v);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
