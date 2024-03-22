@@ -150,9 +150,9 @@ $resT = mysqli_fetch_assoc($t);
       </main>
       <?
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-         $title = $_POST["title"];
-         $req = isset($_POST["req"]) ? $_POST["req"] : NULL;
-         $duties = isset($_POST["duties"]) ? $_POST["duties"] : NULL;
+         $title = mysqli_real_escape_string($connect_bd, $_POST["title"]);
+         $req = isset($_POST["req"]) ? mysqli_real_escape_string($connect_bd, $_POST["req"]) : NULL;
+         $duties = isset($_POST["duties"]) ? mysqli_real_escape_string($connect_bd, $_POST["duties"]) : NULL;
          if (!empty($_FILES['image']['name'])) {
             $image = $_FILES['image']['name'];
             if ($imageName == $image) {

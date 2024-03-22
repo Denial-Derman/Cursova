@@ -159,9 +159,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    } else {
       $image = 'noimage.png';
    }
-   $title = $_POST["title"];
-   $req = isset($_POST["req"]) ? $_POST["req"] : NULL;
-   $duties = isset($_POST["duties"]) ? $_POST["duties"] : NULL;
+   $title = mysqli_real_escape_string($connect_bd, $_POST["title"]);
+   $req = isset($_POST["req"]) ? mysqli_real_escape_string($connect_bd, $_POST["req"]) : NULL;
+   $duties = isset($_POST["duties"]) ? mysqli_real_escape_string($connect_bd, $_POST["duties"]) : NULL;
    function incrementId($id)
    {
       // Збільшити порядкове число на 1

@@ -163,16 +163,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    } else {
       $image = 'noimage.png';
    }
-   $title = $_POST["title"];
-   $times = $_POST['times'];
+   $title = mysqli_real_escape_string($connect_bd, $_POST["title"]);
    $type = $_POST['type'];
-   $times_text = $_POST['times_text'];
+   $times = $_POST['times'];
+   $times_text =  $_POST['times_text'];
 
    $dataArray = array();
    for ($i = 0; $i <= count($type); $i++) {
       $dataArray[] = $type[$i];
       if (isset($times_text[$i]) && is_array($times_text[$i])) {
          foreach ($times_text[$i] as $index => $text) {
+            $text = mysqli_real_escape_string($connect_bd, $text);
             $dataArray[] = $times[$i][$index] . ' - ' . $text;
          }
       }

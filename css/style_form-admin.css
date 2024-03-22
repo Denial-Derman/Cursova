@@ -17,7 +17,6 @@
    justify-content: space-between;
    width: 100%;
    gap: 25px;
-   border: 1px solid #000;
 }
 .admin__right{
    height: 100%;
@@ -43,6 +42,14 @@
 .admin__demo-title{
    text-align: center;
    font-size: 24px;
+}
+#error-message{
+   text-align: left;
+   padding: 2;
+   margin: 0px 0px 5px 0px;
+   width: 100%;
+   font-size: 14px;
+   color:rgba(218, 0, 0, 0.847);
 }
 .form__title{
    font-size: 26px;

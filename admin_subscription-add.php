@@ -82,13 +82,14 @@ $resSub = mysqli_fetch_assoc($sub);
                      <div class="form__list">
                         <div class="form__block form__block-grid"><label for="price" class="form__text">Ціна:</label>
                            <div class="form__block form__block-price">
-                              <input type="number" name="price" placeholder="000" class="form__input-text" required>
+                              <input type="number" name="price" placeholder="000" id="price" class="form__input-text" required>
                               <select name="currency" id="" class="form__sel">
                                  <option value="Грн">Грн</option>
                                  <option value="Євро">Євро</option>
                               </select>
                            </div>
                         </div>
+                        <div id="error-message">Помилки відсутні</div>
                      </div>
                      <div class="form__block">
                         <button type="submit" name="dot" class="form__btn">Додати</button>

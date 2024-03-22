@@ -126,9 +126,9 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
       </main>
       <?
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         $name_tr = $_POST["name"];
+         $name_tr = mysqli_real_escape_string($connect_bd, $_POST["name"]);
          $direct_tr = $_POST["direction"];
-         $narr = isset($_POST["narr"]) ? $_POST["narr"] : NULL;
+         $narr = isset($_POST["narr"]) ? mysqli_real_escape_string($connect_bd, $_POST["narr"]) : NULL;
          $check = isset($_POST["sert"]) ? 1 : 0;
          if (!empty($image = $_FILES['image']['name'])) {
             $image = $_FILES['image']['name'];

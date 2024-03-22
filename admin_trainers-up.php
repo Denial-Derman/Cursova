@@ -71,9 +71,9 @@ $resTr = mysqli_fetch_assoc($trains);
                   } else {
                      $image = $_POST['imgName1'];
                   }
-                  $name = $_POST["name"];
+                  $name = mysqli_real_escape_string($connect_bd, $_POST["name"]);
                   $direct = $_POST["direction"];
-                  $narr = isset($_POST["narr"]) ? $_POST["narr"] : NULL;
+                  $narr = isset($_POST["narr"]) ? mysqli_real_escape_string($connect_bd, $_POST["narr"]) : NULL;
                   $check = isset($_POST["sert"]) ? 1 : 0;
 
                   $sql = "SELECT * FROM `trainers` WHERE  `id`='$trUpId' AND `name`='$name' AND `trainers_type`='$direct' AND `image`='$image' AND `information`='$narr' AND `certificate`='$check'";

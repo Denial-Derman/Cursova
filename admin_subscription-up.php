@@ -91,13 +91,14 @@
                         <div class="form__list">
                            <div class="form__block form__block-grid"><label for="price" class="form__text">Ціна:</label>
                               <div class="form__block form__block-price">
-                                 <input type="number" name="price" placeholder="000" class="form__input-text" value="<? echo $resSub['price'] ?>" required>
+                                 <input type="number" name="price" placeholder="000" id="price" class="form__input-text" value="<? echo $resSub['price'] ?>" required>
                                  <select name="currency" id="" class="form__sel">
                                     <option value="грн" <?php echo ($resSub['currency'] == 'грн') ? 'selected' : ''; ?>>грн</option>
                                     <option value="євро" <?php echo ($resSub['currency'] == 'євро') ? 'selected' : ''; ?>>євро</option>
                                  </select>
                               </div>
                            </div>
+                           <div id="error-message">Помилки відсутні</div>
                         </div>
                         <div class="form__block">
                            <button type="submit" name="dot" class="form__btn">Оновити</button>

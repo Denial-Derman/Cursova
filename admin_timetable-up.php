@@ -119,8 +119,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    } else {
       $image = $_POST['imgName1'];
    }
-   $title = $_POST['title'];
-   $time = $_POST['time_list'];
+   $title = mysqli_real_escape_string($connect_bd, $_POST['title']);
+   $time = mysqli_real_escape_string($connect_bd, $_POST['time_list']);
    $sql = "SELECT * FROM `timetable` WHERE `id`='$timeUpId' AND `name_time` = '$title' AND`time_list`= '$time' AND `image`='$image'";
    $verification = mysqli_query($connect_bd, $sql);
    if (mysqli_num_rows($verification) > 0) {
