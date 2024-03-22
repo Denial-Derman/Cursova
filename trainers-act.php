@@ -143,7 +143,7 @@ if (isset($_GET['id'])) {
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="js/trainers.js"></script>
    <script src="js/burger.js"></script>
-   <script src="js/vacancies-act.js"></script>
+   <!-- <script src="js/form-valid.js"></script> -->
    <script src="js/feedback.js"></script>
 </body>
 

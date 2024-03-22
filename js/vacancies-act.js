@@ -1,29 +1,7 @@
-function actForm() {
-   let telPattern = /^\+380\([0-9]{2}\)-[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
-   let emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-   let nameInput = document.querySelector('input[name="name"]');
-   let telInput = document.querySelector('input[name="tel"]');
-   let emailInput = document.querySelector('input[name="email"]');
-
-   if (!nameInput.value.includes(' ')) {
-      alert('Прізвище та ім’я повинні писатися через пробіл');
-      return false;
-   }
-
-   if (!telPattern.test(telInput.value)) {
-      alert('Невірний формат номеру телефона');
-      return false;
-   }
-
-   if (!emailPattern.test(emailInput.value)) {
-      alert('Невірний формат адреси електронной пошти');
-      return false;
-   }
-
-   return true;
-}
 document.addEventListener('DOMContentLoaded', function () {
+   nameInput();
+   telInput();
+   emailInput();
    const isSmallScreen = window.matchMedia('(max-width: 1000px)').matches;
    let vacanciesCart = document.querySelector('.vacancies__cart');
    let vacanciesBtnText = document.querySelector('.vacancies__cart-btn-text');
@@ -79,3 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
    });
 });
+
+
+
+

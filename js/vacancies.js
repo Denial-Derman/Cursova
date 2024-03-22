@@ -47,14 +47,4 @@ document.addEventListener('DOMContentLoaded', function () {
          }
       }
    });
-
-   let plusButton = document.querySelector('.plus__vacancies');
-   plusButton.addEventListener('click', function () {
-      let lastBlock = vacanciesContainer.querySelector('.vacancies__cart:last-child');
-      let clone = lastBlock.cloneNode(true);
-      let currentNumber = parseInt(clone.classList[1].slice(-1));
-      clone.classList.remove('vacancies__cart' + currentNumber);
-      clone.classList.add('vacancies__cart' + (currentNumber + 1));
-      vacanciesContainer.appendChild(clone);
-   });
 });

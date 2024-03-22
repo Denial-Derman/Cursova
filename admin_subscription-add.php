@@ -124,11 +124,10 @@ $resSub = mysqli_fetch_assoc($sub);
       </main>
       <?
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         // $sub_id = $_GET['id'];
-         $title = $_POST["title"]; //text
+         $title = mysqli_real_escape_string($connect_bd, $_POST["title"]); //text
          $month = $_POST["month"]; //value
          $check = isset($_POST["stand"]) ? 1 : 0; //checkbox
-         $desc = isset($_POST["textarea"]) ? $_POST["textarea"] : NULL; //textarea
+         $desc = isset($_POST["textarea"]) ? mysqli_real_escape_string($connect_bd, $_POST["textarea"]) : NULL; //textarea
          $price = $_POST["price"]; //number
          $currency = $_POST["currency"]; //value
          function incrementId($id)

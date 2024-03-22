@@ -133,10 +133,10 @@
          </main>
          <?
          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $title = $_POST["title"]; //text
+            $title = mysqli_real_escape_string($connect_bd, $_POST["title"]); //text
             $month = $_POST["month"]; //value
             $check = isset($_POST["stand"]) ? 1 : 0; //checkbox
-            $desc = !empty(trim($_POST["textarea"])) ? $_POST["textarea"] : ""; //textarea
+            $desc = !empty(trim($_POST["textarea"])) ? mysqli_real_escape_string($connect_bd, $_POST["textarea"]) : ""; //textarea
             $price = $_POST["price"]; //number
             $currency = $_POST["currency"]; //value
             $sql = "SELECT * FROM `subscription` WHERE `name_sub` = '$title' AND `id_fee_for` = '$month' AND `shower`='$check'AND `cloakroom`='$check'AND `safe`='$check'AND`description`='$desc'AND `price`='$price'AND`currency`='$currency'";

@@ -17,50 +17,15 @@
 </head>
 <?
 $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
-$v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='$vacancies_id'");
-$resV = mysqli_fetch_assoc($v);
+
 $vacancies_id = null;
 if (isset($_GET['id'])) {
    $vacancies_id = $_GET['id'];
    $v = mysqli_query($connect_bd, "SELECT * FROM `vacancies` WHERE `id`='$vacancies_id'");
    $resV = mysqli_fetch_assoc($v);
 }
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $vacancies_id = $_GET['id'];
-   echo "";
-   function incrementId($id)
-   {
-      // Збільшити порядкове число на 1
-      $new_id = $id + 1;
-      return $new_id;
-   }
-   $name = $_POST["name"];
-   $tel = $_POST["tel"];
-   $email = $_POST["email"];
-   $message = $_POST["message"];
-   $type_vacans = mysqli_query($connect_bd, "SELECT `vacancies` FROM `vacancies` WHERE `id`='$vacancies_id';");
-   $type_vacans_row = mysqli_fetch_assoc($type_vacans);
-   $type_vacans_value = $type_vacans_row['id_trainers_type'];
-   $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `vacancies_resum`");
-   $max_id_row = mysqli_fetch_assoc($result_max_id);
-   $max_id = $max_id_row['MAX(id)'];
-   $new_id = incrementId($max_id);
-   $query = "INSERT INTO `vacancies_resum` (`id`,`name`, `tel`, `email`, `message`,`id_vacancies`) VALUES ('$new_id','$name', '$tel', '$email', '$message','$type_vacans_value')";
-   $result = mysqli_query($connect_bd, $query);
-   if (!$result) {
-      die("Помилка при виконанні запросу: " . mysqli_error($connect_bd));
-   }
-   $result = mysqli_query($connect_bd, $query);
-   if ($result) {
-      $last_id = mysqli_insert_id($connect_bd);
-      echo "";
-   } else {
-      echo "";
-   }
-} else {
-   echo "";
-}
 ?>
+
 
 <body>
    <div class="wrapper">
@@ -152,14 +117,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                  ?>
                               </div>
                            </div>
-                           <form action="vacancies-act.php?id=<?php echo $vacancies_id; ?>" method="post" class="vacancies__cart-form" onsubmit="return actForm()">
-                              <div class="vacancies__cart-name form-element">Прізвище ім’я:<input type=text name="name" placeholder="Прізвище ім’я" required pattern="^([А-Яа-яЁёІіЇїЄєҐґA-Za-z'`]+ [А-Яа-яЁёІіЇїЄєҐґA-Za-z'`]+)$"></div>
-                              <div class="vacancies__cart-tel form-element">Телефон:<input type="tel" name="tel" placeholder="+380(00)-000-00-00" required pattern="^\+380[0-9]{9}$"></div>
-                              <div class="vacancies__cart-email form-element">Пошта:<input type="email" name="email" placeholder="name@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"></div>
-                              <div class="vacancies__cart-notice form-element">Про себе:<textarea id="message" name="message" rows="2.5" cols="50"></textarea>
-                              </div>
-                              <button type=submit name="submit" class="vacancies__cart-send form-element">Надіслати</button>
-                           </form>
+                           <div class="vacancies__cart-form">
+                              <?
+                              if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['vacancies'])) {
+                                 if (!$vacancies_id) {
+                                    die("Помилка: ID вакансії не визначено.");
+                                 }
+                                 $name = mysqli_real_escape_string($connect_bd, $_POST["name"]);
+                                 $tel = mysqli_real_escape_string($connect_bd, $_POST["tel"]);
+                                 $email = mysqli_real_escape_string($connect_bd, $_POST["email"]);
+                                 $message = mysqli_real_escape_string($connect_bd, $_POST["message"]);
+                                 // Отримання максимального ID
+                                 $result_max_id = mysqli_query($connect_bd, "SELECT MAX(id) FROM `vacancies_resum`");
+                                 $max_id_row = mysqli_fetch_assoc($result_max_id);
+                                 $max_id = $max_id_row['MAX(id)'];
+                                 $new_id = $max_id + 1;
+                                 $sql = "SELECT * FROM `vacancies_resum` WHERE`name`='$name' AND  `tel` = '$tel' AND `email` = '$email' AND `id_vacancies`='$vacancies_id'";
+                                 $verification = mysqli_query($connect_bd, $sql);
+                                 if (mysqli_num_rows($verification) > 0) {
+                                    $client_name = $_POST["name"];
+                                    echo "<p style='z-index:3;font-size:16px;'>$client_name, Ваша вакансія  вже розглядається</p>";
+                                 } else {
+                                    $query = "INSERT INTO `vacancies_resum` (`id`,`name`, `tel`, `email`, `message`,`id_vacancies`) VALUES ('$new_id','{$name}', '{$tel}', '{$email}', '{$message}','$vacancies_id')";
+                                    $result = mysqli_query($connect_bd, $query);
+                                    if (!$result) {
+                                       echo "Помилка при виконанні запиту: " . mysqli_error($connect_bd);
+                                    } else {
+                                       echo "<p style='z-index:3;font-size:16px;color:white;'>Вакансія відправлено на сервер для розгляду</p>";
+                                    }
+                                 }
+                              } else {
+                                 echo "";
+                              }
+                              ?>
+                              <form action="vacancies-act.php?id=<?php echo $vacancies_id; ?>" method="post" class="vacancies__form">
+                                 <div class="vacancies__cart-name form-element">Прізвище ім’я:
+                                    <input type=text name="name" placeholder="Прізвище ім’я" id="nameInput" required>
+                                    <div class="form-post__message form-post__message1"></div>
+                                 </div>
+                                 <div class="vacancies__cart-tel form-element">Телефон:
+                                    <input type="tel" name="tel" placeholder="+380(00)-000-00-00" id="telInput" required>
+                                    <div class="form-post__message form-post__message2"></div>
+                                 </div>
+                                 <div class="vacancies__cart-email form-element">Пошта:
+                                    <input type="email" name="email" placeholder="name@gmail.com" id="emailInput" required>
+                                    <div class="form-post__message form-post__message3"></div>
+                                 </div>
+                                 <div class="vacancies__cart-notice form-element">Про себе:
+                                    <textarea id="message" name="message" rows="2.5" cols="50"></textarea>
+                                 </div>
+                                 <button type=submit name="vacancies" class="vacancies__cart-send form-element valid-form">Надіслати</button>
+                              </form>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -213,6 +222,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    </div>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="js/vacancies-act.js"></script>
+   <script src="js/form-valid.js"></script>
    <script src="js/burger.js"></script>
    <script src="js/feedback.js"></script>
 </body>

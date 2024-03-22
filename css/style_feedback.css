@@ -50,18 +50,9 @@
 .feedback__form-content p{
    margin-bottom: 5px;
 }
-.feedback__form-name{
-   /* border: 1px solid rgb(255, 0, 0);  */
-}
-.feedback__form-number{
-   /* border: 1px solid rgb(255, 0, 0);  */
-}
-.feedback__form-send{
-   /* border: 1px solid rgb(255, 0, 0);  */
-}
 .feedback__form-input{
    background: rgb(217, 217, 217);
-   color: rgba(0, 0, 0, 0.5);
+   color: rgba(0, 0, 0, 0.8);
    padding: 20px 30px 20px 30px;
    border-radius: 20px;
    width: 100%;

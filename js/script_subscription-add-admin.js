@@ -23,16 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
    price.addEventListener("input", function () {
       // Отримуємо значення з input
       let inputValue = price.value;
-
-      // Перевірка, чи введене значення складається тільки з цифр, не містить "e" (англійська літера "е")
-      // і є не від'ємним числом
       if (/^\d+$/.test(inputValue) && !/e/i.test(inputValue) && parseInt(inputValue) >= 0) {
-         // Якщо введення вірне, виводимо значення в потрібне місце
          pricePr.innerText = inputValue;
-         errorMessage.innerText = ""; // Очищаємо повідомлення про помилку
+         errorMessage.innerText = "";
       } else {
-         // Якщо введення містить нецифрові символи, "e" або від'ємне число,
-         // виводимо вспливчасте повідомлення та очищаємо поле
          alert("Введено невірне значення. Будь ласка, введіть лише додатні числа.");
          price.value = "";
       }

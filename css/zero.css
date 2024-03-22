@@ -21,6 +21,13 @@ body{
 form, input, button, select, textarea {
    font-family: 'Roboto', sans-serif;
 }
+.form-post__message{
+   text-align: left;
+   padding: 2;
+   margin: 0px 0px 5px 0px;
+   font-size: 14px;
+   color:rgba(255, 0, 0, 0.5);
+}
 body
 body::-webkit-scrollbar {
    width: 0em; /* Ширина бегової доріжки */   

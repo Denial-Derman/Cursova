@@ -200,7 +200,7 @@
    </div>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="js/burger.js"></script>
-   <!-- <script src="js/index.js"></script> -->
+   <!-- <script src="js/form-valid.js"></script> -->
    <script src="js/feedback.js"></script>
 </body>
 
