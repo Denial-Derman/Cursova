@@ -4,15 +4,15 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Адмін панель</title>
+   <title>Адмін панель-головна</title>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/zero.css">
-   <link rel="stylesheet" type="text/css" href="css/style_index-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/zero.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_index-admin.css">
 </head>
 <?
 session_start();
@@ -32,7 +32,7 @@ $resAdmin = mysqli_fetch_assoc($admin);
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="../index.php"><img src="../img/logo_1.svg" alt="" class="navigator__logo">
                   </a>
                   <p>Адмін сторінка</p>
                </div>
@@ -62,12 +62,21 @@ $resAdmin = mysqli_fetch_assoc($admin);
                      }
                      echo "</ul>";
                      ?>
-                     Перехід здійснюється через навігацію
+                     <h3>Інструкція/попередження для адміністрації сайту:</h3>
+                     <br>
+                     <ul>
+                        <li>Перехід здійснюється через навігацію</li>
+                        <li>Повернення на головну сторінку основного сайту відбувається через натискання на логотип</li>
+                        <li>Данна версія адміністративної сторінки не адаптована під мобільні пристрої!</li>
+                        <li>Видалення відбувається відразу, обережно з цією кнопкою!!!</li>
+                        <li>В розділі оновлення розкладів, додаткоий відступ між рядками не враховується у виводі</li>
+                        <li>Під час закриття адміністративної сторінки, при повторному відкритті відбувається повторний вхід</li>
+                        <li>Привинекнині проблем пов'язаних з базами даних зв'язуватися за номером тел.: +380(63)-664-45-05</li>
+                     </ul>
                   </div>
                </div>
                <div class="right">
-
-                  <img src="img/admin-image.avif" alt="">
+                  <img src="../img/admin-image.avif" alt="">
                </div>
             </div>
          </div>

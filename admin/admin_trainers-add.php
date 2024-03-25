@@ -4,16 +4,16 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>StoneBreakerGym</title>
+   <title>Додавання тренера</title>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/zero.css">
-   <link rel="stylesheet" type="text/css" href="css/style_form-admin.css">
-   <link rel="stylesheet" type="text/css" href="css/style_trainers-add-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/zero.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_form-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_trainers-add-admin.css">
 </head>
 <?
 session_start();
@@ -32,7 +32,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="../index.php"><img src="../img/logo_1.svg" alt="" class="navigator__logo">
                   </a>
                   <p>Адмін сторінка</p>
                </div>
@@ -97,7 +97,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                   <div class="admin__right">
                      <div class="admin__demo-title">Зразок результату</div>
                      <div class="trainers__carts1">
-                        <img src="img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts1-image">
+                        <img src="../img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts1-image">
                         <div class="trainers__carts1-names">Ім'я Прізвище</div>
                      </div>
                      <div class="trainers__carts2">
@@ -117,7 +117,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
                               наявний/на разі відсутній
                            </div>
                         </div>
-                        <img src="img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts2-image">
+                        <img src="../img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts2-image">
                      </div>
                   </div>
                </div>
@@ -132,7 +132,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
          $check = isset($_POST["sert"]) ? 1 : 0;
          if (!empty($image = $_FILES['image']['name'])) {
             $image = $_FILES['image']['name'];
-            $uploaddir = 'img/trainers/';
+            $uploaddir = '../img/trainers/';
             $uploadfile = $uploaddir . basename($image);
             if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
                echo "<p>Файл завантажений на сервер</p>";
@@ -171,7 +171,7 @@ $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
       }
       ?>
    </div>
-   <script src="js/admin_form.js"></script>
+   <script src="../js/admin_form.js"></script>
 </body>
 
 </html>

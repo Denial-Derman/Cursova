@@ -8,38 +8,28 @@
 }
 .our-club__body{   
    border-radius: 20px;
-   /* width: 100%; */
-   /* background-color: aqua; */
 }
 .our-club__row {
-   /* background-color: blue; */
 }
 .our-club__title {
-   /* color: #FAFAFA; */
 }
 .our-club__types {
    margin: 20px auto;
    display: flex;
    width: 1200px;
-   /* width: 100%; */
    overflow: hidden;
-   /* border: 2px solid black; */
    background: #D9D9D980; 
    border-radius: 15px; 
 }
 .our-club__slyder{
    width:900px;
    height: 350px;
-   /* border: 2px solid black; */
-   /* margin: 50px auto; */
    margin: 50px 150px 80px 150px;
 }
 .our-club__slyder-line{
    width: max-content;
    display: flex;
    padding: 0px 0px;
-   /* justify-content: space-around; */
-   /* width: 900px; */
    transition: all 0.3s ease-out 0s;
    position: relative;
    left: 0px;
@@ -58,7 +48,6 @@
 .our-club__content{
    max-width: 45%;
    padding: 5% 0px 0px 12%;
-   /* border: 2px solid black; */
 }
 .our-club-title {
    color: #FAFAFA;
@@ -72,7 +61,6 @@
    color: #FAFAFA;
 }
 .our-club__type1{
-   /* margin:0px 150px 0px 0px; */
    background:url(../img/ourclub/hall.png) center no-repeat;   
 }
 .our-club__type2{
@@ -110,7 +98,6 @@
    width: auto;
    color: white;
    font-weight: bold;
-   /* margin: 0px 0px 0px 20px; */
    transition: 0.6s ease;
    position: relative;
    left:80px;
@@ -121,16 +108,10 @@
    left:1018px;
    left:970%;
 }
-.our-club__next img{ /* >  */
-   /* background-color: #59c851; */
-}
 .our-club__prev img{/* < */
-   /* background-color: #C85151; */
-   /* margin: 0px 20px 0px 0px; */
    transform: rotate(180deg);
 }
 .our-club__prev img,.our-club__next img{
-   /* height: 90px; */
    width: 50px;
 }
 
@@ -166,17 +147,11 @@
 }
 
 @media (max-width:900px){
-   /* our-club */
 .our-club {  
    margin: 150px 0px 100px 0px;
 }
 .our-club__body{   
    border-radius: 20px;
-   /* width: 100%; */
-   /* background-color: aqua; */
-}
-.our-club__row {
-   /* background-color: blue; */
 }
 .our-club__content .our-club__title{
    color: #FAFAFA;
@@ -185,19 +160,14 @@
    margin: 20px auto;
    display: flex;
    width: 100%;
-   /* width: 100%; */
    overflow: hidden;
-   /* border: 2px solid black; */
    background: #d9d9d900; 
    border-radius: 15px; 
 }
 .our-club__slyder{
    width:100%;
    height: 350px;
-   /* border: 2px solid black; */
-   /* margin: 50px auto; */
    margin: 50px 0px 80px 0px;
-   /* border: 1px solid #aa51c8; */
    overflow-x: auto;
    overflow-y: hidden;
 }
@@ -209,14 +179,11 @@
    width: max-content;
    display: flex;
    padding: 0px 0px;
-   /* justify-content: space-around; */
-   /* width: 900px; */
    transition: all 0.3s ease-out 0s;
    position: relative;
    left: 0px;
    background-color: rgba(137, 43, 226, 0);
    z-index: 3;
-   /* border: 1px solid #51c883; */
    gap: 50px;   
 }
 
@@ -225,14 +192,12 @@
    border-radius: 5px;
    min-height: 350px;  
    text-shadow: 1px 1px 5px #000000;  
-   /* border: 1px solid #C85151; */
 }
 .our-club__type-row{
 }
 .our-club__content{
    max-width: 60%;
    padding: 20% 0px 0px 10%;
-   /* border: 2px solid black; */
 }
 .our-club-title {
    color: #FAFAFA;
@@ -246,14 +211,11 @@
    color: #FAFAFA;
 }
 .our-club__type1{
-   /* margin:0px 150px 0px 0px; */
    background:url(../img/ourclub/hall.png) center no-repeat; 
-    
 }
 .our-club__type2{
    margin:0px 0px 0px 0px;
    background:url(../img/ourclub/changing.png) center no-repeat;
-     
 }
 .our-club__type3{
    margin:0 0px;
@@ -269,7 +231,6 @@
 .our-club__type6{
    margin:0px 0px 0px 0px;
    background:url(../img/ourclub/swimming-pool.png) center no-repeat;  
-   /* background-size: ;  */
 }
 .our-club__type7{
    background:url(../img/ourclub/nursery.png) center no-repeat;   
@@ -282,16 +243,10 @@
 .our-club__arrow{
    display: none;
 }
-.our-club__next img{ /* >  */
-   /* background-color: #59c851; */
-}
 .our-club__prev img{/* < */
-   /* background-color: #C85151; */
-   /* margin: 0px 20px 0px 0px; */
    transform: rotate(180deg);
 }
 .our-club__prev img,.our-club__next img{
-   /* height: 90px; */
    width: 50px;
 }
 /* Кружочки */

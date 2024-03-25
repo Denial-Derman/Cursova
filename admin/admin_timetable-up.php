@@ -4,16 +4,16 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>StoneBreakerGym</title>
+   <title>Оновлення розкладу</title>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/zero.css">
-   <link rel="stylesheet" type="text/css" href="css/style_timetable-add-admin.css">
-   <link rel="stylesheet" type="text/css" href="css/style_form-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/zero.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_timetable-add-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_form-admin.css">
 </head>
 <?
 session_start();
@@ -34,7 +34,7 @@ $resT = mysqli_fetch_assoc($t);
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="../index.php"><img src="../img/logo_1.svg" alt="" class="navigator__logo">
                   </a>
                   <p>Адмін сторінка</p>
                </div>
@@ -82,7 +82,7 @@ $resT = mysqli_fetch_assoc($t);
                   </form>
                   <div class="admin__right">
                      <div class="admin__demo-title">Зразок результату</div>
-                     <div class="timetable__flex-block" style="background:url(img/timetable/noimage.png) center no-repeat; background-size:cover;">
+                     <div class="timetable__flex-block" style="background:url(../img/timetable/noimage.png) center no-repeat; background-size:cover;">
                         <div class="timetable__btn-block">
                            <div class="timetable__btn" id="timeTableBtn">
                               Назва розкладу
@@ -101,14 +101,14 @@ $resT = mysqli_fetch_assoc($t);
          </div>
       </main>
    </div>
-   <script src="js/admin_form.js"></script>
-   <script src="js/timetable-admin.js"></script>
+   <script src="../js/admin_form.js"></script>
+   <script src="../js/timetable-admin.js"></script>
 </body>
 <?
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (!empty($_FILES['image']['name'])) {
       $image = $_FILES['image']['name'];
-      $uploaddir = 'img/timetable/';
+      $uploaddir = '../img/timetable/';
       $uploadfile = $uploaddir . basename($image);
       if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
          echo "<p>Файл завантажений на сервер</p>";

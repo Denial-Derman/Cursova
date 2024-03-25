@@ -4,16 +4,16 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>StoneBreakerGym</title>
+   <title>Список тренерів</title>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/zero.css">
-   <link rel="stylesheet" type="text/css" href="css/style_admin.css">
-   <link rel="stylesheet" type="text/css" href="css/style_timetable-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/zero.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_trainers-admin.css">
 </head>
 <?
 session_start();
@@ -24,27 +24,28 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $name = $_SESSION['username'];
 $password = $_SESSION['password'];
 $connect_bd = mysqli_connect("localhost", "$name", "$password", "StoneBreaker");
-$t = mysqli_query($connect_bd, "SELECT * FROM `timetable`");
+$train = mysqli_query($connect_bd, "SELECT * FROM `trainers`");
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
-   if (isset($_POST['timetable_id'])) {
-      $timeUpId = $_POST['timetable_id'];
-      $_SESSION['timeId'] = $timeUpId;
-      header('Location: admin_timetable-up.php');
+   if (isset($_POST['trainers_id'])) {
+      $trUpId = $_POST['trainers_id'];
+      $_SESSION['trainId'] = $trUpId;
+      header('Location: admin_trainers-up.php');
       exit;
    } else {
       echo "ID абонементу не був переданий для оновлення.";
-      echo "<script>window.location = 'admin_timetable.php';</script>";
+      echo "<script>window.location = 'admin_trainers.php';</script>";
       exit;
    }
 }
 ?>
+
 
 <body>
    <div class="wrapper">
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="../index.php"><img src="../img/logo_1.svg" alt="" class="navigator__logo">
                   </a>
                   <p>Адмін сторінка</p>
                </div>
@@ -63,20 +64,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
       <main class="content">
          <div class="conteiner">
             <div class="timetable__flex">
-               <h2 class="timetable__title title">Активні розклади</h2>
+               <h2 class="timetable__title title">Активні вакансії</h2>
                <div class="div-block">
                   <div class="div">
-                     <a href="admin_timetable-add.php">Додати розклад</a>
+                     <a href="admin_trainers-add.php">Додати тренера</a>
                      <?
                      echo "<ul class='admin__activ-list'>";
-                     while ($resT = mysqli_fetch_assoc($t)) {
-                        echo "<li>{$resT['id']} {$resT['name_time']} 
-                  <form action='admin_timetable.php' method='post'>
-                     <input type='hidden' name='timetable_id' value='{$resT['id']}'>
+                     while ($restrain = mysqli_fetch_assoc($train)) {
+                        echo "<li>{$restrain['id']} {$restrain['name']} 
+                  <form action='admin_trainers.php' method='post'>
+                     <input type='hidden' name='trainers_id' value='{$restrain['id']}'>
                      <button type='submit' name='del'>Видалити</button>
                   </form>
-                  <form action='admin_timetable.php' method='post'>
-                     <input type='hidden' name='timetable_id' value='{$resT['id']}'>
+                  <form action='admin_trainers.php' method='post'>
+                     <input type='hidden' name='trainers_id' value='{$restrain['id']}'>
                      <button type='submit' name='up'>Оновити</button>
                   </form>
                   </li>";
@@ -84,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
                      echo "</ul>"; ?>
                   </div>
                   <?
-                  $table = mysqli_query($connect_bd, "SELECT `id`as'Номер',`name_time`as'Підпис розкладу',`image`as'Фонове зображення',`time_list`as'Розклад' FROM `timetable`");
+                  $table = mysqli_query($connect_bd, "SELECT `trainers`.`id`as'Номер',`trainers`.`image`as'Фото',`trainers`.`name`as'ІП',`trainers_types`.`name_vacancies`as'Направлення',`trainers`.`information`as'Інформація',`trainers`.`certificate`as'Сертифікат' FROM `trainers`,`trainers_types` WHERE `trainers`.`trainers_type`=`trainers_types`.`id_trainers_type`");
                   if ($table) {
                      echo "";
                   } else {
@@ -107,14 +108,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
                               $p = 2;
                            }
                            echo "<tr>";
-                           foreach ($myrow as $buf) {
+                           foreach ($myrow as $ind => $buf) {
+                              if ($ind == 'Сертифікат') {
+                                 if ($buf == 1) {
+                                    $buf = 'Наявний';
+                                 } elseif ($buf == 0 || $buf == null) {
+                                    $buf = 'На разі відсутній';
+                                 }
+                              }
                               $path_info = pathinfo($buf);
                               if (isset($path_info['extension']) && in_array(strtolower($path_info['extension']), array('png', 'jpg'))) {
-                                 echo "<td class='content-table'><img src='img/timetable/{$buf}' alt='фонове зображення'><br>назва файлу: $buf</td>";
+                                 echo "<td class='content-table'><img src='../img/trainers/{$buf}' alt='фонове зображення'><br>назва файлу: $buf</td>";
                               } else {
-                                 // Розділити текст на абзаци
                                  $paragraphs = explode("\n", $buf);
-                                 // Вивести кожен абзац як елемент списку
                                  echo "<td class='content-table'><ul>";
                                  foreach ($paragraphs as $paragraph) {
                                     echo "<li>{$paragraph}</li>";
@@ -130,20 +136,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['up'])) {
                </div>
                <?
                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['del'])) {
-                  if (isset($_POST['timetable_id'])) {
-                     $timetable_id = $_POST['timetable_id'];
-                     $delete_query = "DELETE FROM `timetable` WHERE `id` = '$timetable_id'";
+                  if (isset($_POST['trainers_id'])) {
+                     $trainers_id = $_POST['trainers_id'];
+                     $delete_query = "DELETE FROM `trainers` WHERE `id` = '$trainers_id'";
                      $result = mysqli_query($connect_bd, $delete_query);
                      if ($result) {
-                        echo "Запись успішно видалено";
-                        echo "<script>window.location = 'admin_timetable.php';</script>";
+                        echo "Запис успішно видалено";
+                        echo "<script>window.location = 'admin_trainers.php';</script>";
                         exit;
                      } else {
                         echo "Ошибка при видалені запису: " . mysqli_error($connect_bd);
                      }
                   } else {
                      echo "ID вакансії не був передан для видалення.";
-                     echo "<script>window.location = 'admin_timetable.php';</script>";
+                     echo "<script>window.location = 'admin_trainers.php';</script>";
                      exit;
                   }
                }

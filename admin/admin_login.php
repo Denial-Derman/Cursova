@@ -11,8 +11,8 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/zero.css">
-   <link rel="stylesheet" type="text/css" href="css/style_index-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/zero.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_index-admin.css">
 </head>
 <?
 session_start();

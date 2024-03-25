@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>StoneBreakerGym</title>
+   <title>Абонементи</title>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,7 +149,6 @@ $connect_bd = mysqli_connect("localhost", "root", "", "StoneBreaker");
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="js/scriptourclub.js"></script>
    <script src="js/burger.js"></script>
-   <!-- <script src="js/form-valid.js"></script> -->
    <script src="js/feedback.js"></script>
 </body>
 

@@ -4,16 +4,16 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>StoneBreakerGym</title>
+   <title>Оновлення вакансії</title>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/zero.css">
-   <link rel="stylesheet" type="text/css" href="css/style_vacancies-add-admin.css">
-   <link rel="stylesheet" type="text/css" href="css/style_form-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/zero.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_vacancies-add-admin.css">
+   <link rel="stylesheet" type="text/css" href="../css/style_form-admin.css">
 </head>
 <?
 session_start();
@@ -50,7 +50,7 @@ $resT = mysqli_fetch_assoc($t);
       <header class="navigator">
          <div class="conteiner">
             <div class="navigator__row">
-               <div class="logo"><a target="_blank" href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
+               <div class="logo"><a target="_blank" href="../index.php"><img src="../img/logo_1.svg" alt="" class="navigator__logo">
                   </a>
                   <p>Адмін сторінка</p>
                </div>
@@ -102,7 +102,7 @@ $resT = mysqli_fetch_assoc($t);
                   </form>
                   <div class="admin__right">
                      <div class="admin__demo-title">Зразок результату</div>
-                     <div class="vacancies__cart1" style="background: url(img/vacancies/noimage.png)  left no-repeat; background-size: cover;">
+                     <div class="vacancies__cart1" style="background: url(../img/vacancies/noimage.png)  left no-repeat; background-size: cover;">
                         <div class="vacancies__cart1-title">
                            Назва вакансії
                         </div>
@@ -113,7 +113,7 @@ $resT = mysqli_fetch_assoc($t);
                         </a>
                      </div>
                      <div class="vacancies__cart">
-                        <div class="vacancies__cart-image" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(img/vacancies/noimage.png) center no-repeat; background-size: cover;">
+                        <div class="vacancies__cart-image" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/vacancies/noimage.png) center no-repeat; background-size: cover;">
                            <div class="vacancies__cart-btn">
                               <p class="vacancies__cart-btn-text">Подати заявку</p>
                            </div>
@@ -156,7 +156,7 @@ $resT = mysqli_fetch_assoc($t);
          if (!empty($_FILES['image']['name'])) {
             $image = $_FILES['image']['name'];
             if ($imageName == $image) {
-               $uploaddir = 'img/vacancies/';
+               $uploaddir = '../img/vacancies/';
                $uploadfile = $uploaddir . basename($image);
                if (copy($_FILES['image']['tmp_name'], $uploadfile)) {
                   echo "<p>Файл завантажений на сервер</p>";
@@ -187,7 +187,7 @@ $resT = mysqli_fetch_assoc($t);
       }
       ?>
    </div>
-   <script src="js/admin_form.js"></script>
+   <script src="../js/admin_form.js"></script>
 </body>
 
 

@@ -19,7 +19,7 @@
 <body>
    <div class="wrapper">
       <header class="navigator">
-         <a href="admin_login.php" target="_blank" class="go-admin"></a>
+         <a href="admin/admin_login.php" target="_blank" class="go-admin"></a>
          <div class="conteiner">
             <div class="navigator__row">
                <a href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
@@ -200,7 +200,6 @@
    </div>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="js/burger.js"></script>
-   <!-- <script src="js/form-valid.js"></script> -->
    <script src="js/feedback.js"></script>
 </body>
 
