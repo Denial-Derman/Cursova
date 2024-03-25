@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Час створення: Бер 22 2024 р., 01:11
+-- Час створення: Бер 25 2024 р., 23:48
 -- Версія сервера: 8.0.30
 -- Версія PHP: 7.2.34
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- База даних: `StoneBreaker`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблиці `client`
+--
+
+CREATE TABLE `client` (
+  `id_client` smallint NOT NULL,
+  `name_client` varchar(50) DEFAULT NULL,
+  `tel_client` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп даних таблиці `client`
+--
+
+INSERT INTO `client` (`id_client`, `name_client`, `tel_client`) VALUES
+(1, 'фаафц', '+380951714057'),
+(2, 'Завдов\'єв Денис', '+380951714057'),
+(3, 'Завдов\'єв Максим', '+380951714057');
 
 -- --------------------------------------------------------
 
@@ -160,7 +181,7 @@ INSERT INTO `timetable` (`id`, `id_time_home`, `name_time`, `time_list`, `image`
 (2, 1, 'Тренажерний зал', 'Пн-Сб\r\n08:00 - Відкриття\r\n18:00 - Закриття\r\n09:00 - Початок тренування з тренером\r\n16:30 - Кінець тренування з тренером\r\nВс\r\n- Вихідний', 'gym.png'),
 (3, 1, 'Фітнес зал', 'Пн-Сб\r\n09:00 - Перший сеанс\r\n11:00 - Кінець першого сеансу\r\n11:30 - Другий сеанс\r\n13:30 - Кінець другого сеансу\r\n14:00 - Третій сеанс\r\n16:00 - Кінець третього сеансу\r\n16:30 - Четвертий сеанс\r\n18:30 - Кінець четвертого сеансу\r\nВс\r\n- Вихідний', 'fitness-gym.png'),
 (4, 1, 'Басейн ', 'Пн-Сб\r\n08:00 - Відкриття\r\n09:00 - Розминка\r\n09:30 - Початок тренування\r\n12:00 - Кінець тренування\r\n12:10 - Ігри\r\n13:00 - Закриття\r\nВс\r\n- Вихідний', 'swimming-pool.png'),
-(5, 1, 'Дитяча зона', 'Пн-Сб\r\n08:30 - Відкриття\r\n18:30 - Закриття\r\n\r\nВс\r\n - Вихідний', 'nursery.png');
+(5, 1, 'Дитяча зона', 'Пн-Сб\r\n08:30 - Відкриття\r\n19:30 - Закриття\r\n\r\nВс\r\n - Вихідний', 'nursery.png');
 
 -- --------------------------------------------------------
 
@@ -266,11 +287,21 @@ CREATE TABLE `vacancies_resum` (
 --
 
 INSERT INTO `vacancies_resum` (`id`, `name`, `tel`, `email`, `message`, `id_vacancies`) VALUES
-(1, 'Host Club', '+380636645405', 'support@stonebrreaker.ua', NULL, NULL);
+(1, 'Host Club', '+380636645405', 'support@stonebrreaker.ua', NULL, 5),
+(3, 'Завдов\'єв Денис', '+380951714057', 'denis.zavdoviev@gmail.com', '', 1),
+(4, 'Завдов\'єв Денис', '+380951714057', 'denis.zavdoviev45@gmail.com', '', 1),
+(5, 'Завдов\'єв Денис', '+380951714057', 'denis.zavdoviev@gmail.com', '', 2),
+(6, 'Завдов\'єв Денис', '+380951714057', 'denis@gmail.com', '', 2);
 
 --
 -- Індекси збережених таблиць
 --
+
+--
+-- Індекси таблиці `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`id_client`);
 
 --
 -- Індекси таблиці `club_train`
@@ -342,7 +373,7 @@ ALTER TABLE `vacancies`
 --
 ALTER TABLE `vacancies_resum`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `vacancies_resum_ibfk_1` (`id_vacancies`);
+  ADD KEY `id_vacancies` (`id_vacancies`);
 
 --
 -- Обмеження зовнішнього ключа збережених таблиць
@@ -373,6 +404,12 @@ ALTER TABLE `trainers`
 --
 ALTER TABLE `vacancies`
   ADD CONSTRAINT `vacancies_ibfk_1` FOREIGN KEY (`id_vac_home`) REFERENCES `home` (`id_vac`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Обмеження зовнішнього ключа таблиці `vacancies_resum`
+--
+ALTER TABLE `vacancies_resum`
+  ADD CONSTRAINT `vacancies_resum_ibfk_1` FOREIGN KEY (`id_vacancies`) REFERENCES `vacancies` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,1 +1,4 @@
 name DB: StoneBreaker
+
+Вхід в адмін панель: таблиця `login_admin` 
+Користувач з привілегіями: лог:Admin_Club пароль:Admin-Club411
