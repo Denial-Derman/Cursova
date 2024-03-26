@@ -22,16 +22,21 @@
    width: 100%;
    display: flex;
    flex-direction: column;
+   justify-content: flex-start;
    align-items: center;
 }
 .timetable__flex-block{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
-   align-items: center;
+   align-items: flex-start;
+   justify-content: space-between;
    overflow: hidden;
-   height: 550px;    
+   height: 550px;   
+   width: 60%; 
    border-radius: 10px;
+   box-sizing: border-box;
+   padding: 0px 15px 25px 0px;
    transition: all 0.3s ease-out 0s;
 }
 .timetable__btn-block{
@@ -61,6 +66,8 @@
    opacity: 1;
    padding: 25px 10px 25px 45px;
    width: 450px;
+   height: 90%;
+   box-sizing: border-box;
    margin: 50px 20px 50px 20px;
    font-size: 26px;
    background: #bebebec1;
@@ -75,6 +82,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: flex-start;
       gap: 50px;
    }
@@ -90,13 +98,13 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       font-size: 32px; 
       justify-content: start;
    }
    .timetable__btn{
-      padding: 0px 50px 0px 50px;
+      padding: 0px 35px 0px 35px;
       width: max-content;
       height: 80px;
       background: #3d3d3dd4;  
@@ -110,7 +118,7 @@
       width: 80%;
       height: 350px;
       font-size: 22px;
-      padding: 15px 5px 15px 25px;
+      padding: 15px 5px 30px 25px;
       margin: 25px 10px 25px 10px;
       transition: all 0.3s ease-out 0s;
    }
