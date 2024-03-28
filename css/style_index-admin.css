@@ -43,13 +43,13 @@
    gap: 25px;
    margin: 30px 0px;
 }
-.admin__activ-list li{   
-   list-style: disc;
-   margin: 0px 0px 0px 50px;
-}
 .admin__list li{   
    list-style: inside;
    list-style-type: '-';
+}
+.admin__activ-list li{   
+   list-style: disc;
+   margin: 0px 0px 0px 50px;
 }
 .admin__activ-list a{
    text-decoration: none;
