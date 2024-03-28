@@ -32,7 +32,7 @@
    align-items: flex-start;
    justify-content: space-between;
    overflow: hidden;
-   height: 550px;   
+   min-height: 550px;   
    width: 60%; 
    border-radius: 10px;
    box-sizing: border-box;
@@ -116,7 +116,7 @@
    }
    .timetable__time{
       width: 80%;
-      height: 350px;
+      min-height: 350px;
       font-size: 22px;
       padding: 15px 5px 30px 25px;
       margin: 25px 10px 25px 10px;
