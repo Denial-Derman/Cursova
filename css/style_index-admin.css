@@ -31,7 +31,7 @@
    color: #C85151;   
 }
 .content{
-   margin-top: 200px;
+   margin: 200px auto;
 }
 .conteiner{
    flex-direction: column;
@@ -46,6 +46,10 @@
 .admin__activ-list li{   
    list-style: disc;
    margin: 0px 0px 0px 50px;
+}
+.admin__list li{   
+   list-style: inside;
+   list-style-type: '-';
 }
 .admin__activ-list a{
    text-decoration: none;
