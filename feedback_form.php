@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Зворотній зв'язок</title>
+   <title>Зворотний зв'язок</title>
    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
                <a href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
                </a>
                <div class="navigator__connect">
-                  <a href="#" class="navigator__con feedbackOpen">Зворотній зв'язок</a>
+                  <a href="#" class="navigator__con feedbackOpen">Зворотний зв'язок</a>
                </div>
                <div class="navigator__burger">
                   <span></span>
@@ -41,7 +41,7 @@
                      <li class="navigator__num"><a href="tel:+380636645405">+380 63 664 54
                            05</a></li>
                      <li>
-                        <a href="#" class="navigator__connection feedbackOpen">Зворотній зв’язок</a>
+                        <a href="#" class="navigator__connection feedbackOpen">Зворотний зв’язок</a>
                      </li>
                   </ul>
                </div>

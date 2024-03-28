@@ -25,7 +25,7 @@
                <a href="index.php"><img src="img/logo_1.svg" alt="" class="navigator__logo">
                </a>
                <div class="navigator__connect">
-                  <a href="#" class="navigator__con feedbackOpen">Зворотній зв'язок</a>
+                  <a href="#" class="navigator__con feedbackOpen">Зворотний зв'язок</a>
                </div>
                <div class="navigator__burger">
                   <span></span>
@@ -42,7 +42,7 @@
                      <li class="navigator__num"><a href="tel:+380636645405">+380 63 664 54
                            05</a></li>
                      <li>
-                        <a href="#" class="navigator__connection feedbackOpen">Зворотній зв’язок</a>
+                        <a href="#" class="navigator__connection feedbackOpen">Зворотний зв’язок</a>
                      </li>
                   </ul>
                </div>
