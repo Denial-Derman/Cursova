@@ -237,6 +237,9 @@
       border-radius: 40px 0px 25px 25px;
       padding: 15px 10px 50px 10px;
    }
+   .vacancies__cart-form form{ 
+      margin: 35px 10px 25px 10px;
+   }
    .vacancies__cart-form input::placeholder, .form-element textarea::placeholder{
       color:rgba(0, 0, 0, 0.5);
    }
