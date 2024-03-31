@@ -89,7 +89,7 @@ $resSub = mysqli_fetch_assoc($sub);
                               </select>
                            </div>
                         </div>
-                        <div id="error-message">Помилки відсутні</div>
+                        <div id="error-message"></div>
                      </div>
                      <div class="form__block">
                         <button type="submit" name="dot" class="form__btn">Додати</button>
