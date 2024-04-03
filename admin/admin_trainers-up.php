@@ -143,7 +143,7 @@ $resTr = mysqli_fetch_assoc($trains);
                   <div class="admin__right">
                      <div class="admin__demo-title">Зразок результату</div>
                      <div class="trainers__carts1">
-                        <img src="img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts1-image">
+                        <img src="../img/trainers/noimage.png" alt="photo-trainers" class="trainers__carts1-image">
                         <div class="trainers__carts1-names">Ім'я Прізвище</div>
                      </div>
                      <div class="trainers__carts2">

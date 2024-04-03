@@ -142,15 +142,15 @@
                         <h3 class="location__subtitle">Спортивний куб “StoneBrreaker” </h3>
                         <div class="location__text">вулиця Збройних Сил України, 43А, Суми, Сумська область</div>
                      </div>
-                     <div class="location__body-footer location__body-footer1">
-                        <p class="location__btn feedbackOpen" id="feedback">Зв’язатися з нами</p>
+                     <div class="location__body-footer location__body-footer1 feedbackOpen">
+                        <p class="location__btn" id="feedback">Зв’язатися з нами</p>
                      </div>
                   </div>
                   <div class="location__map">
                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1257.9651005164483!2d34.837312655809235!3d50.906507607779695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41290205d732ae0b%3A0x12a7d91da54405d0!2z0LLRg9C70LjRhtGPINCX0LHRgNC-0LnQvdC40YUg0KHQuNC7INCj0LrRgNCw0ZfQvdC4LCA0M9CQLCDQodGD0LzQuCwg0KHRg9C80YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDQwMDAw!5e0!3m2!1suk!2sua!4v1698865666798!5m2!1suk!2sua" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                   </div>
-                  <div class="location__body-footer location__body-footer2">
-                     <a href="#" class="location__btn feedbackOpen">Зв’язатися з нами</a>
+                  <div class="location__body-footer location__body-footer2 feedbackOpen">
+                     <a href="#" class="location__btn">Зв’язатися з нами</a>
                   </div>
                </div>
             </div>

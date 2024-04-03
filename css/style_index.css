@@ -399,12 +399,13 @@
    transition-timing-function: ease-out;
    transition-duration: 300ms;
    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.25) inset;
+   cursor: pointer;
 }
 .location__body-footer1{
    display: block;
 }
 .location__body-footer2{
-   display: none;
+   display: none;   
 }
 .location__body-footer:hover{
    border: 2px solid #000;
@@ -417,6 +418,7 @@
    -1px -1px 0 #000000,
    1px -1px 0 #000000,
    -1px 1px 0 #000000;
+   
 }
 .location__map iframe {
    width:600px; 
